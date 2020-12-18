@@ -1,0 +1,368 @@
+[
+   {
+      "abbrev": "Ter",
+      "name": "Teremtés könyve",
+      "number": 101
+   },
+   {
+      "abbrev": "Kiv",
+      "name": "Kivonulás könyve",
+      "number": 102
+   },
+   {
+      "abbrev": "Lev",
+      "name": "Leviták könyve",
+      "number": 103
+   },
+   {
+      "abbrev": "Szám",
+      "name": "Számok könyve",
+      "number": 104
+   },
+   {
+      "abbrev": "MTörv",
+      "name": "Második Törvénykönyv",
+      "number": 105
+   },
+   {
+      "abbrev": "Józs",
+      "name": "Józsue könyve",
+      "number": 106
+   },
+   {
+      "abbrev": "Bír",
+      "name": "Bírák könyve",
+      "number": 107
+   },
+   {
+      "abbrev": "Rut",
+      "name": "Rut könyve",
+      "number": 108
+   },
+   {
+      "abbrev": "1Sám",
+      "name": "Sámuel I. könyve",
+      "number": 109
+   },
+   {
+      "abbrev": "2Sám",
+      "name": "Sámuel II. könyve",
+      "number": 110
+   },
+   {
+      "abbrev": "1Kir",
+      "name": "Királyok I. könyve",
+      "number": 111
+   },
+   {
+      "abbrev": "2Kir",
+      "name": "Királyok II. könyve",
+      "number": 112
+   },
+   {
+      "abbrev": "1Krón",
+      "name": "Krónikák I. könyve",
+      "number": 113
+   },
+   {
+      "abbrev": "2Krón",
+      "name": "Krónikák II. könyve",
+      "number": 114
+   },
+   {
+      "abbrev": "Ezd",
+      "name": "Ezdrás könyve",
+      "number": 115
+   },
+   {
+      "abbrev": "Neh",
+      "name": "Nehemiás könyve",
+      "number": 116
+   },
+   {
+      "abbrev": "Tób",
+      "name": "Tóbiás könyve",
+      "number": 117
+   },
+   {
+      "abbrev": "Jud",
+      "name": "Judit könyve",
+      "number": 118
+   },
+   {
+      "abbrev": "Esz",
+      "name": "Eszter könyve",
+      "number": 119
+   },
+   {
+      "abbrev": "Jób",
+      "name": "Jób könyve",
+      "number": 120
+   },
+   {
+      "abbrev": "Zsolt",
+      "name": "Zsoltárok könyve",
+      "number": 121
+   },
+   {
+      "abbrev": "Péld",
+      "name": "Példabeszédek könyve",
+      "number": 122
+   },
+   {
+      "abbrev": "Préd",
+      "name": "Prédikátor könyve",
+      "number": 123
+   },
+   {
+      "abbrev": "Én",
+      "name": "Énekek éneke",
+      "number": 124
+   },
+   {
+      "abbrev": "Bölcs",
+      "name": "Bölcsesség könyve",
+      "number": 125
+   },
+   {
+      "abbrev": "Sir",
+      "name": "Sirák fia könyve",
+      "number": 126
+   },
+   {
+      "abbrev": "Iz",
+      "name": "Izajás könyve",
+      "number": 127
+   },
+   {
+      "abbrev": "Jer",
+      "name": "Jeremiás könyve",
+      "number": 128
+   },
+   {
+      "abbrev": "Siral",
+      "name": "Siralmak könyve",
+      "number": 129
+   },
+   {
+      "abbrev": "Bár",
+      "name": "Báruk könyve",
+      "number": 130
+   },
+   {
+      "abbrev": "Ez",
+      "name": "Ezekiel könyve",
+      "number": 131
+   },
+   {
+      "abbrev": "Dán",
+      "name": "Dániel könyve",
+      "number": 132
+   },
+   {
+      "abbrev": "Oz",
+      "name": "Ozeás könyve",
+      "number": 133
+   },
+   {
+      "abbrev": "Jo",
+      "name": "Joel könyve",
+      "number": 134
+   },
+   {
+      "abbrev": "Ám",
+      "name": "Ámosz könyve",
+      "number": 135
+   },
+   {
+      "abbrev": "Abd",
+      "name": "Abdiás könyve",
+      "number": 136
+   },
+   {
+      "abbrev": "Jón",
+      "name": "Jónás könyve",
+      "number": 137
+   },
+   {
+      "abbrev": "Mik",
+      "name": "Mikeás könyve",
+      "number": 138
+   },
+   {
+      "abbrev": "Náh",
+      "name": "Náhum könyve",
+      "number": 139
+   },
+   {
+      "abbrev": "Hab",
+      "name": "Habakuk könyve",
+      "number": 140
+   },
+   {
+      "abbrev": "Szof",
+      "name": "Szofoniás könyve",
+      "number": 141
+   },
+   {
+      "abbrev": "Ag",
+      "name": "Aggeus könyve",
+      "number": 142
+   },
+   {
+      "abbrev": "Zak",
+      "name": "Zakariás könyve",
+      "number": 143
+   },
+   {
+      "abbrev": "Mal",
+      "name": "Malakiás könyve",
+      "number": 144
+   },
+   {
+      "abbrev": "1Mak",
+      "name": "Makkabeusok I. könyve",
+      "number": 145
+   },
+   {
+      "abbrev": "2Mak",
+      "name": "Makkabeusok II. könyve",
+      "number": 146
+   },
+   {
+      "abbrev": "Mt",
+      "name": "Máté evangéliuma",
+      "number": 201
+   },
+   {
+      "abbrev": "Mk",
+      "name": "Márk evangéliuma",
+      "number": 202
+   },
+   {
+      "abbrev": "Lk",
+      "name": "Lukács evangéliuma",
+      "number": 203
+   },
+   {
+      "abbrev": "Jn",
+      "name": "János evangéliuma",
+      "number": 204
+   },
+   {
+      "abbrev": "ApCsel",
+      "name": "Apostolok Cselekedetei",
+      "number": 205
+   },
+   {
+      "abbrev": "Róm",
+      "name": "Rómaiaknak írt levél",
+      "number": 206
+   },
+   {
+      "abbrev": "1Kor",
+      "name": "Korintusiaknak írt I. levél",
+      "number": 207
+   },
+   {
+      "abbrev": "2Kor",
+      "name": "Korintusiaknak írt II. levél",
+      "number": 208
+   },
+   {
+      "abbrev": "Gal",
+      "name": "Galatáknak írt levél",
+      "number": 209
+   },
+   {
+      "abbrev": "Ef",
+      "name": "Efezusiaknak írt levél",
+      "number": 210
+   },
+   {
+      "abbrev": "Fil",
+      "name": "Filippieknek írt levél",
+      "number": 211
+   },
+   {
+      "abbrev": "Kol",
+      "name": "Kolosszeieknek írt levél",
+      "number": 212
+   },
+   {
+      "abbrev": "1Tesz",
+      "name": "Tesszalonikaiaknak írt I. levél",
+      "number": 213
+   },
+   {
+      "abbrev": "2Tesz",
+      "name": "Tesszalonikaiaknak írt II. levél",
+      "number": 214
+   },
+   {
+      "abbrev": "1Tim",
+      "name": "Timóteusnak írt I. levél",
+      "number": 215
+   },
+   {
+      "abbrev": "2Tim",
+      "name": "Timóteusnak írt II. levél",
+      "number": 216
+   },
+   {
+      "abbrev": "Tit",
+      "name": "Titusznak írt levél",
+      "number": 217
+   },
+   {
+      "abbrev": "Filem",
+      "name": "Filemonnak írt levél",
+      "number": 218
+   },
+   {
+      "abbrev": "Zsid",
+      "name": "Zsidóknak írt levél",
+      "number": 219
+   },
+   {
+      "abbrev": "Jak",
+      "name": "Jakab levele",
+      "number": 220
+   },
+   {
+      "abbrev": "1Pt",
+      "name": "Péter I. levele",
+      "number": 221
+   },
+   {
+      "abbrev": "2Pt",
+      "name": "Péter II. levele",
+      "number": 222
+   },
+   {
+      "abbrev": "1Jn",
+      "name": "János I. levele",
+      "number": 223
+   },
+   {
+      "abbrev": "2Jn",
+      "name": "János II. levele",
+      "number": 224
+   },
+   {
+      "abbrev": "3Jn",
+      "name": "János III. levele",
+      "number": 225
+   },
+   {
+      "abbrev": "Júd",
+      "name": "Júdás levele",
+      "number": 226
+   },
+   {
+      "abbrev": "Jel",
+      "name": "Jelenések könyve",
+      "number": 227
+   }
+]
+ 

@@ -15,6 +15,16 @@
 		8C8BAB6E258D056B00E4EDD3 /* FiraSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8C8BAB6A258D056B00E4EDD3 /* FiraSans-Light.ttf */; };
 		8C8BAB6F258D056B00E4EDD3 /* FiraSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8C8BAB6B258D056B00E4EDD3 /* FiraSans-Medium.ttf */; };
 		8C8BAB70258D056B00E4EDD3 /* FiraSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8C8BAB6C258D056B00E4EDD3 /* FiraSans-Regular.ttf */; };
+		8C8BAB79258D07B100E4EDD3 /* books_KG.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C8BAB78258D07B100E4EDD3 /* books_KG.json */; };
+		8C8BAB7C258D07F200E4EDD3 /* books_SZIT.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C8BAB7B258D07F200E4EDD3 /* books_SZIT.json */; };
+		8C8BAB7F258D082E00E4EDD3 /* books_RUF.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C8BAB7E258D082E00E4EDD3 /* books_RUF.json */; };
+		8C8BAB82258D084B00E4EDD3 /* books_KNB.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C8BAB81258D084B00E4EDD3 /* books_KNB.json */; };
+		8C8BAB86258D08EE00E4EDD3 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BAB85258D08EE00E4EDD3 /* BookModel.swift */; };
+		8C8BAB89258D095E00E4EDD3 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BAB88258D095E00E4EDD3 /* Bundle+Extension.swift */; };
+		8C8BAB8C258D0BF800E4EDD3 /* BibleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BAB8B258D0BF800E4EDD3 /* BibleController.swift */; };
+		8C8BAB8F258D10C300E4EDD3 /* translations.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C8BAB8E258D10C300E4EDD3 /* translations.json */; };
+		8C8BAB92258D12D400E4EDD3 /* TranslationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BAB91258D12D400E4EDD3 /* TranslationModel.swift */; };
+		8C8BAB97258D213200E4EDD3 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BAB96258D213200E4EDD3 /* UserDefaults+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +38,16 @@
 		8C8BAB6A258D056B00E4EDD3 /* FiraSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraSans-Light.ttf"; sourceTree = "<group>"; };
 		8C8BAB6B258D056B00E4EDD3 /* FiraSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraSans-Medium.ttf"; sourceTree = "<group>"; };
 		8C8BAB6C258D056B00E4EDD3 /* FiraSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraSans-Regular.ttf"; sourceTree = "<group>"; };
+		8C8BAB78258D07B100E4EDD3 /* books_KG.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = books_KG.json; sourceTree = "<group>"; };
+		8C8BAB7B258D07F200E4EDD3 /* books_SZIT.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = books_SZIT.json; sourceTree = "<group>"; };
+		8C8BAB7E258D082E00E4EDD3 /* books_RUF.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = books_RUF.json; sourceTree = "<group>"; };
+		8C8BAB81258D084B00E4EDD3 /* books_KNB.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = books_KNB.json; sourceTree = "<group>"; };
+		8C8BAB85258D08EE00E4EDD3 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
+		8C8BAB88258D095E00E4EDD3 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		8C8BAB8B258D0BF800E4EDD3 /* BibleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleController.swift; sourceTree = "<group>"; };
+		8C8BAB8E258D10C300E4EDD3 /* translations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = translations.json; sourceTree = "<group>"; };
+		8C8BAB91258D12D400E4EDD3 /* TranslationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationModel.swift; sourceTree = "<group>"; };
+		8C8BAB96258D213200E4EDD3 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +80,12 @@
 		8C8BAB52258D044700E4EDD3 /* Szentiras */ = {
 			isa = PBXGroup;
 			children = (
+				8C8BAB84258D08BA00E4EDD3 /* Extensions */,
+				8C8BAB72258D076900E4EDD3 /* Books */,
 				8C8BAB67258D056200E4EDD3 /* Fonts */,
 				8C8BAB53258D044700E4EDD3 /* SzentirasApp.swift */,
 				8C8BAB55258D044700E4EDD3 /* ContentView.swift */,
+				8C8BAB8B258D0BF800E4EDD3 /* BibleController.swift */,
 				8C8BAB57258D044800E4EDD3 /* Assets.xcassets */,
 				8C8BAB5C258D044800E4EDD3 /* Info.plist */,
 				8C8BAB59258D044800E4EDD3 /* Preview Content */,
@@ -87,6 +110,29 @@
 				8C8BAB6C258D056B00E4EDD3 /* FiraSans-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		8C8BAB72258D076900E4EDD3 /* Books */ = {
+			isa = PBXGroup;
+			children = (
+				8C8BAB78258D07B100E4EDD3 /* books_KG.json */,
+				8C8BAB7B258D07F200E4EDD3 /* books_SZIT.json */,
+				8C8BAB7E258D082E00E4EDD3 /* books_RUF.json */,
+				8C8BAB81258D084B00E4EDD3 /* books_KNB.json */,
+				8C8BAB85258D08EE00E4EDD3 /* BookModel.swift */,
+				8C8BAB8E258D10C300E4EDD3 /* translations.json */,
+				8C8BAB91258D12D400E4EDD3 /* TranslationModel.swift */,
+			);
+			path = Books;
+			sourceTree = "<group>";
+		};
+		8C8BAB84258D08BA00E4EDD3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8C8BAB88258D095E00E4EDD3 /* Bundle+Extension.swift */,
+				8C8BAB96258D213200E4EDD3 /* UserDefaults+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,12 +192,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C8BAB8F258D10C300E4EDD3 /* translations.json in Resources */,
 				8C8BAB6D258D056B00E4EDD3 /* FiraSans-Bold.ttf in Resources */,
 				8C8BAB5B258D044800E4EDD3 /* Preview Assets.xcassets in Resources */,
+				8C8BAB82258D084B00E4EDD3 /* books_KNB.json in Resources */,
 				8C8BAB70258D056B00E4EDD3 /* FiraSans-Regular.ttf in Resources */,
 				8C8BAB6F258D056B00E4EDD3 /* FiraSans-Medium.ttf in Resources */,
 				8C8BAB6E258D056B00E4EDD3 /* FiraSans-Light.ttf in Resources */,
+				8C8BAB7F258D082E00E4EDD3 /* books_RUF.json in Resources */,
 				8C8BAB58258D044800E4EDD3 /* Assets.xcassets in Resources */,
+				8C8BAB7C258D07F200E4EDD3 /* books_SZIT.json in Resources */,
+				8C8BAB79258D07B100E4EDD3 /* books_KG.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,8 +213,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C8BAB86258D08EE00E4EDD3 /* BookModel.swift in Sources */,
 				8C8BAB56258D044700E4EDD3 /* ContentView.swift in Sources */,
 				8C8BAB54258D044700E4EDD3 /* SzentirasApp.swift in Sources */,
+				8C8BAB89258D095E00E4EDD3 /* Bundle+Extension.swift in Sources */,
+				8C8BAB8C258D0BF800E4EDD3 /* BibleController.swift in Sources */,
+				8C8BAB92258D12D400E4EDD3 /* TranslationModel.swift in Sources */,
+				8C8BAB97258D213200E4EDD3 /* UserDefaults+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
