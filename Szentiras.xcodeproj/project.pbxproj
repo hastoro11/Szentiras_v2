@@ -25,6 +25,8 @@
 		8C8BAB8F258D10C300E4EDD3 /* translations.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C8BAB8E258D10C300E4EDD3 /* translations.json */; };
 		8C8BAB92258D12D400E4EDD3 /* TranslationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BAB91258D12D400E4EDD3 /* TranslationModel.swift */; };
 		8C8BAB97258D213200E4EDD3 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BAB96258D213200E4EDD3 /* UserDefaults+Extension.swift */; };
+		8C8BAB9C258DE6BA00E4EDD3 /* BooksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BAB9B258DE6BA00E4EDD3 /* BooksView.swift */; };
+		8C8BABA3258F719600E4EDD3 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BABA2258F719600E4EDD3 /* Color+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		8C8BAB8E258D10C300E4EDD3 /* translations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = translations.json; sourceTree = "<group>"; };
 		8C8BAB91258D12D400E4EDD3 /* TranslationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationModel.swift; sourceTree = "<group>"; };
 		8C8BAB96258D213200E4EDD3 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
+		8C8BAB9B258DE6BA00E4EDD3 /* BooksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksView.swift; sourceTree = "<group>"; };
+		8C8BABA2258F719600E4EDD3 /* Color+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +85,9 @@
 			isa = PBXGroup;
 			children = (
 				8C8BAB84258D08BA00E4EDD3 /* Extensions */,
-				8C8BAB72258D076900E4EDD3 /* Books */,
+				8C8BAB72258D076900E4EDD3 /* Models */,
 				8C8BAB67258D056200E4EDD3 /* Fonts */,
+				8C8BAB9A258DE69700E4EDD3 /* Screens */,
 				8C8BAB53258D044700E4EDD3 /* SzentirasApp.swift */,
 				8C8BAB55258D044700E4EDD3 /* ContentView.swift */,
 				8C8BAB8B258D0BF800E4EDD3 /* BibleController.swift */,
@@ -112,7 +117,7 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		8C8BAB72258D076900E4EDD3 /* Books */ = {
+		8C8BAB72258D076900E4EDD3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				8C8BAB78258D07B100E4EDD3 /* books_KG.json */,
@@ -123,16 +128,25 @@
 				8C8BAB8E258D10C300E4EDD3 /* translations.json */,
 				8C8BAB91258D12D400E4EDD3 /* TranslationModel.swift */,
 			);
-			path = Books;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		8C8BAB84258D08BA00E4EDD3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				8C8BAB88258D095E00E4EDD3 /* Bundle+Extension.swift */,
+				8C8BABA2258F719600E4EDD3 /* Color+Extension.swift */,
 				8C8BAB96258D213200E4EDD3 /* UserDefaults+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8C8BAB9A258DE69700E4EDD3 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				8C8BAB9B258DE6BA00E4EDD3 /* BooksView.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +156,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8C8BAB5F258D044800E4EDD3 /* Build configuration list for PBXNativeTarget "Szentiras" */;
 			buildPhases = (
+				8C8BABA5258FA47F00E4EDD3 /* SwiftLint */,
 				8C8BAB4C258D044700E4EDD3 /* Sources */,
 				8C8BAB4D258D044700E4EDD3 /* Frameworks */,
 				8C8BAB4E258D044700E4EDD3 /* Resources */,
@@ -208,14 +223,37 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8C8BABA5258FA47F00E4EDD3 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8C8BAB4C258D044700E4EDD3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				8C8BAB86258D08EE00E4EDD3 /* BookModel.swift in Sources */,
+				8C8BABA3258F719600E4EDD3 /* Color+Extension.swift in Sources */,
 				8C8BAB56258D044700E4EDD3 /* ContentView.swift in Sources */,
 				8C8BAB54258D044700E4EDD3 /* SzentirasApp.swift in Sources */,
+				8C8BAB9C258DE6BA00E4EDD3 /* BooksView.swift in Sources */,
 				8C8BAB89258D095E00E4EDD3 /* Bundle+Extension.swift in Sources */,
 				8C8BAB8C258D0BF800E4EDD3 /* BibleController.swift in Sources */,
 				8C8BAB92258D12D400E4EDD3 /* TranslationModel.swift in Sources */,

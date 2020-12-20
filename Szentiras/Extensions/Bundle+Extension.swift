@@ -15,7 +15,7 @@ extension Bundle {
       guard let data = try? Data(contentsOf: url) else {
          fatalError("Error transferring file \(file) from bundle")
       }
-      
+
       do {
          return try JSONDecoder().decode([T].self, from: data)
       } catch DecodingError.dataCorrupted(let context) {
@@ -29,7 +29,7 @@ extension Bundle {
       } catch {
          fatalError("Decoding error in bundle - \(error.localizedDescription)")
       }
-      
+
       return []
    }
    

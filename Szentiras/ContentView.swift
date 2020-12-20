@@ -8,44 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
-   @EnvironmentObject var bibleController: BibleController
-   @State var showTranslations: Bool = false
-   var translations: [ActionSheet.Button] {
-      var trs = Translation.all().map({ tr -> ActionSheet.Button in
-         ActionSheet.Button.default(Text(tr.name), action: {
-            bibleController.translation = tr
-            UserDefaults.setTranslation(abbrev: tr.abbrev)
-         })
-      })
-      trs.append(ActionSheet.Button.cancel(Text("Mégsem")))
-      return trs
-   }
+   @EnvironmentObject var bibleController: BibleController   
+   @State var selection: Int = 0
+   
    var body: some View {
-      NavigationView {
-         VStack {
-            Text("Hello, world! \(bibleController.translation.name)")
-            Text("First book: \(bibleController.books[0].abbrev)")
-            Text("No of books: \(bibleController.books.count)")
+      TabView(selection: $selection) {
+         NavigationView {
+            BooksView()
          }
-          
-            .toolbar(content: {
-               Button(action: {showTranslations.toggle()}, label: {
-                  Image(systemName: "bubble.left.and.bubble.right")
-               })
-            })
-            .actionSheet(isPresented: $showTranslations, content: {
-               ActionSheet(title: Text("Válassz egy fordítást"), buttons: translations)
-         })
+            .tag(0)
+            .tabItem {
+               Image(systemName: "books.vertical")
+               Text("Könyvek")
+            }
       }
    }
 }
 
 struct ContentView_Previews: PreviewProvider {
-   static var bc = BibleController.preview(Translation())
+   static var biblectrl = BibleController.preview(Translation())
    static var previews: some View {
-      NavigationView {
          ContentView()
-            .environmentObject(bc)
-      }
+            .environmentObject(biblectrl)
    }
 }

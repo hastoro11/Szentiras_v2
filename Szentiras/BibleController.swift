@@ -13,12 +13,17 @@ class BibleController: ObservableObject {
    @Published var translation: Translation = Translation()
    
    var cancellables: Set<AnyCancellable> = []
+   
+   // MARK: - Init
    init(translation: Translation) {
       self.translation = translation
       onTranslationChange()
    }
-   
-   func onTranslationChange() {
+
+   //--------------------------------
+   // Translation
+   //--------------------------------
+   private func onTranslationChange() {
       $translation
          .sink(receiveValue: {
             self.books = Bundle.main.decode(file: "books_\($0.abbrev).json")
@@ -26,6 +31,24 @@ class BibleController: ObservableObject {
          .store(in: &cancellables)
    }
    
+   var translationButtons: [ActionSheet.Button] {
+      var trs = Translation.all().map({ trans -> ActionSheet.Button in
+         ActionSheet.Button.default(Text(trans.name), action: {
+            self.changeTranslation(to: trans)
+         })
+      })
+      trs.append(ActionSheet.Button.cancel(Text("Mégsem")))
+      return trs
+   }
+   
+   func changeTranslation(to translation: Translation) {
+      self.translation = translation
+      UserDefaults.setTranslation(abbrev: translation.abbrev)
+   }
+   
+   //--------------------------------
+   // Preview
+   //--------------------------------
    static func preview(_ translation: Translation) -> BibleController {
       BibleController(translation: translation)
    }
