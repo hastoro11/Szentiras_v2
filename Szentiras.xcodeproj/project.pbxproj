@@ -27,6 +27,8 @@
 		8C8BAB97258D213200E4EDD3 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BAB96258D213200E4EDD3 /* UserDefaults+Extension.swift */; };
 		8C8BAB9C258DE6BA00E4EDD3 /* BooksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BAB9B258DE6BA00E4EDD3 /* BooksView.swift */; };
 		8C8BABA3258F719600E4EDD3 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BABA2258F719600E4EDD3 /* Color+Extension.swift */; };
+		8CB096F52597854200E27EAF /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB096F42597854200E27EAF /* NetworkController.swift */; };
+		8CB096F92597874800E27EAF /* BibleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB096F82597874800E27EAF /* BibleError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		8C8BAB96258D213200E4EDD3 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		8C8BAB9B258DE6BA00E4EDD3 /* BooksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksView.swift; sourceTree = "<group>"; };
 		8C8BABA2258F719600E4EDD3 /* Color+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		8CB096F42597854200E27EAF /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		8CB096F82597874800E27EAF /* BibleError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,7 @@
 		8C8BAB52258D044700E4EDD3 /* Szentiras */ = {
 			isa = PBXGroup;
 			children = (
+				8CB096F32597852E00E27EAF /* Network */,
 				8C8BAB84258D08BA00E4EDD3 /* Extensions */,
 				8C8BAB72258D076900E4EDD3 /* Models */,
 				8C8BAB67258D056200E4EDD3 /* Fonts */,
@@ -127,6 +132,7 @@
 				8C8BAB85258D08EE00E4EDD3 /* BookModel.swift */,
 				8C8BAB8E258D10C300E4EDD3 /* translations.json */,
 				8C8BAB91258D12D400E4EDD3 /* TranslationModel.swift */,
+				8CB096F82597874800E27EAF /* BibleError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -147,6 +153,14 @@
 				8C8BAB9B258DE6BA00E4EDD3 /* BooksView.swift */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		8CB096F32597852E00E27EAF /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				8CB096F42597854200E27EAF /* NetworkController.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CB096F52597854200E27EAF /* NetworkController.swift in Sources */,
 				8C8BAB86258D08EE00E4EDD3 /* BookModel.swift in Sources */,
 				8C8BABA3258F719600E4EDD3 /* Color+Extension.swift in Sources */,
 				8C8BAB56258D044700E4EDD3 /* ContentView.swift in Sources */,
@@ -256,6 +271,7 @@
 				8C8BAB9C258DE6BA00E4EDD3 /* BooksView.swift in Sources */,
 				8C8BAB89258D095E00E4EDD3 /* Bundle+Extension.swift in Sources */,
 				8C8BAB8C258D0BF800E4EDD3 /* BibleController.swift in Sources */,
+				8CB096F92597874800E27EAF /* BibleError.swift in Sources */,
 				8C8BAB92258D12D400E4EDD3 /* TranslationModel.swift in Sources */,
 				8C8BAB97258D213200E4EDD3 /* UserDefaults+Extension.swift in Sources */,
 			);

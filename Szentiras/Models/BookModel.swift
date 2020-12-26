@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Book: Decodable {
+struct Book: Decodable, Identifiable {
+   var id: Int { number }
    var abbrev: String
    var name: String
    var number: Int
@@ -15,7 +16,15 @@ struct Book: Decodable {
 
 extension Book {
    static func all(translation: String) -> [Book] {
-      Bundle.main.decode(file: "books_\(translation)")
+      Bundle.main.decode(file: "books_\(translation).json")
+   }
+   
+   static func defaultBook(for translation: Translation) -> Book {
+      all(translation: translation.abbrev)[0]
+   }
+   
+   var numberOfChapters: Int {
+      Self.numberOfChaptersInBookByNumber[self.number] ?? 1
    }
 }
 

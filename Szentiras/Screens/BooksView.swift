@@ -8,16 +8,20 @@
 import SwiftUI
 
 // MARK: - BooksView
-struct BooksView: View {
+struct BooksView: View {   
    @EnvironmentObject var bibleController: BibleController
    @State var showTranslations: Bool = false
+   @State var showChapters: Bool = false
+   
    //--------------------------------
    // Body
    //--------------------------------
    var body: some View {
       VStack {
          booksGrid
+         Spacer()
       }
+      .navigationBarTitleDisplayMode(.inline)
       .toolbar(content: {
          bookToolbar
          titleToolbar
@@ -26,6 +30,9 @@ struct BooksView: View {
       .actionSheet(isPresented: $showTranslations, content: {
          ActionSheet(title: Text("Válassz egy fordítást"), buttons: bibleController.translationButtons)
       })
+      .sheet(isPresented: $showChapters) {
+         chapterSheet
+      }
    }
    
    //--------------------------------
@@ -33,8 +40,13 @@ struct BooksView: View {
    //--------------------------------
    var bookToolbar: some ToolbarContent {
       ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
-         Text("Móz")
-            .font(.headline)
+         HStack {
+            Text(bibleController.activeBook.abbrev.prefix(4))
+               .font(.headline)
+            Text("\(bibleController.activeChapter)")
+               .font(.headline)
+
+         }
       }
    }
    
@@ -61,10 +73,66 @@ struct BooksView: View {
    //--------------------------------
    // BooksGrid
    //--------------------------------
-   @ViewBuilder var booksGrid: some View {
-      Text("Hello, world! \(bibleController.translation.name)")
-      Text("First book: \(bibleController.books[0].abbrev)")
-      Text("No of books: \(bibleController.books.count)")
+   var booksGrid: some View {
+      let columns = [GridItem(.adaptive(minimum: 44, maximum: 44))]
+      return ScrollView {
+         Text("Ószövetség")
+         LazyVGrid(columns: columns) {
+            ForEach(bibleController.books.filter({$0.number < 200})) { book in
+               CircleButton(text: String(book.abbrev.prefix(4)), color: Color.green, action: {
+                  selectBook(book)
+               })
+            }
+         }
+         Text("Újszövetség")
+         LazyVGrid(columns: columns) {
+            ForEach(bibleController.books.filter({$0.number >= 200})) { book in
+               CircleButton(text: String(book.abbrev.prefix(4)), color: Color.blue, action: {
+                  selectBook(book)
+               })
+            }
+         }
+      }
+   }
+   
+   //--------------------------------
+   // ChapterSheet
+   //--------------------------------
+   var chapterSheet: some View {
+      let columns = [GridItem(.adaptive(minimum: 44, maximum: 44))]
+      let book = bibleController.activeBook
+      return ScrollView {
+         Text(book.name)
+         LazyVGrid(columns: columns) {
+            ForEach(1...book.numberOfChapters, id: \.self) { chapter in
+               CircleButton(text: "\(chapter)", color: Color.green, action: {
+                  bibleController.activeChapter = chapter
+                  showChapters = false
+               })
+            }
+         }
+      }
+   }
+   //--------------------------------
+   // Functions
+   //--------------------------------
+   func selectBook(_ book: Book) {
+      bibleController.activeBook = book
+      showChapters = true
+   }
+}
+
+struct CircleButton: View {
+   var text: String
+   var color: Color
+   var action: () -> Void
+   var body: some View {
+      Button(action: action, label: {
+         Circle()
+            .foregroundColor(color)
+            .frame(width: 44, height: 44)
+            .overlay(Text(text).font(.subheadline).accentColor(.primary))
+      })
    }
 }
 

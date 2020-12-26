@@ -11,12 +11,14 @@ import Combine
 class BibleController: ObservableObject {
    @Published var books: [Book] = []
    @Published var translation: Translation = Translation()
-   
+   @Published var activeBook: Book
+   @Published var activeChapter: Int = 1
    var cancellables: Set<AnyCancellable> = []
    
    // MARK: - Init
    init(translation: Translation) {
-      self.translation = translation
+      self.translation = Translation.defaultTranslation
+      activeBook = Book.defaultBook(for: translation)
       onTranslationChange()
    }
 
