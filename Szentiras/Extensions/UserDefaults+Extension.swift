@@ -7,17 +7,26 @@
 
 import Foundation
 
+struct SavedDefault: Codable {
+   var translation: String = "RUF"
+   var book: Int = 101
+   var chapter = 1
+}
+
 extension UserDefaults {
-   enum AppKey: String {
-      case translationKey
+   static let saveKey = "saveKey"
+   
+   static func setSavedData(_ savedDefault: SavedDefault) {
+      if let data = try? JSONEncoder().encode(savedDefault) {
+         Self.standard.setValue(data, forKey: saveKey)
+      }
    }
    
-   static func setTranslation(abbrev: String) {
-      Self.standard.setValue(abbrev, forKey: UserDefaults.AppKey.translationKey.rawValue)
-   }
-   
-   static func getTranslation() -> Translation {
-      let abbrev = Self.standard.string(forKey: UserDefaults.AppKey.translationKey.rawValue) ?? "RUF"
-      return Translation.get(abbrev: abbrev)
+   static func getSavedData() -> SavedDefault {
+      if let data = Self.standard.object(forKey: saveKey) as? Data,
+         let savedDefault = try? JSONDecoder().decode(SavedDefault.self, from: data) {
+         return savedDefault
+      }
+      return SavedDefault()
    }
 }

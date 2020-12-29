@@ -26,7 +26,7 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
-   static var biblectrl = BibleController.preview(Translation())
+   static var biblectrl = BibleController.preview(SavedDefault())
    static var previews: some View {
          ContentView()
             .environmentObject(biblectrl)

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -29,6 +29,8 @@
 		8C8BABA3258F719600E4EDD3 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BABA2258F719600E4EDD3 /* Color+Extension.swift */; };
 		8CB096F52597854200E27EAF /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB096F42597854200E27EAF /* NetworkController.swift */; };
 		8CB096F92597874800E27EAF /* BibleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB096F82597874800E27EAF /* BibleError.swift */; };
+		8CB096FD2598718D00E27EAF /* TimelaneCombine in Frameworks */ = {isa = PBXBuildFile; productRef = 8CB096FC2598718D00E27EAF /* TimelaneCombine */; };
+		8CB097002598AA1B00E27EAF /* VersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB096FF2598AA1B00E27EAF /* VersModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,7 @@
 		8C8BABA2258F719600E4EDD3 /* Color+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		8CB096F42597854200E27EAF /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		8CB096F82597874800E27EAF /* BibleError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleError.swift; sourceTree = "<group>"; };
+		8CB096FF2598AA1B00E27EAF /* VersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CB096FD2598718D00E27EAF /* TimelaneCombine in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +137,7 @@
 				8C8BAB8E258D10C300E4EDD3 /* translations.json */,
 				8C8BAB91258D12D400E4EDD3 /* TranslationModel.swift */,
 				8CB096F82597874800E27EAF /* BibleError.swift */,
+				8CB096FF2598AA1B00E27EAF /* VersModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -180,6 +185,9 @@
 			dependencies = (
 			);
 			name = Szentiras;
+			packageProductDependencies = (
+				8CB096FC2598718D00E27EAF /* TimelaneCombine */,
+			);
 			productName = Szentiras;
 			productReference = 8C8BAB50258D044700E4EDD3 /* Szentiras.app */;
 			productType = "com.apple.product-type.application";
@@ -207,6 +215,9 @@
 				Base,
 			);
 			mainGroup = 8C8BAB47258D044700E4EDD3;
+			packageReferences = (
+				8CB096FB2598718D00E27EAF /* XCRemoteSwiftPackageReference "TimelaneCombine" */,
+			);
 			productRefGroup = 8C8BAB51258D044700E4EDD3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -270,6 +281,7 @@
 				8C8BAB54258D044700E4EDD3 /* SzentirasApp.swift in Sources */,
 				8C8BAB9C258DE6BA00E4EDD3 /* BooksView.swift in Sources */,
 				8C8BAB89258D095E00E4EDD3 /* Bundle+Extension.swift in Sources */,
+				8CB097002598AA1B00E27EAF /* VersModel.swift in Sources */,
 				8C8BAB8C258D0BF800E4EDD3 /* BibleController.swift in Sources */,
 				8CB096F92597874800E27EAF /* BibleError.swift in Sources */,
 				8C8BAB92258D12D400E4EDD3 /* TranslationModel.swift in Sources */,
@@ -462,6 +474,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8CB096FB2598718D00E27EAF /* XCRemoteSwiftPackageReference "TimelaneCombine" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/icanzilb/TimelaneCombine";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8CB096FC2598718D00E27EAF /* TimelaneCombine */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8CB096FB2598718D00E27EAF /* XCRemoteSwiftPackageReference "TimelaneCombine" */;
+			productName = TimelaneCombine;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8C8BAB48258D044700E4EDD3 /* Project object */;
 }

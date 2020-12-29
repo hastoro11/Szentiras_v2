@@ -29,6 +29,18 @@ extension Book {
 }
 
 extension Book {
+   func isCatholic() -> Bool {
+       return self.number == 117
+         || self.number == 118
+         || self.number == 125
+         || self.number == 126
+         || self.number == 130
+         || self.number == 145
+         || self.number == 146
+   }
+}
+
+extension Book {
    static var numberOfChaptersInBookByNumber = [
       101: 50,
       102: 40,

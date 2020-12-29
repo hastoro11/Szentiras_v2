@@ -30,7 +30,7 @@ struct BooksView: View {
       .actionSheet(isPresented: $showTranslations, content: {
          ActionSheet(title: Text("Válassz egy fordítást"), buttons: bibleController.translationButtons)
       })
-      .sheet(isPresented: $showChapters) {
+      .sheet(isPresented: $showChapters, onDismiss: bibleController.chapterViewOnDismiss) {
          chapterSheet
       }
    }
@@ -107,7 +107,7 @@ struct BooksView: View {
             ForEach(1...book.numberOfChapters, id: \.self) { chapter in
                CircleButton(text: "\(chapter)", color: Color.green, action: {
                   bibleController.activeChapter = chapter
-                  showChapters = false
+                  showChapters = false                  
                })
             }
          }
@@ -138,7 +138,7 @@ struct CircleButton: View {
 
 // MARK: - Preview
 struct BooksView_Previews: PreviewProvider {
-   static var biblectrl = BibleController.preview(Translation())
+   static var biblectrl = BibleController.preview(SavedDefault())
    static var previews: some View {
       NavigationView {
          BooksView()

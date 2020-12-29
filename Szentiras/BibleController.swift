@@ -10,16 +10,25 @@ import Combine
 
 class BibleController: ObservableObject {
    @Published var books: [Book] = []
-   @Published var translation: Translation = Translation()
+   @Published var translation: Translation
    @Published var activeBook: Book
    @Published var activeChapter: Int = 1
    var cancellables: Set<AnyCancellable> = []
+   var savedDefault: SavedDefault
    
    // MARK: - Init
-   init(translation: Translation) {
-      self.translation = Translation.defaultTranslation
-      activeBook = Book.defaultBook(for: translation)
+   init(savedDefault: SavedDefault) {
+      self.savedDefault = savedDefault
+      self.translation = Translation.get(abbrev: savedDefault.translation)
+      let allBooks = Book.all(translation: savedDefault.translation)
+      self.books = allBooks
+      self.activeBook = allBooks.first(where: {$0.number == savedDefault.book}) ?? allBooks[0]
+      self.activeChapter = savedDefault.chapter
       onTranslationChange()
+   }
+   
+   func chapterViewOnDismiss() {      
+      activeChapter = min(activeChapter, activeBook.numberOfChapters)
    }
 
    //--------------------------------
@@ -34,7 +43,11 @@ class BibleController: ObservableObject {
    }
    
    var translationButtons: [ActionSheet.Button] {
-      var trs = Translation.all().map({ trans -> ActionSheet.Button in
+      var translations = Translation.all()
+      if activeBook.isCatholic() {
+         translations.remove(atOffsets: IndexSet(integersIn: 0...1))
+      }
+      var trs = translations.map({ trans -> ActionSheet.Button in
          ActionSheet.Button.default(Text(trans.name), action: {
             self.changeTranslation(to: trans)
          })
@@ -45,13 +58,13 @@ class BibleController: ObservableObject {
    
    func changeTranslation(to translation: Translation) {
       self.translation = translation
-      UserDefaults.setTranslation(abbrev: translation.abbrev)
+      
    }
    
    //--------------------------------
    // Preview
    //--------------------------------
-   static func preview(_ translation: Translation) -> BibleController {
-      BibleController(translation: translation)
+   static func preview(_ savedDefault: SavedDefault) -> BibleController {
+      BibleController(savedDefault: savedDefault)
    }
 }

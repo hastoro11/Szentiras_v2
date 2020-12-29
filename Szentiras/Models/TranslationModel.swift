@@ -21,9 +21,5 @@ extension Translation {
 
    static func get(abbrev: String) -> Translation {
       Self.all().first(where: {$0.abbrev == abbrev}) ?? Translation()
-   }
-   
-   static var defaultTranslation: Translation {
-      Translation()
-   }
+   }   
 }

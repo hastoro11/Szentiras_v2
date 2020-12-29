@@ -11,8 +11,8 @@ import SwiftUI
 struct SzentirasApp: App {
    @StateObject var bibleController: BibleController
    init() {
-      let trans = UserDefaults.getTranslation()
-      let biblectrl = BibleController(translation: trans)
+      let savedDefault = UserDefaults.getSavedData()
+      let biblectrl = BibleController(savedDefault: savedDefault)
       _bibleController = StateObject(wrappedValue: biblectrl)
    }
     var body: some Scene {
