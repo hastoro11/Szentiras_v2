@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-   @EnvironmentObject var bibleController: BibleController   
-   @State var selection: Int = 0
+   @EnvironmentObject var bibleController: BibleController
    
    var body: some View {
-      TabView(selection: $selection) {
+      TabView(selection: $bibleController.selectedTab) {
          NavigationView {
             BooksView()
          }
@@ -20,6 +19,12 @@ struct ContentView: View {
             .tabItem {
                Image(systemName: "books.vertical")
                Text("Könyvek")
+            }
+         ReadingView()
+            .tag(1)
+            .tabItem {
+               Image(systemName: "book")
+               Text("Olvasás")
             }
       }
    }

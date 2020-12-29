@@ -27,6 +27,11 @@ struct Keres: Codable {
 struct Valasz: Codable {
     let verses: [Vers]
     let forditas: Forditas
+   
+   enum CodingKeys: String, CodingKey {
+      case forditas
+      case verses = "versek"
+   }
 }
 
 // MARK: - Forditas

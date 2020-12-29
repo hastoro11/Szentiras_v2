@@ -10,8 +10,12 @@ import Combine
 
 class NetworkController: ObservableObject {
    
+   static var instance = NetworkController()
+   private init() {}
+   
    func fetchChapter(translation: Translation, book: Book, chapter: Int) -> AnyPublisher<[Vers], BibleError> {
-      let link = "https://szentiras.hu/api/idezet/\(book.abbrev)\(chapter)/\(translation.abbrev)"
+      let bookAbbrev = book.abbrev.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+      let link = "https://szentiras.hu/api/idezet/\(bookAbbrev)\(chapter)/\(translation.abbrev)"
       guard let url = URL(string: link) else {
          return Fail(error: BibleError("Hiba a kalkulált linkben")).eraseToAnyPublisher()
       }

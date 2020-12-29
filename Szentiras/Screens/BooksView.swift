@@ -105,8 +105,10 @@ struct BooksView: View {
          Text(book.name)
          LazyVGrid(columns: columns) {
             ForEach(1...book.numberOfChapters, id: \.self) { chapter in
+               // Chapter selection
                CircleButton(text: "\(chapter)", color: Color.green, action: {
                   bibleController.activeChapter = chapter
+                  bibleController.selectedTab = 1
                   showChapters = false                  
                })
             }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C75FBD1259B89B100802334 /* ReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C75FBD0259B89B100802334 /* ReadingView.swift */; };
 		8C8BAB54258D044700E4EDD3 /* SzentirasApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BAB53258D044700E4EDD3 /* SzentirasApp.swift */; };
 		8C8BAB56258D044700E4EDD3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BAB55258D044700E4EDD3 /* ContentView.swift */; };
 		8C8BAB58258D044800E4EDD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C8BAB57258D044800E4EDD3 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8C75FBD0259B89B100802334 /* ReadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingView.swift; sourceTree = "<group>"; };
 		8C8BAB50258D044700E4EDD3 /* Szentiras.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Szentiras.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C8BAB53258D044700E4EDD3 /* SzentirasApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SzentirasApp.swift; sourceTree = "<group>"; };
 		8C8BAB55258D044700E4EDD3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				8C8BAB9B258DE6BA00E4EDD3 /* BooksView.swift */,
+				8C75FBD0259B89B100802334 /* ReadingView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				8CB096F52597854200E27EAF /* NetworkController.swift in Sources */,
 				8C8BAB86258D08EE00E4EDD3 /* BookModel.swift in Sources */,
 				8C8BABA3258F719600E4EDD3 /* Color+Extension.swift in Sources */,
+				8C75FBD1259B89B100802334 /* ReadingView.swift in Sources */,
 				8C8BAB56258D044700E4EDD3 /* ContentView.swift in Sources */,
 				8C8BAB54258D044700E4EDD3 /* SzentirasApp.swift in Sources */,
 				8C8BAB9C258DE6BA00E4EDD3 /* BooksView.swift in Sources */,

@@ -9,11 +9,16 @@ import SwiftUI
 import Combine
 
 class BibleController: ObservableObject {
+   @Published var selectedTab: Int = 0
+   
    @Published var books: [Book] = []
    @Published var translation: Translation
    @Published var activeBook: Book
    @Published var activeChapter: Int = 1
+   @Published var verses: [Vers] = []
+   
    var cancellables: Set<AnyCancellable> = []
+   var chapterCancellable: AnyCancellable?
    var savedDefault: SavedDefault
    
    // MARK: - Init
@@ -25,8 +30,34 @@ class BibleController: ObservableObject {
       self.activeBook = allBooks.first(where: {$0.number == savedDefault.book}) ?? allBooks[0]
       self.activeChapter = savedDefault.chapter
       onTranslationChange()
+      onChapterSelect()
    }
    
+   //-----------------------------------------------
+   // Fetch chapter from network on chapterselection
+   //-----------------------------------------------
+   func onChapterSelect() {
+      chapterCancellable = $activeChapter
+         .map({[self] chapter in
+            NetworkController.instance.fetchChapter(translation: translation, book: activeBook, chapter: chapter)
+         })
+         .switchToLatest()
+         .receive(on: RunLoop.main)
+         .sink(receiveCompletion: {completion in
+            switch completion {
+            case .failure(let error):
+               print("Error in completion: \(error.description)")
+            case .finished:
+               break
+            }
+         }, receiveValue: {verses in
+            self.verses = verses
+         })
+   }
+   
+   //--------------------------------
+   // Helpers
+   //--------------------------------
    func chapterViewOnDismiss() {      
       activeChapter = min(activeChapter, activeBook.numberOfChapters)
    }
