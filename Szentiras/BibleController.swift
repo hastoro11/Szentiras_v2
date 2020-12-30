@@ -9,6 +9,10 @@ import SwiftUI
 import Combine
 
 class BibleController: ObservableObject {
+   enum PagingDirection {
+      case previous, next
+   }
+   
    @Published var selectedTab: Int = 0
    
    @Published var books: [Book] = []
@@ -32,12 +36,12 @@ class BibleController: ObservableObject {
       let allBooks = Book.all(translation: savedDefault.translation)
       self.books = allBooks
       self.activeBook = allBooks.first(where: {$0.number == savedDefault.book}) ?? allBooks[0]
-      self.activeChapter = savedDefault.chapter
+      self.activeChapter = savedDefault.chapter      
       onTranslationChange()
       onChapterSelect()
       onBookChange()
    }
-
+   
    //--------------------------------
    // Combine listeners
    //--------------------------------
@@ -56,14 +60,14 @@ class BibleController: ObservableObject {
          .store(in: &cancellables)
    }
    
-   private func onBookChange() {
+   private func onBookChange() {      
       $activeBook
          .sink(receiveValue: {[self] book in
             fetchChapter(translation: translation, book: book, chapter: activeChapter)
          })
          .store(in: &cancellables)
    }
-
+   
    private func onChapterSelect() {
       $activeChapter
          .sink(receiveValue: {[self] chapter in
@@ -87,8 +91,8 @@ class BibleController: ObservableObject {
                break
             }
             isLoading = false
-         }, receiveValue: {verses in
-            self.verses = verses
+         }, receiveValue: {[self] result in
+            verses = result.valasz.verses
          })
          .store(in: &cancellables)
    }
@@ -98,11 +102,11 @@ class BibleController: ObservableObject {
    //--------------------------------
    func chapterViewOnDismiss(selectedChapter: Int) {
       activeChapter = selectedChapter
-   }
-
+   }   
+   
    //--------------------------------
    // Translation sheet helpers
-   //--------------------------------   
+   //--------------------------------
    var translationButtons: [ActionSheet.Button] {
       var translations = Translation.all()
       if activeBook.isCatholic() {
@@ -119,6 +123,17 @@ class BibleController: ObservableObject {
    
    func changeTranslation(to translation: Translation) {
       self.translation = translation
+   }
+   
+   //--------------------------------
+   // Paging
+   //--------------------------------
+   func paging(_ direction: PagingDirection) {
+      if direction == .previous {
+         activeChapter = activeChapter == 1 ? 1 : activeChapter-1
+      } else {
+         activeChapter = activeChapter == activeBook.numberOfChapters ? activeChapter : activeChapter+1
+      }
    }
    
    //--------------------------------

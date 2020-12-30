@@ -66,18 +66,19 @@ struct BooksView: View {
    //--------------------------------
    var toolbars: some ToolbarContent {
       Toolbars(selectedTab: $controller.selectedTab,
-               bookTitle: $controller.activeBook.abbrev,
+               book: $controller.activeBook,
                chapter: $controller.activeChapter,
                translation: $controller.translation.short,
                showChapters: $showChapters,
-               showTranslations: $showTranslations)
+               showTranslations: $showTranslations,
+               paging: controller.paging)
    }
    
    //--------------------------------
    // Functions
    //--------------------------------
    func selectBook(_ book: Book) {
-      controller.activeBook = book
+      controller.activeBook = book      
       showChapters = true
    }
 }

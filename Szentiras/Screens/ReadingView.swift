@@ -12,6 +12,7 @@ struct ReadingView: View {
    @State var showTranslations: Bool = false
    @State var showChapters: Bool = false
    @State var selectedChapter: Int = 0
+      
    //--------------------------------
    // Body
    //--------------------------------
@@ -42,6 +43,19 @@ struct ReadingView: View {
    }
    
    //--------------------------------
+   // Toolbars
+   //--------------------------------
+   var toolbars: some ToolbarContent {
+      Toolbars(selectedTab: $controller.selectedTab,
+               book: $controller.activeBook,
+               chapter: $controller.activeChapter,
+               translation: $controller.translation.short,
+               showChapters: $showChapters,
+               showTranslations: $showTranslations,
+               paging: controller.paging)
+   }
+   
+   //--------------------------------
    // Chapter text
    //--------------------------------
    var versesView: some View {
@@ -67,17 +81,7 @@ struct ReadingView: View {
          .font(.title3)
          .bold()
    }
-   //--------------------------------
-   // Toolbars
-   //--------------------------------
-   var toolbars: some ToolbarContent {
-      Toolbars(selectedTab: $controller.selectedTab,
-               bookTitle: $controller.activeBook.abbrev,
-               chapter: $controller.activeChapter,
-               translation: $controller.translation.short,
-               showChapters: $showChapters,
-               showTranslations: $showTranslations)
-   }
+   
 }
 
 //--------------------------------

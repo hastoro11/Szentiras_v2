@@ -14,7 +14,7 @@ class NetworkController: ObservableObject {
    static var instance = NetworkController()
    private init() {}
    
-   func fetchChapter(translation: Translation, book: Book, chapter: Int) -> AnyPublisher<[Vers], BibleError> {
+   func fetchChapter(translation: Translation, book: Book, chapter: Int) -> AnyPublisher<SearchResult, BibleError> {
       let bookAbbrev = book.abbrev.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
       let link = "https://szentiras.hu/api/idezet/\(bookAbbrev)\(chapter)/\(translation.abbrev)"
       guard let url = URL(string: link) else {
@@ -62,10 +62,7 @@ class NetworkController: ObservableObject {
             default:
                return BibleError.unknown
             }
-         })
-         .map({
-            return $0.valasz.verses
-         })
+         })         
          .eraseToAnyPublisher()
    }
 }
