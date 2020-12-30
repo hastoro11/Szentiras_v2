@@ -10,6 +10,7 @@ import SwiftUI
 struct ChapterSheet: View {
    @EnvironmentObject var controller: BibleController
    @Binding var showChapters: Bool
+   @Binding var selectedChapter: Int
    var body: some View {
       let columns = [GridItem(.adaptive(minimum: 44, maximum: 44))]
       let book = controller.activeBook
@@ -19,7 +20,7 @@ struct ChapterSheet: View {
             ForEach(1...book.numberOfChapters, id: \.self) { chapter in
                // Chapter selection
                CircleButton(text: "\(chapter)", color: Color.green, action: {
-                  controller.activeChapter = chapter
+                  selectedChapter = chapter
                   controller.selectedTab = 1
                   showChapters = false
                })
@@ -32,7 +33,7 @@ struct ChapterSheet: View {
 struct ChapterSheet_Previews: PreviewProvider {
    static var controller = BibleController.preview(SavedDefault())
     static var previews: some View {
-      ChapterSheet(showChapters: .constant(false))
+      ChapterSheet(showChapters: .constant(false), selectedChapter: .constant(1))
          .environmentObject(controller)
     }
 }

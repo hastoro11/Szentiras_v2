@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import TimelaneCombine
 
 class NetworkController: ObservableObject {
    
@@ -17,104 +18,53 @@ class NetworkController: ObservableObject {
       let bookAbbrev = book.abbrev.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
       let link = "https://szentiras.hu/api/idezet/\(bookAbbrev)\(chapter)/\(translation.abbrev)"
       guard let url = URL(string: link) else {
-         return Fail(error: BibleError("Hiba a kalkulált linkben")).eraseToAnyPublisher()
+         return Fail(error: BibleError.badURL).eraseToAnyPublisher()
       }
       return URLSession.shared.dataTaskPublisher(for: url)
          .tryMap({data, response -> Data in
             if data.isEmpty {
-               throw BibleError("Adatállomány hibás")
+               throw BibleError.dataCorrupted
             }
             if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {
-               throw BibleError("HTTP hiba")
+               throw BibleError.badServerResponse
             }
             return data
          })
          .decode(type: SearchResult.self, decoder: JSONDecoder())
-         .mapError({error in
+         .mapError({error -> BibleError in
             switch error {
             case URLError.badServerResponse:
-               return BibleError("Szerver válasz hibás")
+               return BibleError.badServerResponse
             case URLError.badURL:
-               return BibleError("URL hibás")
+               return BibleError.badURL
             case URLError.cannotFindHost:
-               return BibleError("Hoszt nem található")
+               return BibleError.cannotFindHost
             case URLError.cannotLoadFromNetwork:
-               return BibleError("Letöltési hiba")
+               return BibleError.cannotLoadFromNetwork
             case URLError.cannotParseResponse:
-               return BibleError("Formázási hiba")
+               return BibleError.cannotParseResponse
             case URLError.internationalRoamingOff:
-               return BibleError("Roaming letiltva")
+               return BibleError.internationalRoamingOff
             case URLError.networkConnectionLost:
-               return BibleError("Hálózati kapcsolat megszakadt")
+               return BibleError.networkConnectionLost
             case URLError.notConnectedToInternet:
-               return BibleError("Nincs hálózati kapcsolat")
+               return BibleError.notConnectedToInternet
             case URLError.unsupportedURL:
-               return BibleError("URL nem támogatott")
-            case DecodingError.dataCorrupted(let error):
-               return BibleError("Hibás adatállomány: \(error.debugDescription)")
-            case DecodingError.keyNotFound(let key, let context):
-               return BibleError("A kulcs nem létezik: '\(key.stringValue)', \(context.debugDescription)")
-            case DecodingError.typeMismatch(let type, let context):
-               return BibleError("Eltérő típusok: \(type), \(context.debugDescription)")
-            case DecodingError.valueNotFound(let value, let context):
-               return BibleError("Az érték nem létezik: \(value), \(context.debugDescription)")
+               return BibleError.unsupportedURL               
+            case DecodingError.dataCorrupted:
+               return BibleError.dataCorrupted
+            case DecodingError.keyNotFound(let key, _):
+               return BibleError.keyNotFound(key)
+            case DecodingError.typeMismatch(let type, _):
+               return BibleError.typeMismatch(type)
+            case DecodingError.valueNotFound(let value, _):
+               return BibleError.valueNotFound(value)
             default:
-               return BibleError("Ismeretlen hiba")
+               return BibleError.unknown
             }
          })
          .map({
             return $0.valasz.verses
-         })
-         .eraseToAnyPublisher()
-   }
-   
-   func fetch<T: Decodable>(_ urlString: String) -> AnyPublisher<T, BibleError> {
-      guard let url = URL(string: urlString) else {
-         fatalError("A megadott link hibás")
-      }
-      
-      return URLSession.shared.dataTaskPublisher(for: url)
-         .tryMap({data, response -> Data in
-            if data.isEmpty {
-               throw BibleError("Adatállomány hibás")
-            }
-            if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {
-               throw BibleError("HTTP hiba")
-            }
-            return data
-         })
-         .decode(type: T.self, decoder: JSONDecoder())
-         .mapError({error in
-            switch error {
-            case URLError.badServerResponse:
-               return BibleError("Szerver válasz hibás")
-            case URLError.badURL:
-               return BibleError("URL hibás")
-            case URLError.cannotFindHost:
-               return BibleError("Hoszt nem található")
-            case URLError.cannotLoadFromNetwork:
-               return BibleError("Letöltési hiba")
-            case URLError.cannotParseResponse:
-               return BibleError("Formázási hiba")
-            case URLError.internationalRoamingOff:
-               return BibleError("Roaming letiltva")
-            case URLError.networkConnectionLost:
-               return BibleError("Hálózati kapcsolat megszakadt")
-            case URLError.notConnectedToInternet:
-               return BibleError("Nincs hálózati kapcsolat")
-            case URLError.unsupportedURL:
-               return BibleError("URL nem támogatott")
-            case DecodingError.dataCorrupted(let error):
-               return BibleError("Hibás adatállomány: \(error.debugDescription)")
-            case DecodingError.keyNotFound(let key, let context):
-               return BibleError("A kulcs nem létezik: '\(key.stringValue)', \(context.debugDescription)")
-            case DecodingError.typeMismatch(let type, let context):
-               return BibleError("Eltérő típusok: \(type), \(context.debugDescription)")
-            case DecodingError.valueNotFound(let value, let context):
-               return BibleError("Az érték nem létezik: \(value), \(context.debugDescription)")
-            default:
-               return BibleError("Ismeretlen hiba")
-            }
          })
          .eraseToAnyPublisher()
    }

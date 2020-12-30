@@ -16,13 +16,16 @@ class BibleController: ObservableObject {
    @Published var activeBook: Book
    @Published var activeChapter: Int = 1
    @Published var verses: [Vers] = []
+   
    @Published var isLoading: Bool = false
    @Published var error: BibleError?
    
    var cancellables: Set<AnyCancellable> = []
    var savedDefault: SavedDefault
    
-   // MARK: - Init
+   //--------------------------------
+   // Init
+   //--------------------------------
    init(savedDefault: SavedDefault) {
       self.savedDefault = savedDefault
       self.translation = Translation.get(abbrev: savedDefault.translation)
@@ -32,46 +35,11 @@ class BibleController: ObservableObject {
       self.activeChapter = savedDefault.chapter
       onTranslationChange()
       onChapterSelect()
-   }
-   
-   //-----------------------------------------------
-   // Fetch chapter from network on chapterselection
-   //-----------------------------------------------
-   func onChapterSelect() {
-      $activeChapter
-         .handleEvents(receiveOutput: {[self] _ in
-            isLoading = true
-         })
-         .map({[self] chapter in
-            NetworkController.instance.fetchChapter(translation: translation, book: activeBook, chapter: chapter)
-         })
-         .switchToLatest()
-         .receive(on: RunLoop.main)
-         .sink(receiveCompletion: {[self] completion in
-            isLoading = false
-            switch completion {
-            case .failure(let err):
-               print("Error in completion: \(err.description)")
-               error = err
-            case .finished:
-               break
-            }
-         }, receiveValue: {verses in
-            print(verses[0])
-            self.verses = verses
-         })
-         .store(in: &cancellables)
-   }
-   
-   //--------------------------------
-   // Helpers
-   //--------------------------------
-   func chapterViewOnDismiss() {      
-      activeChapter = min(activeChapter, activeBook.numberOfChapters)
+      onBookChange()
    }
 
    //--------------------------------
-   // Translation
+   // Combine listeners
    //--------------------------------
    private func onTranslationChange() {
       $translation
@@ -82,30 +50,59 @@ class BibleController: ObservableObject {
          .store(in: &cancellables)
       
       $translation
-         .handleEvents(receiveOutput: {[self] _ in
-            isLoading = true
+         .sink(receiveValue: { [self] transl in
+            fetchChapter(translation: transl, book: activeBook, chapter: activeChapter)
          })
-         .map({[self] transl in
-            NetworkController.instance.fetchChapter(translation: transl, book: activeBook, chapter: activeChapter)
+         .store(in: &cancellables)
+   }
+   
+   private func onBookChange() {
+      $activeBook
+         .sink(receiveValue: {[self] book in
+            fetchChapter(translation: translation, book: book, chapter: activeChapter)
          })
-         .switchToLatest()
+         .store(in: &cancellables)
+   }
+
+   private func onChapterSelect() {
+      $activeChapter
+         .sink(receiveValue: {[self] chapter in
+            fetchChapter(translation: translation, book: activeBook, chapter: chapter)
+         })
+         .store(in: &cancellables)
+   }
+   
+   //--------------------------------
+   // Fetch chapter
+   //--------------------------------
+   private func fetchChapter(translation: Translation, book: Book, chapter: Int) {
+      isLoading = true
+      NetworkController.instance.fetchChapter(translation: translation, book: book, chapter: chapter)
          .receive(on: RunLoop.main)
          .sink(receiveCompletion: {[self] completion in
-            isLoading = false
             switch completion {
-            case .failure(let err):
-               print("Error in completion: \(err.description)")
-               error = err
+            case .failure(let error):
+               self.error = error
             case .finished:
                break
             }
+            isLoading = false
          }, receiveValue: {verses in
-            print(verses[0])
             self.verses = verses
          })
          .store(in: &cancellables)
    }
    
+   //--------------------------------
+   // Helpers
+   //--------------------------------
+   func chapterViewOnDismiss(selectedChapter: Int) {
+      activeChapter = selectedChapter
+   }
+
+   //--------------------------------
+   // Translation sheet helpers
+   //--------------------------------   
    var translationButtons: [ActionSheet.Button] {
       var translations = Translation.all()
       if activeBook.isCatholic() {
@@ -122,7 +119,6 @@ class BibleController: ObservableObject {
    
    func changeTranslation(to translation: Translation) {
       self.translation = translation
-      
    }
    
    //--------------------------------

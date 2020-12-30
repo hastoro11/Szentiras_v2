@@ -11,14 +11,19 @@ struct ReadingView: View {
    @EnvironmentObject var controller: BibleController
    @State var showTranslations: Bool = false
    @State var showChapters: Bool = false
+   @State var selectedChapter: Int = 0
    //--------------------------------
    // Body
    //--------------------------------
    var body: some View {
-      VStack {
-         ScrollView {
-            bookHeader
-            versesView
+      Group {
+         if controller.isLoading {
+            ProgressView("Keresés...")
+         } else {
+            ScrollView {
+               bookHeader
+               versesView
+            }
          }
       }
       .toolbar(content: {
@@ -27,8 +32,10 @@ struct ReadingView: View {
       .actionSheet(isPresented: $showTranslations, content: {
          ActionSheet(title: Text("Válassz egy fordítást"), buttons: controller.translationButtons)
       })
-      .sheet(isPresented: $showChapters, onDismiss: controller.chapterViewOnDismiss) {
-         ChapterSheet(showChapters: $showChapters)
+      .sheet(isPresented: $showChapters, onDismiss: {
+         controller.chapterViewOnDismiss(selectedChapter: selectedChapter)
+      }) {
+         ChapterSheet(showChapters: $showChapters, selectedChapter: $selectedChapter)
             .environmentObject(controller)
       }
       .navigationBarTitleDisplayMode(.inline)
