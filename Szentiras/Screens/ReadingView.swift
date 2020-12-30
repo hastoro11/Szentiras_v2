@@ -10,35 +10,72 @@ import SwiftUI
 struct ReadingView: View {
    @EnvironmentObject var controller: BibleController
    @State var showTranslations: Bool = false
+   @State var showChapters: Bool = false
+   //--------------------------------
+   // Body
+   //--------------------------------
    var body: some View {
       VStack {
          ScrollView {
-            Text(controller.activeBook.name)
-               .font(.title)
-               .bold()
-               .multilineTextAlignment(.center)
-            Text("\(controller.activeChapter). fejezet")
-               .font(.title3)
-               .bold()
-            ForEach(controller.verses) { vers in
-               HStack {
-                  Text(vers.index).bold() +
-                     Text(" " + vers.szoveg)
-               }
-               .frame(maxWidth: .infinity, alignment: .leading)
-            }
+            bookHeader
+            versesView
          }
       }
       .toolbar(content: {
-         Toolbars(controller: controller, showTranslations: $showTranslations)
+         toolbars
       })
       .actionSheet(isPresented: $showTranslations, content: {
          ActionSheet(title: Text("Válassz egy fordítást"), buttons: controller.translationButtons)
       })
+      .sheet(isPresented: $showChapters, onDismiss: controller.chapterViewOnDismiss) {
+         ChapterSheet(showChapters: $showChapters)
+            .environmentObject(controller)
+      }
       .navigationBarTitleDisplayMode(.inline)
+   }
+   
+   //--------------------------------
+   // Chapter text
+   //--------------------------------
+   var versesView: some View {
+      ForEach(controller.verses) { vers in
+         HStack {
+            Text(vers.index).bold() +
+               Text(" " + vers.szoveg)
+         }
+         .frame(maxWidth: .infinity, alignment: .leading)
+      }
+   }
+   
+   //--------------------------------
+   // Book header
+   //--------------------------------
+   @ViewBuilder
+   var bookHeader: some View {
+      Text(controller.activeBook.name)
+         .font(.title)
+         .bold()
+         .multilineTextAlignment(.center)
+      Text("\(controller.activeChapter). fejezet")
+         .font(.title3)
+         .bold()
+   }
+   //--------------------------------
+   // Toolbars
+   //--------------------------------
+   var toolbars: some ToolbarContent {
+      Toolbars(selectedTab: $controller.selectedTab,
+               bookTitle: $controller.activeBook.abbrev,
+               chapter: $controller.activeChapter,
+               translation: $controller.translation.short,
+               showChapters: $showChapters,
+               showTranslations: $showTranslations)
    }
 }
 
+//--------------------------------
+// Preview
+//--------------------------------
 struct ReadingView_Previews: PreviewProvider {
    static var biblectrl = BibleController.preview(SavedDefault())
    static var previews: some View {

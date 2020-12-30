@@ -8,43 +8,65 @@
 import SwiftUI
 
 struct Toolbars: ToolbarContent {
-   var controller: BibleController
+   @Binding var selectedTab: Int
+   @Binding var bookTitle: String
+   @Binding var chapter: Int
+   @Binding var translation: String
+   @Binding var showChapters: Bool
    @Binding var showTranslations: Bool
-    var body: some ToolbarContent {
-         bookToolbar
-         titleToolbar
-         translationToolbar      
-    }
+   var body: some ToolbarContent {
+      bookToolbar
+      titleToolbar
+      translationToolbar
+   }
    
    var bookToolbar: some ToolbarContent {
       ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
          HStack {
-            Text(controller.activeBook.abbrev.prefix(4))
-               .font(.headline)
-            Text("\(controller.activeChapter)")
-               .font(.headline)
-
+            Button(action: {
+               selectedTab = 0
+            }, label: {
+               Text(bookTitle)
+                  .font(.headline)
+            })
+            Button(action: {
+               showChapters.toggle()
+            }, label: {
+               Text("\(chapter)")
+                  .font(.headline)
+            })
+            
          }
       }
    }
    
    var titleToolbar: some ToolbarContent {
-      ToolbarItem(placement: ToolbarItemPlacement.principal) {
-         Text(controller.translation.short)
-            .bold()
+      Group {
+         ToolbarItem(placement: ToolbarItemPlacement.principal) {
+            Text(translation)
+               .bold()
+         }
       }
    }
    
    var translationToolbar: some ToolbarContent {
-      ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
-         Label(
-            title: { Text("Ford") },
-            icon: { Image(systemName: "bubble.left.and.bubble.right.fill") }
-         )
-         .foregroundColor(.green)
-         .onTapGesture {
-            showTranslations.toggle()
+      Group {
+         ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
+            Label(
+               title: { Text("Fordítás") },
+               icon: { Image(systemName: "bubble.left.and.bubble.right.fill") }
+            )
+            .foregroundColor(.green)
+            .onTapGesture {
+               showTranslations.toggle()
+            }
          }
       }
    }
 }
+
+//struct Toolbars_Previews: PreviewProvider {
+//   static var previews: some View {
+//      Toolbars()
+//   }
+//}

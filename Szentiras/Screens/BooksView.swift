@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - BooksView
 struct BooksView: View {   
-   @EnvironmentObject var bibleController: BibleController
+   @EnvironmentObject var controller: BibleController
    @State var showTranslations: Bool = false
    @State var showChapters: Bool = false
    
@@ -23,13 +23,14 @@ struct BooksView: View {
       }
       .navigationBarTitleDisplayMode(.inline)
       .toolbar(content: {
-         Toolbars(controller: bibleController, showTranslations: $showTranslations)
+         toolbars
       })
       .actionSheet(isPresented: $showTranslations, content: {
-         ActionSheet(title: Text("Válassz egy fordítást"), buttons: bibleController.translationButtons)
+         ActionSheet(title: Text("Válassz egy fordítást"), buttons: controller.translationButtons)
       })
-      .sheet(isPresented: $showChapters, onDismiss: bibleController.chapterViewOnDismiss) {
-         chapterSheet
+      .sheet(isPresented: $showChapters, onDismiss: controller.chapterViewOnDismiss) {
+         ChapterSheet(showChapters: $showChapters)
+            .environmentObject(controller)
       }
    }
    
@@ -41,7 +42,7 @@ struct BooksView: View {
       return ScrollView {
          Text("Ószövetség")
          LazyVGrid(columns: columns) {
-            ForEach(bibleController.books.filter({$0.number < 200})) { book in
+            ForEach(controller.books.filter({$0.number < 200})) { book in
                CircleButton(text: String(book.abbrev.prefix(4)), color: Color.green, action: {
                   selectBook(book)
                })
@@ -49,7 +50,7 @@ struct BooksView: View {
          }
          Text("Újszövetség")
          LazyVGrid(columns: columns) {
-            ForEach(bibleController.books.filter({$0.number >= 200})) { book in
+            ForEach(controller.books.filter({$0.number >= 200})) { book in
                CircleButton(text: String(book.abbrev.prefix(4)), color: Color.blue, action: {
                   selectBook(book)
                })
@@ -59,34 +60,55 @@ struct BooksView: View {
    }
    
    //--------------------------------
-   // ChapterSheet
+   // Toolbars
    //--------------------------------
-   var chapterSheet: some View {
-      let columns = [GridItem(.adaptive(minimum: 44, maximum: 44))]
-      let book = bibleController.activeBook
-      return ScrollView {
-         Text(book.name)
-         LazyVGrid(columns: columns) {
-            ForEach(1...book.numberOfChapters, id: \.self) { chapter in
-               // Chapter selection
-               CircleButton(text: "\(chapter)", color: Color.green, action: {
-                  bibleController.activeChapter = chapter
-                  bibleController.selectedTab = 1
-                  showChapters = false                  
-               })
-            }
-         }
-      }
+   var toolbars: some ToolbarContent {
+      Toolbars(selectedTab: $controller.selectedTab,
+               bookTitle: $controller.activeBook.abbrev,
+               chapter: $controller.activeChapter,
+               translation: $controller.translation.short,
+               showChapters: $showChapters,
+               showTranslations: $showTranslations)
    }
+   
    //--------------------------------
    // Functions
    //--------------------------------
    func selectBook(_ book: Book) {
-      bibleController.activeBook = book
+      controller.activeBook = book
       showChapters = true
    }
 }
 
+struct BookToolbar: ToolbarContent {
+   @Binding var book: Book
+   @Binding var chapter: Int
+   @Binding var selectedTab: Int
+   @Binding var showChapters: Bool
+   var body: some ToolbarContent {
+      ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
+         HStack {
+            Button(action: {
+               selectedTab = 0
+            }, label: {
+               Text(book.abbrev.prefix(4))
+                  .font(.headline)
+            })
+            Button(action: {
+               showChapters.toggle()
+            }, label: {
+               Text("\(chapter)")
+                  .font(.headline)
+            })
+            
+         }
+      }
+   }
+}
+
+//--------------------------------
+// CircleButton
+//--------------------------------
 struct CircleButton: View {
    var text: String
    var color: Color
@@ -101,7 +123,9 @@ struct CircleButton: View {
    }
 }
 
-// MARK: - Preview
+//--------------------------------
+// Preview
+//--------------------------------
 struct BooksView_Previews: PreviewProvider {
    static var biblectrl = BibleController.preview(SavedDefault())
    static var previews: some View {
