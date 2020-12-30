@@ -16,9 +16,10 @@ class BibleController: ObservableObject {
    @Published var activeBook: Book
    @Published var activeChapter: Int = 1
    @Published var verses: [Vers] = []
+   @Published var isLoading: Bool = false
+   @Published var error: BibleError?
    
    var cancellables: Set<AnyCancellable> = []
-   var chapterCancellable: AnyCancellable?
    var savedDefault: SavedDefault
    
    // MARK: - Init
@@ -37,22 +38,29 @@ class BibleController: ObservableObject {
    // Fetch chapter from network on chapterselection
    //-----------------------------------------------
    func onChapterSelect() {
-      chapterCancellable = $activeChapter
+      $activeChapter
+         .handleEvents(receiveOutput: {[self] _ in
+            isLoading = true
+         })
          .map({[self] chapter in
             NetworkController.instance.fetchChapter(translation: translation, book: activeBook, chapter: chapter)
          })
          .switchToLatest()
          .receive(on: RunLoop.main)
-         .sink(receiveCompletion: {completion in
+         .sink(receiveCompletion: {[self] completion in
+            isLoading = false
             switch completion {
-            case .failure(let error):
-               print("Error in completion: \(error.description)")
+            case .failure(let err):
+               print("Error in completion: \(err.description)")
+               error = err
             case .finished:
                break
             }
          }, receiveValue: {verses in
+            print(verses[0])
             self.verses = verses
          })
+         .store(in: &cancellables)
    }
    
    //--------------------------------
@@ -67,8 +75,33 @@ class BibleController: ObservableObject {
    //--------------------------------
    private func onTranslationChange() {
       $translation
-         .sink(receiveValue: {
-            self.books = Bundle.main.decode(file: "books_\($0.abbrev).json")
+         .sink(receiveValue: { [self] transl in
+            self.books = Bundle.main.decode(file: "books_\(transl.abbrev).json")
+            activeBook = books.first(where: {activeBook.id == $0.id}) ?? activeBook
+         })
+         .store(in: &cancellables)
+      
+      $translation
+         .handleEvents(receiveOutput: {[self] _ in
+            isLoading = true
+         })
+         .map({[self] transl in
+            NetworkController.instance.fetchChapter(translation: transl, book: activeBook, chapter: activeChapter)
+         })
+         .switchToLatest()
+         .receive(on: RunLoop.main)
+         .sink(receiveCompletion: {[self] completion in
+            isLoading = false
+            switch completion {
+            case .failure(let err):
+               print("Error in completion: \(err.description)")
+               error = err
+            case .finished:
+               break
+            }
+         }, receiveValue: {verses in
+            print(verses[0])
+            self.verses = verses
          })
          .store(in: &cancellables)
    }

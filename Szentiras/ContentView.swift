@@ -20,7 +20,9 @@ struct ContentView: View {
                Image(systemName: "books.vertical")
                Text("Könyvek")
             }
-         ReadingView()
+         NavigationView {
+            ReadingView()
+         }
             .tag(1)
             .tabItem {
                Image(systemName: "book")

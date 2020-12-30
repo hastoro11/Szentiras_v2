@@ -23,50 +23,13 @@ struct BooksView: View {
       }
       .navigationBarTitleDisplayMode(.inline)
       .toolbar(content: {
-         bookToolbar
-         titleToolbar
-         translationToolbar
+         Toolbars(controller: bibleController, showTranslations: $showTranslations)
       })
       .actionSheet(isPresented: $showTranslations, content: {
          ActionSheet(title: Text("Válassz egy fordítást"), buttons: bibleController.translationButtons)
       })
       .sheet(isPresented: $showChapters, onDismiss: bibleController.chapterViewOnDismiss) {
          chapterSheet
-      }
-   }
-   
-   //--------------------------------
-   // ToolbarItems
-   //--------------------------------
-   var bookToolbar: some ToolbarContent {
-      ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
-         HStack {
-            Text(bibleController.activeBook.abbrev.prefix(4))
-               .font(.headline)
-            Text("\(bibleController.activeChapter)")
-               .font(.headline)
-
-         }
-      }
-   }
-   
-   var titleToolbar: some ToolbarContent {
-      ToolbarItem(placement: ToolbarItemPlacement.principal) {
-         Text(bibleController.translation.short)
-            .bold()
-      }
-   }
-   
-   var translationToolbar: some ToolbarContent {
-      ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
-         Label(
-            title: { Text("Ford") },
-            icon: { Image(systemName: "bubble.left.and.bubble.right.fill") }
-         )
-         .foregroundColor(.green)
-         .onTapGesture {
-            showTranslations.toggle()
-         }
       }
    }
    

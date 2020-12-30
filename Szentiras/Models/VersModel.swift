@@ -40,9 +40,16 @@ struct Forditas: Codable {
 }
 
 // MARK: - Versek
-struct Vers: Codable {
+struct Vers: Codable, Identifiable {
+   var id: Int { hely.gepi }
     let szoveg: String
     let hely: Hely
+}
+
+extension Vers {
+   var index: String {
+      String(hely.szep.split(separator: ",").last ?? "")
+   }
 }
 
 // MARK: - Hely
