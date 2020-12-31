@@ -9,7 +9,7 @@ import Foundation
 
 struct SavedDefault: Codable {
    var translation: String = "RUF"
-   var book: Int = 101
+   var book: Int = 202
    var chapter = 1
 }
 

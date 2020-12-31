@@ -1,18 +1,17 @@
 //
-//  ReadingView.swift
+//  ReadingTabsView.swift
 //  Szentiras
 //
-//  Created by Gabor Sornyei on 2020. 12. 29..
+//  Created by Gabor Sornyei on 2020. 12. 30..
 //
 
 import SwiftUI
 
-struct ReadingView: View {
+struct ReadingTabsView: View {
    @EnvironmentObject var controller: BibleController
    @State var showTranslations: Bool = false
    @State var showChapters: Bool = false
    @State var selectedChapter: Int = 0
-      
    //--------------------------------
    // Body
    //--------------------------------
@@ -20,13 +19,14 @@ struct ReadingView: View {
       Group {
          if controller.isLoading {
             ProgressView("Keresés...")
-         } else {
-            ScrollView {
-               bookHeader
-               versesView
+         }
+         if !controller.isLoading {
+            if controller.versesInBook.count != 0 {
+               tabview
+                  .id(controller.versesInBook.count)
             }
          }
-      }
+      }      
       .toolbar(content: {
          toolbars
       })
@@ -43,6 +43,23 @@ struct ReadingView: View {
    }
    
    //--------------------------------
+   // Tabview
+   //--------------------------------
+   var tabview: some View {
+      TabView(selection: $controller.activeChapter) {
+         ForEach(1...controller.versesInBook.count, id: \.self) { index in
+            ChapterTextView(
+               verses: $controller.versesInBook[index-1],
+               book: controller.activeBook,
+               chapter: controller.activeChapter
+            )
+            .tag(index)
+         }
+      }
+      .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))      
+   }
+   
+   //--------------------------------
    // Toolbars
    //--------------------------------
    var toolbars: some ToolbarContent {
@@ -54,45 +71,17 @@ struct ReadingView: View {
                showTranslations: $showTranslations,
                paging: controller.paging)
    }
-   
-   //--------------------------------
-   // Chapter text
-   //--------------------------------
-   var versesView: some View {
-      ForEach(controller.verses) { vers in
-         HStack {
-            Text(vers.index).bold() +
-               Text(" " + vers.szoveg)
-         }
-         .frame(maxWidth: .infinity, alignment: .leading)
-      }
-   }
-   
-   //--------------------------------
-   // Book header
-   //--------------------------------
-   @ViewBuilder
-   var bookHeader: some View {
-      Text(controller.activeBook.name)
-         .font(.title)
-         .bold()
-         .multilineTextAlignment(.center)
-      Text("\(controller.activeChapter). fejezet")
-         .font(.title3)
-         .bold()
-   }
-   
 }
 
 //--------------------------------
 // Preview
 //--------------------------------
-struct ReadingView_Previews: PreviewProvider {
-   static var biblectrl = BibleController.preview(SavedDefault())
+struct ReadingTabsView_Previews: PreviewProvider {
+   static var ctrl = BibleController(savedDefault: SavedDefault())
    static var previews: some View {
       NavigationView {
-         ReadingView()
-            .environmentObject(biblectrl)
+         ReadingTabsView()
+            .environmentObject(ctrl)
       }
    }
 }

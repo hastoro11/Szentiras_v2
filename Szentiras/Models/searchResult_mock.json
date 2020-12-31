@@ -1,0 +1,129 @@
+{
+    "keres": {
+        "feladat": "idezet",
+        "hivatkozas": "1Kor 13",
+        "forma": "json"
+    },
+    "valasz": {
+        "versek": [
+            {
+                "szoveg": "Ha emberek vagy angyalok nyelvén szólok is, szeretet pedig nincs bennem, olyanná lettem, mint a zengő érc vagy a pengő cimbalom.",
+                "jegyzetek": [
+                    {
+                        "position": null,
+                        "text": "zengő érc vagy pengő cimbalom: Pál dallam nélküli hangszereket említ, szó szerint ércgongot és réztányért"
+                    }
+                ],
+                "hely": {
+                    "gepi": 20701300100,
+                    "szep": "1Kor 13,1"
+                }
+            },
+            {
+                "szoveg": "És ha prófétálni is tudok, ha minden titkot ismerek is, és minden bölcsességnek birtokában vagyok, és ha teljes hitem van is, úgyhogy hegyeket mozdíthatok el, szeretet pedig nincs bennem: semmi vagyok.",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 20701300200,
+                    "szep": "1Kor 13,2"
+                }
+            },
+            {
+                "szoveg": "És ha szétosztom az egész vagyonomat, és testem tűzhalálra szánom, szeretet pedig nincs bennem: semmi hasznom abból.",
+                "jegyzetek": [
+                    {
+                        "position": null,
+                        "text": "testem tűzhalálra szánom: Egyes kéziratok szerint: testemet is feláldozom, hogy dicsekedhessem"
+                    }
+                ],
+                "hely": {
+                    "gepi": 20701300300,
+                    "szep": "1Kor 13,3"
+                }
+            },
+            {
+                "szoveg": "A szeretet türelmes, jóságos; a szeretet nem irigykedik, a szeretet nem kérkedik, nem fuvalkodik fel.",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 20701300400,
+                    "szep": "1Kor 13,4"
+                }
+            },
+            {
+                "szoveg": "Nem viselkedik bántóan, nem keresi a maga hasznát, nem gerjed haragra, nem rója fel a rosszat.",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 20701300500,
+                    "szep": "1Kor 13,5"
+                }
+            },
+            {
+                "szoveg": "Nem örül a hamisságnak, de együtt örül az igazsággal.",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 20701300600,
+                    "szep": "1Kor 13,6"
+                }
+            },
+            {
+                "szoveg": "Mindent elfedez, mindent hisz, mindent remél, mindent eltűr.",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 20701300700,
+                    "szep": "1Kor 13,7"
+                }
+            },
+            {
+                "szoveg": "A szeretet soha el nem múlik. De legyen bár prófétálás: el fog töröltetni; legyen nyelveken szólás: meg fog szűnni; legyen ismeret: el fog töröltetni.",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 20701300800,
+                    "szep": "1Kor 13,8"
+                }
+            },
+            {
+                "szoveg": "Mert töredékes az ismeretünk, és töredékes a prófétálásunk.",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 20701300900,
+                    "szep": "1Kor 13,9"
+                }
+            },
+            {
+                "szoveg": "Amikor pedig eljön a tökéletes, eltöröltetik a töredékes.",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 20701301000,
+                    "szep": "1Kor 13,10"
+                }
+            },
+            {
+                "szoveg": "Amikor gyermek voltam, úgy szóltam, mint gyermek, úgy gondolkodtam, mint gyermek, úgy értettem, mint gyermek; amikor pedig férfivá lettem, elhagytam a gyermeki dolgokat.",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 20701301100,
+                    "szep": "1Kor 13,11"
+                }
+            },
+            {
+                "szoveg": "Mert most tükör által homályosan látunk, akkor pedig színről színre; most töredékes az ismeretem, akkor pedig úgy fogok ismerni, ahogyan engem is megismert Isten.",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 20701301200,
+                    "szep": "1Kor 13,12"
+                }
+            },
+            {
+                "szoveg": "Most azért megmarad a hit, a remény, a szeretet, e három; ezek közül pedig a legnagyobb a szeretet.",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 20701301300,
+                    "szep": "1Kor 13,13"
+                }
+            }
+        ],
+        "forditas": {
+            "nev": "Magyar Bibliatársulat újfordítású Bibliája (2014)",
+            "rov": "RUF"
+        }
+    }
+}

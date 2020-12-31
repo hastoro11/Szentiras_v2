@@ -21,7 +21,7 @@ struct ContentView: View {
                Text("Könyvek")
             }
          NavigationView {
-            ReadingView()
+            ReadingTabsView()
          }
             .tag(1)
             .tabItem {

@@ -14,7 +14,11 @@ class NetworkController: ObservableObject {
    static var instance = NetworkController()
    private init() {}
    
-   func fetchChapter(translation: Translation, book: Book, chapter: Int) -> AnyPublisher<SearchResult, BibleError> {
+   private func fetchChapter(
+      translation: Translation,
+      book: Book,
+      chapter: Int) -> AnyPublisher<SearchResult, BibleError> {
+      
       let bookAbbrev = book.abbrev.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
       let link = "https://szentiras.hu/api/idezet/\(bookAbbrev)\(chapter)/\(translation.abbrev)"
       guard let url = URL(string: link) else {
@@ -64,5 +68,18 @@ class NetworkController: ObservableObject {
             }
          })         
          .eraseToAnyPublisher()
+   }
+   
+   func fetchBook(translation: Translation, book: Book) -> AnyPublisher<[SearchResult], BibleError> {
+      
+      var publishers: [AnyPublisher<SearchResult, BibleError>] = []
+      for chapter in 1...book.numberOfChapters {
+         publishers.append(self.fetchChapter(translation: translation, book: book, chapter: chapter))
+      }
+      
+      return Publishers.MergeMany(publishers)
+         .subscribe(on: DispatchQueue.global(qos: .userInitiated))
+         .collect()
+         .eraseToAnyPublisher()      
    }
 }

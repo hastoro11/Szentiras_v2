@@ -18,8 +18,8 @@ class BibleController: ObservableObject {
    @Published var books: [Book] = []
    @Published var translation: Translation
    @Published var activeBook: Book
-   @Published var activeChapter: Int = 1
-   @Published var verses: [Vers] = []
+   @Published var activeChapter: Int = 1   
+   @Published var versesInBook: [[Vers]] = []
    
    @Published var isLoading: Bool = false
    @Published var error: BibleError?
@@ -38,7 +38,6 @@ class BibleController: ObservableObject {
       self.activeBook = allBooks.first(where: {$0.number == savedDefault.book}) ?? allBooks[0]
       self.activeChapter = savedDefault.chapter      
       onTranslationChange()
-      onChapterSelect()
       onBookChange()
    }
    
@@ -55,7 +54,7 @@ class BibleController: ObservableObject {
       
       $translation
          .sink(receiveValue: { [self] transl in
-            fetchChapter(translation: transl, book: activeBook, chapter: activeChapter)
+            fetchBook(translation: transl, book: activeBook)
          })
          .store(in: &cancellables)
    }
@@ -63,25 +62,17 @@ class BibleController: ObservableObject {
    private func onBookChange() {      
       $activeBook
          .sink(receiveValue: {[self] book in
-            fetchChapter(translation: translation, book: book, chapter: activeChapter)
-         })
-         .store(in: &cancellables)
-   }
-   
-   private func onChapterSelect() {
-      $activeChapter
-         .sink(receiveValue: {[self] chapter in
-            fetchChapter(translation: translation, book: activeBook, chapter: chapter)
+            fetchBook(translation: translation, book: book)
          })
          .store(in: &cancellables)
    }
    
    //--------------------------------
-   // Fetch chapter
+   // Fetch book
    //--------------------------------
-   private func fetchChapter(translation: Translation, book: Book, chapter: Int) {
+   private func fetchBook(translation: Translation, book: Book) {
       isLoading = true
-      NetworkController.instance.fetchChapter(translation: translation, book: book, chapter: chapter)
+      NetworkController.instance.fetchBook(translation: translation, book: book)
          .receive(on: RunLoop.main)
          .sink(receiveCompletion: {[self] completion in
             switch completion {
@@ -91,8 +82,8 @@ class BibleController: ObservableObject {
                break
             }
             isLoading = false
-         }, receiveValue: {[self] result in
-            verses = result.valasz.verses
+         }, receiveValue: {[self] results in
+            versesInBook = results.sorted().map({$0.valasz.verses})
          })
          .store(in: &cancellables)
    }

@@ -12,10 +12,28 @@
 
 import Foundation
 
-// MARK: - SearchResult
+//--------------------------------
+// SearchResult
+//--------------------------------
 struct SearchResult: Codable {
     let keres: Keres
     let valasz: Valasz
+}
+
+extension SearchResult: Comparable {
+   var chapterNumber: Int {
+      let hivatkozas = self.keres.hivatkozas
+      let chapterString = hivatkozas.split(separator: " ")[1]
+      return Int(chapterString) ?? 0
+   }
+   
+   static func < (lhs: SearchResult, rhs: SearchResult) -> Bool {
+      lhs.chapterNumber < rhs.chapterNumber
+   }
+   
+   static func == (lhs: SearchResult, rhs: SearchResult) -> Bool {
+      lhs.chapterNumber == rhs.chapterNumber
+   }
 }
 
 // MARK: - Keres
@@ -39,7 +57,9 @@ struct Forditas: Codable {
     let nev, rov: String
 }
 
-// MARK: - Versek
+//--------------------------------
+// Vers
+//--------------------------------
 struct Vers: Codable, Identifiable {
    var id: Int { hely.gepi }
     let szoveg: String
@@ -49,6 +69,24 @@ struct Vers: Codable, Identifiable {
 extension Vers {
    var index: String {
       String(hely.szep.split(separator: ",").last ?? "")
+   }
+}
+
+extension Vers {
+   static var mockData: [Vers] {
+      let url = Bundle.main.url(forResource: "searchResult_mock", withExtension: "json")!
+      guard let data = try? Data(contentsOf: url) else {
+         fatalError("Error reading searchResult data file")         
+      }
+      do {
+         let result = try JSONDecoder().decode(SearchResult.self, from: data)
+         return result.valasz.verses
+      } catch DecodingError.keyNotFound(let key, _) {
+         print("Key not found: \(key.stringValue)")
+      } catch {
+         print("Parsing error")
+      }
+      return []
    }
 }
 

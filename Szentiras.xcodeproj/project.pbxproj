@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8C75FBD1259B89B100802334 /* ReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C75FBD0259B89B100802334 /* ReadingView.swift */; };
 		8C75FBD8259C8AFC00802334 /* ChapterSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C75FBD7259C8AFC00802334 /* ChapterSheet.swift */; };
 		8C75FBDC259C938900802334 /* Toolbars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C75FBDB259C938900802334 /* Toolbars.swift */; };
 		8C75FBDF259CBF2A00802334 /* ReadingTabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C75FBDE259CBF2A00802334 /* ReadingTabsView.swift */; };
-		8C75FBE2259CC0F700802334 /* ReadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C75FBE1259CC0F700802334 /* ReadingViewModel.swift */; };
+		8C75FBEE259E168200802334 /* ChapterTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C75FBED259E168200802334 /* ChapterTextView.swift */; };
+		8C75FBF1259E172100802334 /* searchResult_mock.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C75FBF0259E172100802334 /* searchResult_mock.json */; };
+		8C75FBF4259E1A7C00802334 /* ChapterTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C75FBF3259E1A7C00802334 /* ChapterTextViewModel.swift */; };
 		8C8BAB54258D044700E4EDD3 /* SzentirasApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BAB53258D044700E4EDD3 /* SzentirasApp.swift */; };
 		8C8BAB56258D044700E4EDD3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BAB55258D044700E4EDD3 /* ContentView.swift */; };
 		8C8BAB58258D044800E4EDD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C8BAB57258D044800E4EDD3 /* Assets.xcassets */; };
@@ -39,11 +40,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8C75FBD0259B89B100802334 /* ReadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingView.swift; sourceTree = "<group>"; };
 		8C75FBD7259C8AFC00802334 /* ChapterSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterSheet.swift; sourceTree = "<group>"; };
 		8C75FBDB259C938900802334 /* Toolbars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbars.swift; sourceTree = "<group>"; };
 		8C75FBDE259CBF2A00802334 /* ReadingTabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingTabsView.swift; sourceTree = "<group>"; };
-		8C75FBE1259CC0F700802334 /* ReadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingViewModel.swift; sourceTree = "<group>"; };
+		8C75FBED259E168200802334 /* ChapterTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterTextView.swift; sourceTree = "<group>"; };
+		8C75FBF0259E172100802334 /* searchResult_mock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = searchResult_mock.json; sourceTree = "<group>"; };
+		8C75FBF3259E1A7C00802334 /* ChapterTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterTextViewModel.swift; sourceTree = "<group>"; };
 		8C8BAB50258D044700E4EDD3 /* Szentiras.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Szentiras.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C8BAB53258D044700E4EDD3 /* SzentirasApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SzentirasApp.swift; sourceTree = "<group>"; };
 		8C8BAB55258D044700E4EDD3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -88,7 +90,8 @@
 			children = (
 				8C75FBD7259C8AFC00802334 /* ChapterSheet.swift */,
 				8C75FBDB259C938900802334 /* Toolbars.swift */,
-				8C75FBE1259CC0F700802334 /* ReadingViewModel.swift */,
+				8C75FBED259E168200802334 /* ChapterTextView.swift */,
+				8C75FBF3259E1A7C00802334 /* ChapterTextViewModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 				8C8BAB91258D12D400E4EDD3 /* TranslationModel.swift */,
 				8CB096F82597874800E27EAF /* BibleError.swift */,
 				8CB096FF2598AA1B00E27EAF /* VersModel.swift */,
+				8C75FBF0259E172100802334 /* searchResult_mock.json */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -177,7 +181,6 @@
 			children = (
 				8C75FBD3259C7F3C00802334 /* Views */,
 				8C8BAB9B258DE6BA00E4EDD3 /* BooksView.swift */,
-				8C75FBD0259B89B100802334 /* ReadingView.swift */,
 				8C75FBDE259CBF2A00802334 /* ReadingTabsView.swift */,
 			);
 			path = Screens;
@@ -255,6 +258,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C75FBF1259E172100802334 /* searchResult_mock.json in Resources */,
 				8C8BAB8F258D10C300E4EDD3 /* translations.json in Resources */,
 				8C8BAB6D258D056B00E4EDD3 /* FiraSans-Bold.ttf in Resources */,
 				8C8BAB5B258D044800E4EDD3 /* Preview Assets.xcassets in Resources */,
@@ -300,8 +304,6 @@
 				8CB096F52597854200E27EAF /* NetworkController.swift in Sources */,
 				8C8BAB86258D08EE00E4EDD3 /* BookModel.swift in Sources */,
 				8C8BABA3258F719600E4EDD3 /* Color+Extension.swift in Sources */,
-				8C75FBD1259B89B100802334 /* ReadingView.swift in Sources */,
-				8C75FBE2259CC0F700802334 /* ReadingViewModel.swift in Sources */,
 				8C8BAB56258D044700E4EDD3 /* ContentView.swift in Sources */,
 				8C8BAB54258D044700E4EDD3 /* SzentirasApp.swift in Sources */,
 				8C8BAB9C258DE6BA00E4EDD3 /* BooksView.swift in Sources */,
@@ -310,8 +312,10 @@
 				8CB097002598AA1B00E27EAF /* VersModel.swift in Sources */,
 				8C8BAB8C258D0BF800E4EDD3 /* BibleController.swift in Sources */,
 				8CB096F92597874800E27EAF /* BibleError.swift in Sources */,
+				8C75FBF4259E1A7C00802334 /* ChapterTextViewModel.swift in Sources */,
 				8C8BAB92258D12D400E4EDD3 /* TranslationModel.swift in Sources */,
 				8C8BAB97258D213200E4EDD3 /* UserDefaults+Extension.swift in Sources */,
+				8C75FBEE259E168200802334 /* ChapterTextView.swift in Sources */,
 				8C75FBDC259C938900802334 /* Toolbars.swift in Sources */,
 				8C75FBDF259CBF2A00802334 /* ReadingTabsView.swift in Sources */,
 			);
