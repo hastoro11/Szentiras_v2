@@ -8,11 +8,13 @@
 import SwiftUI
 
 extension Color {
-    static var dark: Color { Color("Dark") }
-    static var colorRed: Color { Color("Red") }
-    static var colorOrange: Color { Color("Orange") }
-    static var colorYellow: Color { Color("Yellow") }
-    static var colorBlue: Color { Color("Blue") }
-    static var colorIndigo: Color { Color("Indigo") }
-    static var colorGreen: Color { Color("Green") }
+   struct Theme {      
+      static var dark: Color { Color("Dark") }
+      static var red: Color { Color("Red") }
+      static var orange: Color { Color("Orange") }
+      static var yellow: Color { Color("Yellow") }
+      static var blue: Color { Color("Blue") }
+      static var indigo: Color { Color("Indigo") }
+      static var green: Color { Color("Green") }
+   }
 }

@@ -25,19 +25,22 @@ struct Toolbars: ToolbarContent {
    var bookToolbar: some ToolbarContent {
       ToolbarItem(placement: ToolbarItemPlacement.navigationBarLeading) {
          HStack {
-            Button(action: {
-               selectedTab = 0
-            }, label: {
-               Text(book.abbrev)
-                  .font(.headline)
-            })
-            Button(action: {
-               showChapters.toggle()
-            }, label: {
-               Text("\(chapter)")
-                  .font(.headline)
-            })
-            
+            CircleButton(
+               size: 34,
+               text: book.abbrev,
+               backgroundColor: Color.Theme.dark,
+               textColor: .white,
+               action: {
+                  selectedTab = 0
+               })
+            CircleButton(
+               size: 34,
+               text: "\(chapter)",
+               backgroundColor: Color.Theme.yellow,
+               textColor: Color.Theme.dark,
+               action: {
+                  showChapters.toggle()
+               })            
          }
       }
    }
@@ -50,22 +53,29 @@ struct Toolbars: ToolbarContent {
                   paging(BibleController.PagingDirection.previous)
                }, label: {
                   Image(systemName: "chevron.left")
+                     .font(.medium(22))
                })
                .disabled(chapter == 1)
+               .accentColor(chapter == 1 ? .gray : Color.Theme.dark)
+               
+               Spacer()
                Button(action: {
                   showTranslations.toggle()
                }, label: {
                   Text(translation)
-                     .bold()
+                     .font(.medium(16))
                })
-               
+               Spacer()
                Button(action: {
                   paging(BibleController.PagingDirection.next)
                }, label: {
                   Image(systemName: "chevron.right")
+                     .font(.medium(22))
                })
                .disabled(chapter == book.numberOfChapters)
+               .accentColor(chapter == book.numberOfChapters ? .gray : Color.Theme.dark)
             }
+            .accentColor(Color.Theme.dark)
          }
       }
    }
@@ -73,11 +83,22 @@ struct Toolbars: ToolbarContent {
    var translationToolbar: some ToolbarContent {
       ToolbarItem(placement: ToolbarItemPlacement.automatic) {
          HStack {
-            Button(action: {
-               showTranslations.toggle()
-            }, label: {
-               Image(systemName: "bubble.left.and.bubble.right.fill")
-            })
+            CircleButton(
+               size: 34,
+               image: "textformat",
+               backgroundColor: Color.Theme.green,
+               textColor: .white,
+               action: {
+                  
+               })
+            CircleButton(
+               size: 34,
+               image: "bubble.left.and.bubble.right.fill",
+               backgroundColor: Color.Theme.red,
+               textColor: .white,
+               action: {
+                  showTranslations.toggle()
+               })
             
          }
       }

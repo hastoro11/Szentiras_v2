@@ -16,10 +16,11 @@ struct ChapterTextView: View {
    // Body
    //--------------------------------
    var body: some View {
-      ScrollView {
+      ScrollView(.vertical, showsIndicators: false) {
          bookHeader
          versesView
       }
+      .padding(.horizontal)
       .navigationBarHidden(hideNavigationBar)
    }
    
@@ -28,32 +29,41 @@ struct ChapterTextView: View {
    //--------------------------------
    @ViewBuilder
    var bookHeader: some View {
-      Text(book.name)
-         .font(.title)
-         .bold()
-         .multilineTextAlignment(.center)
-      Text("\(chapter). fejezet")
-         .font(.title3)
-         .bold()
+      VStack {
+         Text(book.name)
+            .layoutPriority(1)
+            .lineLimit(3)
+            .font(.bold(26))
+            .multilineTextAlignment(.center)
+            
+         Text("\(chapter). fejezet")
+            .font(.medium(22))
+            .bold()
+      }
+      .padding(.vertical)
    }
    
    //--------------------------------
    // Verses view
    //--------------------------------
    var versesView: some View {
-      ForEach(verses) { vers in
-         HStack {
-            Text(vers.index).bold() +
-               Text(" " + vers.szoveg)               
-         }
-         .frame(maxWidth: .infinity, alignment: .leading)
-         .onTapGesture {
-            hideNavigationBar.toggle()
-         }
-         .onLongPressGesture {
-            print("long")
+      LazyVStack {
+         ForEach(verses) { vers in
+            HStack {
+               Text(vers.index).font(.medium(18)) +
+                  Text(" " + vers.szoveg)
+                  .font(.light(18))
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .onTapGesture {
+               hideNavigationBar.toggle()
+            }
+            .onLongPressGesture {
+               print("long")
+            }
          }
       }
+      .padding(.bottom, 40)
    }
 }
 

@@ -12,7 +12,7 @@ struct BooksView: View {
    @EnvironmentObject var controller: BibleController
    @State var showTranslations: Bool = false
    @State var showChapters: Bool = false
-   @State var selectedChapter: Int = 0
+   @State var selectedChapter: Int = 1
    //--------------------------------
    // Body
    //--------------------------------
@@ -43,19 +43,29 @@ struct BooksView: View {
       let columns = [GridItem(.adaptive(minimum: 44, maximum: 44))]
       return ScrollView {
          Text("Ószövetség")
+            .font(.medium(16))
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding()
          LazyVGrid(columns: columns) {
             ForEach(controller.books.filter({$0.number < 200})) { book in
-               CircleButton(text: String(book.abbrev.prefix(4)), color: Color.green, action: {
-                  selectBook(book)
-               })
+               CircleButton(
+                  text: String(book.abbrev.prefix(4)),
+                  backgroundColor: Color.Theme.green,
+                  textColor: Color.white,
+                  action: { selectBook(book) })
             }
          }
          Text("Újszövetség")
+            .font(.medium(16))
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding()
          LazyVGrid(columns: columns) {
             ForEach(controller.books.filter({$0.number >= 200})) { book in
-               CircleButton(text: String(book.abbrev.prefix(4)), color: Color.blue, action: {
-                  selectBook(book)
-               })
+               CircleButton(
+                  text: String(book.abbrev.prefix(4)),
+                  backgroundColor: Color.Theme.blue,
+                  textColor: Color.white,
+                  action: { selectBook(book) })
             }
          }
       }
@@ -113,15 +123,28 @@ struct BookToolbar: ToolbarContent {
 // CircleButton
 //--------------------------------
 struct CircleButton: View {
-   var text: String
-   var color: Color
+   var size: CGFloat = 44
+   var image: String?
+   var text: String?
+   var backgroundColor: Color
+   var textColor: Color
    var action: () -> Void
    var body: some View {
       Button(action: action, label: {
          Circle()
-            .foregroundColor(color)
-            .frame(width: 44, height: 44)
-            .overlay(Text(text).font(.subheadline).accentColor(.primary))
+            .foregroundColor(backgroundColor)
+            .frame(width: size, height: size)
+            .overlay(
+               Group {
+                  if text != nil {
+                     Text(text!)
+                  } else {
+                     Image(systemName: image!)                        
+                  }
+               }
+               .font(.medium(14))
+               .foregroundColor(textColor)
+            )
       })
    }
 }
@@ -136,5 +159,7 @@ struct BooksView_Previews: PreviewProvider {
          BooksView()
             .environmentObject(biblectrl)
       }
+      CircleButton(text: "Ruth", backgroundColor: .green, textColor: .black, action: {})
+         .previewLayout(.sizeThatFits).padding()
    }
 }

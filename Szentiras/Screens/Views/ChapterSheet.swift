@@ -14,12 +14,22 @@ struct ChapterSheet: View {
    var body: some View {
       let columns = [GridItem(.adaptive(minimum: 44, maximum: 44))]
       let book = controller.activeBook
+      var backgroundColor: Color {
+         return controller.activeBook.id < 200 ? Color.Theme.green : Color.Theme.blue
+      }
       return ScrollView {
          Text(book.name)
+            .font(.medium(16))
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding()
          LazyVGrid(columns: columns) {
             ForEach(1...book.numberOfChapters, id: \.self) { chapter in
                // Chapter selection
-               CircleButton(text: "\(chapter)", color: Color.green, action: {
+               CircleButton(
+                  text: "\(chapter)",
+                  backgroundColor: backgroundColor,
+                  textColor: Color.white,
+                  action: {
                   selectedChapter = chapter
                   controller.selectedTab = 1
                   showChapters = false
