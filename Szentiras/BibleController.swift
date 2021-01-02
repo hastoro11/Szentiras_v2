@@ -8,11 +8,7 @@
 import SwiftUI
 import Combine
 
-class BibleController: ObservableObject {
-   enum PagingDirection {
-      case previous, next
-   }
-   
+class BibleController: ObservableObject {   
    @Published var selectedTab: Int = 0
    
    @Published var books: [Book] = []
@@ -119,6 +115,10 @@ class BibleController: ObservableObject {
    //--------------------------------
    // Paging
    //--------------------------------
+   enum PagingDirection {
+      case previous, next
+   }
+   
    func paging(_ direction: PagingDirection) {
       if direction == .previous {
          activeChapter = activeChapter == 1 ? 1 : activeChapter-1

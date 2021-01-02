@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ChapterTextView: View {
    @Binding var verses: [Vers]
+   @State var hideNavigationBar: Bool = false
    var book: Book
    var chapter: Int
    //--------------------------------
@@ -19,6 +20,7 @@ struct ChapterTextView: View {
          bookHeader
          versesView
       }
+      .navigationBarHidden(hideNavigationBar)
    }
    
    //--------------------------------
@@ -42,9 +44,15 @@ struct ChapterTextView: View {
       ForEach(verses) { vers in
          HStack {
             Text(vers.index).bold() +
-               Text(" " + vers.szoveg)
+               Text(" " + vers.szoveg)               
          }
          .frame(maxWidth: .infinity, alignment: .leading)
+         .onTapGesture {
+            hideNavigationBar.toggle()
+         }
+         .onLongPressGesture {
+            print("long")
+         }
       }
    }
 }

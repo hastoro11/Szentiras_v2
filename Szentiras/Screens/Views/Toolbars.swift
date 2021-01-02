@@ -52,8 +52,13 @@ struct Toolbars: ToolbarContent {
                   Image(systemName: "chevron.left")
                })
                .disabled(chapter == 1)
-               Text(translation)
-                  .bold()
+               Button(action: {
+                  showTranslations.toggle()
+               }, label: {
+                  Text(translation)
+                     .bold()
+               })
+               
                Button(action: {
                   paging(BibleController.PagingDirection.next)
                }, label: {
@@ -66,19 +71,18 @@ struct Toolbars: ToolbarContent {
    }
    
    var translationToolbar: some ToolbarContent {
-      Group {
-         ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
-            Label(
-               title: { Text("Fordítás") },
-               icon: { Image(systemName: "bubble.left.and.bubble.right.fill") }
-            )
-            .foregroundColor(.green)
-            .onTapGesture {
+      ToolbarItem(placement: ToolbarItemPlacement.automatic) {
+         HStack {
+            Button(action: {
                showTranslations.toggle()
-            }
+            }, label: {
+               Image(systemName: "bubble.left.and.bubble.right.fill")
+            })
+            
          }
       }
    }
+   
 }
 
 //struct Toolbars_Previews: PreviewProvider {
