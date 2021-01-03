@@ -11,25 +11,28 @@ struct ReadingTabsView: View {
    @EnvironmentObject var controller: BibleController
    @State var showTranslations: Bool = false
    @State var showChapters: Bool = false
-   @State var selectedChapter: Int = 0
+   @State var selectedChapter: Int = 1
+   
    //--------------------------------
    // Body
    //--------------------------------
    var body: some View {
-      Group {
-         if controller.isLoading {
-            ProgressView("Keresés...")
-         }
-         if !controller.isLoading {
-            if controller.versesInBook.count != 0 {
-               tabview
-                  .id(controller.versesInBook.count)
+      VStack {
+         Header(showChapters: $showChapters, showTranslations: $showTranslations)
+         Group {
+            if controller.isLoading {
+               Spacer()
+               ProgressView("Keresés...")
+               Spacer()
+            }
+            if !controller.isLoading {
+               if controller.versesInBook.count != 0 {
+                  tabview
+                     .id(controller.versesInBook.count)
+               }
             }
          }
-      }      
-      .toolbar(content: {
-         toolbars
-      })
+      }
       .actionSheet(isPresented: $showTranslations, content: {
          ActionSheet(title: Text("Válassz egy fordítást"), buttons: controller.translationButtons)
       })
@@ -58,19 +61,6 @@ struct ReadingTabsView: View {
       }
       .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))      
    }
-   
-   //--------------------------------
-   // Toolbars
-   //--------------------------------
-   var toolbars: some ToolbarContent {
-      Toolbars(selectedTab: $controller.selectedTab,
-               book: $controller.activeBook,
-               chapter: $controller.activeChapter,
-               translation: $controller.translation.short,
-               showChapters: $showChapters,
-               showTranslations: $showTranslations,
-               paging: controller.paging)
-   }
 }
 
 //--------------------------------
@@ -79,9 +69,7 @@ struct ReadingTabsView: View {
 struct ReadingTabsView_Previews: PreviewProvider {
    static var ctrl = BibleController(savedDefault: SavedDefault())
    static var previews: some View {
-      NavigationView {
-         ReadingTabsView()
-            .environmentObject(ctrl)
-      }
+      ReadingTabsView()
+         .environmentObject(ctrl)
    }
 }

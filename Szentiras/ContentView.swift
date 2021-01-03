@@ -12,17 +12,13 @@ struct ContentView: View {
    
    var body: some View {
       TabView(selection: $bibleController.selectedTab) {
-         NavigationView {
-            BooksView()
-         }
+         BooksView()
             .tag(0)
             .tabItem {
                Image(systemName: "books.vertical")
                Text("Könyvek")
             }
-         NavigationView {
-            ReadingTabsView()
-         }
+         ReadingTabsView()
             .tag(1)
             .tabItem {
                Image(systemName: "book")

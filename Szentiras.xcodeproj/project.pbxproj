@@ -14,6 +14,8 @@
 		8C75FBF1259E172100802334 /* searchResult_mock.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C75FBF0259E172100802334 /* searchResult_mock.json */; };
 		8C75FBF4259E1A7C00802334 /* ChapterTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C75FBF3259E1A7C00802334 /* ChapterTextViewModel.swift */; };
 		8C75FC7925A08E4600802334 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C75FC7825A08E4600802334 /* Font+Extension.swift */; };
+		8C75FC7C25A1B21C00802334 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C75FC7B25A1B21B00802334 /* Header.swift */; };
+		8C75FC7F25A1B3BE00802334 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C75FC7E25A1B3BE00802334 /* CircleButton.swift */; };
 		8C8BAB54258D044700E4EDD3 /* SzentirasApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BAB53258D044700E4EDD3 /* SzentirasApp.swift */; };
 		8C8BAB56258D044700E4EDD3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BAB55258D044700E4EDD3 /* ContentView.swift */; };
 		8C8BAB58258D044800E4EDD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C8BAB57258D044800E4EDD3 /* Assets.xcassets */; };
@@ -48,6 +50,8 @@
 		8C75FBF0259E172100802334 /* searchResult_mock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = searchResult_mock.json; sourceTree = "<group>"; };
 		8C75FBF3259E1A7C00802334 /* ChapterTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterTextViewModel.swift; sourceTree = "<group>"; };
 		8C75FC7825A08E4600802334 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
+		8C75FC7B25A1B21B00802334 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		8C75FC7E25A1B3BE00802334 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		8C8BAB50258D044700E4EDD3 /* Szentiras.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Szentiras.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C8BAB53258D044700E4EDD3 /* SzentirasApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SzentirasApp.swift; sourceTree = "<group>"; };
 		8C8BAB55258D044700E4EDD3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 				8C75FBDB259C938900802334 /* Toolbars.swift */,
 				8C75FBED259E168200802334 /* ChapterTextView.swift */,
 				8C75FBF3259E1A7C00802334 /* ChapterTextViewModel.swift */,
+				8C75FC7B25A1B21B00802334 /* Header.swift */,
+				8C75FC7E25A1B3BE00802334 /* CircleButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -304,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C75FC7C25A1B21C00802334 /* Header.swift in Sources */,
 				8CB096F52597854200E27EAF /* NetworkController.swift in Sources */,
 				8C8BAB86258D08EE00E4EDD3 /* BookModel.swift in Sources */,
 				8C8BABA3258F719600E4EDD3 /* Color+Extension.swift in Sources */,
@@ -318,6 +325,7 @@
 				8C75FBF4259E1A7C00802334 /* ChapterTextViewModel.swift in Sources */,
 				8C8BAB92258D12D400E4EDD3 /* TranslationModel.swift in Sources */,
 				8C8BAB97258D213200E4EDD3 /* UserDefaults+Extension.swift in Sources */,
+				8C75FC7F25A1B3BE00802334 /* CircleButton.swift in Sources */,
 				8C75FC7925A08E4600802334 /* Font+Extension.swift in Sources */,
 				8C75FBEE259E168200802334 /* ChapterTextView.swift in Sources */,
 				8C75FBDC259C938900802334 /* Toolbars.swift in Sources */,

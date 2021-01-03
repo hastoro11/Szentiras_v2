@@ -100,7 +100,7 @@ class BibleController: ObservableObject {
          translations.remove(atOffsets: IndexSet(integersIn: 0...1))
       }
       var trs = translations.map({ trans -> ActionSheet.Button in
-         ActionSheet.Button.default(Text(trans.name), action: {
+         ActionSheet.Button.default(Text(trans.short), action: {
             self.changeTranslation(to: trans)
          })
       })
