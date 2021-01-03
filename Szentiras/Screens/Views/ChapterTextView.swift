@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ChapterTextView: View {
+   @EnvironmentObject var model: ReadingTabsViewModel
    @Binding var verses: [Vers]
    @State var hideNavigationBar: Bool = false
    var book: Book
@@ -18,7 +19,11 @@ struct ChapterTextView: View {
    var body: some View {
       ScrollView(.vertical, showsIndicators: false) {
          bookHeader
-         versesView
+         if model.isTextContinous {
+            continuousView
+         } else {
+            versesView
+         }
       }
       .padding(.horizontal)
       .navigationBarHidden(hideNavigationBar)
@@ -33,11 +38,11 @@ struct ChapterTextView: View {
          Text(book.name)
             .layoutPriority(1)
             .lineLimit(3)
-            .font(.bold(26))
+            .font(.bold(model.fontSize+6))
             .multilineTextAlignment(.center)
             
          Text("\(chapter). fejezet")
-            .font(.medium(22))
+            .font(.medium(model.fontSize+4))
             .bold()
       }
       .padding(.vertical)
@@ -47,12 +52,22 @@ struct ChapterTextView: View {
    // Verses view
    //--------------------------------
    var versesView: some View {
-      LazyVStack {
+      return LazyVStack(alignment: .leading, spacing: 6) {
          ForEach(verses) { vers in
             HStack {
-               Text(vers.index).font(.medium(18)) +
-                  Text(" " + vers.szoveg)
-                  .font(.light(18))
+               if model.showIndex {
+                  Group {
+                     Text(vers.index).font(.medium(model.fontSize)) +
+                        Text(" " + vers.szoveg.strippedHTMLElements)
+                        .font(.light(model.fontSize))
+                  }
+                  .lineSpacing(6)
+               } else {
+                  Text(vers.szoveg.strippedHTMLElements)
+                     .font(.light(model.fontSize))
+                     .lineSpacing(6)
+                     .padding(.bottom, 1)
+               }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .onTapGesture {
@@ -65,6 +80,33 @@ struct ChapterTextView: View {
       }
       .padding(.bottom, 40)
    }
+   
+   //--------------------------------
+   // Continuous view
+   //--------------------------------
+   var continuousView: some View {
+      let continuousVerses = verses.reduce("", {result, vers -> String in
+         return result + " " + vers.szoveg.strippedHTMLElements
+      })
+      var indexedVerses = Text("")
+      for vers in verses {
+         // swiftlint:disable shorthand_operator
+         indexedVerses = indexedVerses + Text("\(vers.index) ").font(.medium(model.fontSize))
+         indexedVerses = indexedVerses + Text("\(vers.szoveg.strippedHTMLElements) ").font(.light(model.fontSize))
+      }
+      return LazyVStack {
+         if model.showIndex {
+            indexedVerses
+               .font(.light(model.fontSize))
+               .lineSpacing(6)
+         } else {
+            Text(continuousVerses)
+               .font(.light(model.fontSize))
+               .lineSpacing(6)
+         }
+      }
+      .padding(.bottom, 40)
+   }
 }
 
 //--------------------------------
@@ -73,5 +115,6 @@ struct ChapterTextView: View {
 struct ChapterTextView_Previews: PreviewProvider {
    static var previews: some View {
       ChapterTextView(verses: .constant(Vers.mockData), book: Book.defaultBook(for: Translation.init()), chapter: 1)
+         .environmentObject(ReadingTabsViewModel())
    }
 }

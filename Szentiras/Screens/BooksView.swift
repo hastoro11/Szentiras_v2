@@ -19,7 +19,11 @@ struct BooksView: View {
    //--------------------------------
    var body: some View {
       VStack {
-         Header(showChapters: $showChapters, showTranslations: $showTranslations, showSettings: false)
+         Header(
+            showChapters: $showChapters,
+            showTranslations: $showTranslations,
+            showSettingsView: .constant(false),
+            isSettingsAvailable: false)
          booksGrid
          Spacer()
       }

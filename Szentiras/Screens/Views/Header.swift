@@ -12,7 +12,8 @@ struct Header: View {
    
    @Binding var showChapters: Bool
    @Binding var showTranslations: Bool
-   var showSettings: Bool = true
+   @Binding var showSettingsView: Bool
+   var isSettingsAvailable: Bool = true
    //--------------------------------
    // Body
    //--------------------------------
@@ -67,8 +68,10 @@ struct Header: View {
                image: "textformat",
                backgroundColor: Color.Theme.green,
                textColor: Color.white,
-               action: {})
-               .opacity(showSettings ? 1.0 : 0.0)
+               action: {
+                  showSettingsView.toggle()
+               })
+               .opacity(isSettingsAvailable ? 1.0 : 0.0)
             CircleButton(
                image: "bubble.left.and.bubble.right.fill",
                backgroundColor: Color.Theme.red,
@@ -89,7 +92,7 @@ struct Header: View {
 struct Header_Previews: PreviewProvider {
    static var controller = BibleController.preview(SavedDefault())
    static var previews: some View {
-      Header(showChapters: .constant(false), showTranslations: .constant(false))
+      Header(showChapters: .constant(false), showTranslations: .constant(false), showSettingsView: .constant(true))
          .environmentObject(controller)
          .previewLayout(.sizeThatFits)
    }

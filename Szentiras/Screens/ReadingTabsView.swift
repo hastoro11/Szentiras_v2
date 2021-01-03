@@ -8,29 +8,45 @@
 import SwiftUI
 
 struct ReadingTabsView: View {
-   @EnvironmentObject var controller: BibleController
+   @EnvironmentObject var controller: BibleController   
    @State var showTranslations: Bool = false
    @State var showChapters: Bool = false
    @State var selectedChapter: Int = 1
+   @State var showSettingsView: Bool = false
    
+   @StateObject var model: ReadingTabsViewModel = ReadingTabsViewModel()
    //--------------------------------
    // Body
    //--------------------------------
    var body: some View {
-      VStack {
-         Header(showChapters: $showChapters, showTranslations: $showTranslations)
-         Group {
-            if controller.isLoading {
-               Spacer()
-               ProgressView("Keresés...")
-               Spacer()
-            }
-            if !controller.isLoading {
-               if controller.versesInBook.count != 0 {
-                  tabview
-                     .id(controller.versesInBook.count)
+      ZStack(alignment: .bottom) {
+         VStack {
+            Header(
+               showChapters: $showChapters,
+               showTranslations: $showTranslations,
+               showSettingsView: $showSettingsView)
+            Group {
+               if controller.isLoading {
+                  Spacer()
+                  ProgressView("Keresés...")
+                  Spacer()
+               }
+               if !controller.isLoading {
+                  if controller.versesInBook.count != 0 {
+                     tabview
+                        .id(controller.versesInBook.count)
+                  }
                }
             }
+         }
+         if showSettingsView {
+            Color.Theme.dark
+               .edgesIgnoringSafeArea(.top)
+               .opacity(0.15)
+               .onTapGesture {
+                  showSettingsView.toggle()
+               }
+            settingsView
          }
       }
       .actionSheet(isPresented: $showTranslations, content: {
@@ -42,7 +58,40 @@ struct ReadingTabsView: View {
          ChapterSheet(showChapters: $showChapters, selectedChapter: $selectedChapter)
             .environmentObject(controller)
       }
-      .navigationBarTitleDisplayMode(.inline)
+   }
+   
+   //--------------------------------
+   // SettingsView
+   //--------------------------------
+   var settingsView: some View {
+      VStack {
+         Rectangle()
+            .frame(height: 0.5)
+         VStack(spacing: 20) {
+            HStack {
+               Text("Betűméret")
+                  .font(.medium(16))
+               Slider(value: $model.fontSize, in: 14...22, step: 2)
+            }
+            HStack {
+               Text("Versszámozás")
+                  .font(.medium(16))
+               Spacer()
+               Toggle("", isOn: $model.showIndex)
+            }
+            HStack {
+               Text("Folyamatos olvasás")
+                  .font(.medium(16))
+               Spacer()
+               Toggle("", isOn: $model.isTextContinous)
+            }
+         }
+         .padding(.horizontal)
+         .padding(.top, 25)
+      }
+      .padding(.bottom, 25)
+      .background(Color.white.shadow(radius: 12))
+      
    }
    
    //--------------------------------
@@ -57,6 +106,7 @@ struct ReadingTabsView: View {
                chapter: controller.activeChapter
             )
             .tag(index)
+            .environmentObject(model)
          }
       }
       .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))      
