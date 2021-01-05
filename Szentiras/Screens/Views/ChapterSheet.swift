@@ -44,6 +44,7 @@ struct ChapterSheet_Previews: PreviewProvider {
    static var controller = BibleController.preview(SavedDefault())
     static var previews: some View {
       ChapterSheet(showChapters: .constant(false), selectedChapter: .constant(1))
+         .preferredColorScheme(.dark)
          .environmentObject(controller)
     }
 }

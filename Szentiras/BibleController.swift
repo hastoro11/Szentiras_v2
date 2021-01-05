@@ -127,6 +127,14 @@ class BibleController: ObservableObject {
       }
    }
    
+   var isFirst: Bool {
+      activeChapter == 1
+   }
+   
+   var isLast: Bool {
+      activeChapter == activeBook.numberOfChapters
+   }
+   
    //--------------------------------
    // Preview
    //--------------------------------

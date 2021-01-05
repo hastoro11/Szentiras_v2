@@ -90,6 +90,7 @@ struct BooksView_Previews: PreviewProvider {
    static var biblectrl = BibleController.preview(SavedDefault())
    static var previews: some View {
       BooksView()
+         .preferredColorScheme(.dark)
          .environmentObject(biblectrl)
    }
 }

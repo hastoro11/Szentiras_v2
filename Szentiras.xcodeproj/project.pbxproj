@@ -44,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8C1E880625A367BE007819BD /* Todo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Todo.md; sourceTree = "<group>"; };
 		8C75FBD7259C8AFC00802334 /* ChapterSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterSheet.swift; sourceTree = "<group>"; };
 		8C75FBDB259C938900802334 /* Toolbars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbars.swift; sourceTree = "<group>"; };
 		8C75FBDE259CBF2A00802334 /* ReadingTabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingTabsView.swift; sourceTree = "<group>"; };
@@ -134,6 +135,7 @@
 				8C8BAB8B258D0BF800E4EDD3 /* BibleController.swift */,
 				8C8BAB57258D044800E4EDD3 /* Assets.xcassets */,
 				8C8BAB5C258D044800E4EDD3 /* Info.plist */,
+				8C1E880625A367BE007819BD /* Todo.md */,
 				8C8BAB59258D044800E4EDD3 /* Preview Content */,
 			);
 			path = Szentiras;

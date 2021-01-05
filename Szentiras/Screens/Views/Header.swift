@@ -23,7 +23,7 @@ struct Header: View {
             CircleButton(
                text: controller.activeBook.abbrev,
                backgroundColor: Color.Theme.dark,
-               textColor: .white,
+               textColor: Color.Theme.light,
                action: {
                   controller.selectedTab = 0
                })
@@ -45,10 +45,11 @@ struct Header: View {
                Image(systemName: "chevron.left")
                   .font(.medium(22))
             })
-            .accentColor(Color.Theme.dark)
+            .accentColor(controller.isFirst ? Color.gray : Color.Theme.dark)
             Spacer()
             Text(controller.translation.short)
                .font(.medium(16))
+               .fixedSize()
                .onTapGesture {
                   showTranslations.toggle()
                }
@@ -59,7 +60,7 @@ struct Header: View {
                Image(systemName: "chevron.right")
                   .font(.medium(22))
             })
-            .accentColor(Color.Theme.dark)
+            .accentColor(controller.isLast ? Color.gray : Color.Theme.dark)
          }
          Spacer()
          Spacer()

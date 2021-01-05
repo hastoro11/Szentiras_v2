@@ -40,7 +40,7 @@ struct ReadingTabsView: View {
             }
          }
          if showSettingsView {
-            Color.Theme.dark
+            Color.primary
                .edgesIgnoringSafeArea(.top)
                .opacity(0.15)
                .onTapGesture {
@@ -90,7 +90,7 @@ struct ReadingTabsView: View {
          .padding(.top, 25)
       }
       .padding(.bottom, 25)
-      .background(Color.white.shadow(radius: 12))
+      .background(Color.Theme.light.shadow(radius: 12))
       
    }
    
@@ -120,6 +120,7 @@ struct ReadingTabsView_Previews: PreviewProvider {
    static var ctrl = BibleController(savedDefault: SavedDefault())
    static var previews: some View {
       ReadingTabsView()
+         .preferredColorScheme(.dark)
          .environmentObject(ctrl)
    }
 }
