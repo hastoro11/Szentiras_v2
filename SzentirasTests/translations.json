@@ -1,0 +1,26 @@
+[
+   {
+       "abbrev": "SZIT",
+       "name": "Szent István Társulati Biblia",
+       "short": "Szent István Társulat",
+       "id": 1
+   },
+   {
+       "abbrev": "KNB",
+       "name": "Káldi-Neovulgáta",
+       "short": "Káldi-Neovulgáta",
+       "id": 3
+   },
+   {
+       "abbrev": "KG",
+       "name": "Károli Gáspár revideált fordítása",
+       "short": "Károli Gáspár",
+       "id": 4
+   },
+   {
+       "abbrev": "RUF",
+       "name": "Magyar Bibliatársulat újfordítású Bibliája (2014)",
+       "short": "Új fordítás",
+       "id": 6
+   }
+]

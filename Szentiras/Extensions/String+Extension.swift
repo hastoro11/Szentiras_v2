@@ -10,8 +10,8 @@ import Foundation
 extension String {
     var strippedHTMLElements: String {
         var str = self
-        if str.range(of: #"<\w+>"#, options: .regularExpression) != nil {
-            str = str.replacingOccurrences(of: #"<\w+>"#, with: "", options: .regularExpression)
+        if str.range(of: #"<.*?>"#, options: .regularExpression) != nil {
+         str = str.replacingOccurrences(of: #"<.*?>"#, with: "", options: .regularExpression)
         }
         return str
     }

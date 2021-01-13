@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C4F95AF25A9C38400720290 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C75FC8125A1F6E300802334 /* String+Extension.swift */; };
+		8C4F95B525A9F81A00720290 /* translations.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C4F95B225A9F24D00720290 /* translations.json */; };
+		8C4F95BB25A9F9E100720290 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BAB88258D095E00E4EDD3 /* Bundle+Extension.swift */; };
+		8C4F95C325AB3E3900720290 /* SzentirasNetworkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4F95C225AB3E3900720290 /* SzentirasNetworkTest.swift */; };
 		8C75FBD8259C8AFC00802334 /* ChapterSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C75FBD7259C8AFC00802334 /* ChapterSheet.swift */; };
 		8C75FBDC259C938900802334 /* Toolbars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C75FBDB259C938900802334 /* Toolbars.swift */; };
 		8C75FBDF259CBF2A00802334 /* ReadingTabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C75FBDE259CBF2A00802334 /* ReadingTabsView.swift */; };
@@ -37,14 +41,27 @@
 		8C8BAB97258D213200E4EDD3 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BAB96258D213200E4EDD3 /* UserDefaults+Extension.swift */; };
 		8C8BAB9C258DE6BA00E4EDD3 /* BooksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BAB9B258DE6BA00E4EDD3 /* BooksView.swift */; };
 		8C8BABA3258F719600E4EDD3 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BABA2258F719600E4EDD3 /* Color+Extension.swift */; };
+		8CA6A66525A9C35100FEBBD2 /* SzentirasExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA6A66425A9C35100FEBBD2 /* SzentirasExtensionTests.swift */; };
 		8CB096F52597854200E27EAF /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB096F42597854200E27EAF /* NetworkController.swift */; };
 		8CB096F92597874800E27EAF /* BibleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB096F82597874800E27EAF /* BibleError.swift */; };
 		8CB096FD2598718D00E27EAF /* TimelaneCombine in Frameworks */ = {isa = PBXBuildFile; productRef = 8CB096FC2598718D00E27EAF /* TimelaneCombine */; };
 		8CB097002598AA1B00E27EAF /* VersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB096FF2598AA1B00E27EAF /* VersModel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		8CA6A66725A9C35100FEBBD2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C8BAB48258D044700E4EDD3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8C8BAB4F258D044700E4EDD3;
+			remoteInfo = Szentiras;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		8C1E880625A367BE007819BD /* Todo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Todo.md; sourceTree = "<group>"; };
+		8C4F95B225A9F24D00720290 /* translations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = translations.json; sourceTree = "<group>"; };
+		8C4F95C225AB3E3900720290 /* SzentirasNetworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SzentirasNetworkTest.swift; sourceTree = "<group>"; };
 		8C75FBD7259C8AFC00802334 /* ChapterSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterSheet.swift; sourceTree = "<group>"; };
 		8C75FBDB259C938900802334 /* Toolbars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbars.swift; sourceTree = "<group>"; };
 		8C75FBDE259CBF2A00802334 /* ReadingTabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingTabsView.swift; sourceTree = "<group>"; };
@@ -77,6 +94,9 @@
 		8C8BAB96258D213200E4EDD3 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		8C8BAB9B258DE6BA00E4EDD3 /* BooksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksView.swift; sourceTree = "<group>"; };
 		8C8BABA2258F719600E4EDD3 /* Color+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		8CA6A66225A9C35100FEBBD2 /* SzentirasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SzentirasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CA6A66425A9C35100FEBBD2 /* SzentirasExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SzentirasExtensionTests.swift; sourceTree = "<group>"; };
+		8CA6A66625A9C35100FEBBD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CB096F42597854200E27EAF /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		8CB096F82597874800E27EAF /* BibleError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleError.swift; sourceTree = "<group>"; };
 		8CB096FF2598AA1B00E27EAF /* VersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersModel.swift; sourceTree = "<group>"; };
@@ -88,6 +108,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CB096FD2598718D00E27EAF /* TimelaneCombine in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CA6A65F25A9C35100FEBBD2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				8C8BAB52258D044700E4EDD3 /* Szentiras */,
+				8CA6A66325A9C35100FEBBD2 /* SzentirasTests */,
 				8C8BAB51258D044700E4EDD3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -118,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				8C8BAB50258D044700E4EDD3 /* Szentiras.app */,
+				8CA6A66225A9C35100FEBBD2 /* SzentirasTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -168,10 +197,10 @@
 				8C8BAB7E258D082E00E4EDD3 /* books_RUF.json */,
 				8C8BAB81258D084B00E4EDD3 /* books_KNB.json */,
 				8C8BAB85258D08EE00E4EDD3 /* BookModel.swift */,
-				8C8BAB8E258D10C300E4EDD3 /* translations.json */,
 				8C8BAB91258D12D400E4EDD3 /* TranslationModel.swift */,
 				8CB096F82597874800E27EAF /* BibleError.swift */,
 				8CB096FF2598AA1B00E27EAF /* VersModel.swift */,
+				8C8BAB8E258D10C300E4EDD3 /* translations.json */,
 				8C75FBF0259E172100802334 /* searchResult_mock.json */,
 			);
 			path = Models;
@@ -198,6 +227,17 @@
 				8C75FC8525A2071E00802334 /* ReadingTabsViewModel.swift */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		8CA6A66325A9C35100FEBBD2 /* SzentirasTests */ = {
+			isa = PBXGroup;
+			children = (
+				8C4F95B225A9F24D00720290 /* translations.json */,
+				8CA6A66425A9C35100FEBBD2 /* SzentirasExtensionTests.swift */,
+				8CA6A66625A9C35100FEBBD2 /* Info.plist */,
+				8C4F95C225AB3E3900720290 /* SzentirasNetworkTest.swift */,
+			);
+			path = SzentirasTests;
 			sourceTree = "<group>";
 		};
 		8CB096F32597852E00E27EAF /* Network */ = {
@@ -232,6 +272,24 @@
 			productReference = 8C8BAB50258D044700E4EDD3 /* Szentiras.app */;
 			productType = "com.apple.product-type.application";
 		};
+		8CA6A66125A9C35100FEBBD2 /* SzentirasTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8CA6A66925A9C35100FEBBD2 /* Build configuration list for PBXNativeTarget "SzentirasTests" */;
+			buildPhases = (
+				8CA6A65E25A9C35100FEBBD2 /* Sources */,
+				8CA6A65F25A9C35100FEBBD2 /* Frameworks */,
+				8CA6A66025A9C35100FEBBD2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8CA6A66825A9C35100FEBBD2 /* PBXTargetDependency */,
+			);
+			name = SzentirasTests;
+			productName = SzentirasTests;
+			productReference = 8CA6A66225A9C35100FEBBD2 /* SzentirasTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -243,6 +301,10 @@
 				TargetAttributes = {
 					8C8BAB4F258D044700E4EDD3 = {
 						CreatedOnToolsVersion = 12.3;
+					};
+					8CA6A66125A9C35100FEBBD2 = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = 8C8BAB4F258D044700E4EDD3;
 					};
 				};
 			};
@@ -263,6 +325,7 @@
 			projectRoot = "";
 			targets = (
 				8C8BAB4F258D044700E4EDD3 /* Szentiras */,
+				8CA6A66125A9C35100FEBBD2 /* SzentirasTests */,
 			);
 		};
 /* End PBXProject section */
@@ -284,6 +347,14 @@
 				8C8BAB58258D044800E4EDD3 /* Assets.xcassets in Resources */,
 				8C8BAB7C258D07F200E4EDD3 /* books_SZIT.json in Resources */,
 				8C8BAB79258D07B100E4EDD3 /* books_KG.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CA6A66025A9C35100FEBBD2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C4F95B525A9F81A00720290 /* translations.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,7 +410,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8CA6A65E25A9C35100FEBBD2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C4F95AF25A9C38400720290 /* String+Extension.swift in Sources */,
+				8CA6A66525A9C35100FEBBD2 /* SzentirasExtensionTests.swift in Sources */,
+				8C4F95C325AB3E3900720290 /* SzentirasNetworkTest.swift in Sources */,
+				8C4F95BB25A9F9E100720290 /* Bundle+Extension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8CA6A66825A9C35100FEBBD2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8C8BAB4F258D044700E4EDD3 /* Szentiras */;
+			targetProxy = 8CA6A66725A9C35100FEBBD2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		8C8BAB5D258D044800E4EDD3 /* Debug */ = {
@@ -502,6 +592,46 @@
 			};
 			name = Release;
 		};
+		8CA6A66A25A9C35100FEBBD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8YE8M3UNR3;
+				INFOPLIST_FILE = SzentirasTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sornyei.SzentirasTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Szentiras.app/Szentiras";
+			};
+			name = Debug;
+		};
+		8CA6A66B25A9C35100FEBBD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8YE8M3UNR3;
+				INFOPLIST_FILE = SzentirasTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sornyei.SzentirasTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Szentiras.app/Szentiras";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -519,6 +649,15 @@
 			buildConfigurations = (
 				8C8BAB60258D044800E4EDD3 /* Debug */,
 				8C8BAB61258D044800E4EDD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8CA6A66925A9C35100FEBBD2 /* Build configuration list for PBXNativeTarget "SzentirasTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CA6A66A25A9C35100FEBBD2 /* Debug */,
+				8CA6A66B25A9C35100FEBBD2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

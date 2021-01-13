@@ -14,7 +14,7 @@ class NetworkController: ObservableObject {
    static var instance = NetworkController()
    private init() {}
    
-   private func fetchChapter(
+   func fetchChapter(
       translation: Translation,
       book: Book,
       chapter: Int) -> AnyPublisher<SearchResult, BibleError> {
@@ -29,12 +29,18 @@ class NetworkController: ObservableObject {
             if data.isEmpty {
                throw BibleError.dataCorrupted
             }
-            if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {
-               throw BibleError.badServerResponse
+            if let response = response as? HTTPURLResponse, response.statusCode == 500 {
+               throw BibleError.badURL
             }
             return data
          })
          .decode(type: SearchResult.self, decoder: JSONDecoder())
+         .tryMap({result -> SearchResult in
+            if result.valasz.verses.isEmpty {
+               throw BibleError.badURL
+            }
+            return result
+         })
          .mapError({error -> BibleError in
             switch error {
             case URLError.badServerResponse:
@@ -64,7 +70,7 @@ class NetworkController: ObservableObject {
             case DecodingError.valueNotFound(let value, _):
                return BibleError.valueNotFound(value)
             default:
-               return BibleError.unknown
+               return  error as? BibleError ?? .unknown
             }
          })         
          .eraseToAnyPublisher()

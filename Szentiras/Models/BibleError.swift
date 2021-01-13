@@ -7,7 +7,10 @@
 
 import Foundation
 
-enum BibleError: Error, CustomStringConvertible {
+enum BibleError: Error, CustomStringConvertible, Equatable {
+   static func == (lhs: BibleError, rhs: BibleError) -> Bool {
+      lhs.description == rhs.description
+   }
    
    case badServerResponse, badURL, cannotFindHost, cannotLoadFromNetwork, cannotParseResponse,
         internationalRoamingOff, networkConnectionLost, notConnectedToInternet, unsupportedURL,
