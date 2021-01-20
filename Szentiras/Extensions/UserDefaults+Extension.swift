@@ -16,14 +16,14 @@ struct SavedDefault: Codable {
 extension UserDefaults {
    static let saveKey = "saveKey"
    
-   static func setSavedData(_ savedDefault: SavedDefault) {
+   static func setSavedData(_ savedDefault: SavedDefault, key: String = "saveKey") {
       if let data = try? JSONEncoder().encode(savedDefault) {
-         Self.standard.setValue(data, forKey: saveKey)
+         Self.standard.setValue(data, forKey: key)
       }
    }
    
-   static func getSavedData() -> SavedDefault {
-      if let data = Self.standard.object(forKey: saveKey) as? Data,
+   static func getSavedData(key: String = "saveKey") -> SavedDefault {
+      if let data = Self.standard.object(forKey: key) as? Data,
          let savedDefault = try? JSONDecoder().decode(SavedDefault.self, from: data) {
          return savedDefault
       }

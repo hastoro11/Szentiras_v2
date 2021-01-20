@@ -6,9 +6,22 @@
 //
 
 import XCTest
+@testable import Szentiras
 
 class SzentirasExtensionTests: XCTestCase {
+   
+   var savedDefault: SavedDefault!
+   var saveKey: String!
 
+   override func setUp() {
+      savedDefault = SavedDefault(translation: "KG", book: 102, chapter: 2)
+      saveKey = "testKey"
+   }
+   
+   override func tearDown() {
+      UserDefaults.standard.removeObject(forKey: saveKey)
+   }
+   
    func test_String() {
       let strings = [
          "This is a test<b>",
@@ -26,7 +39,7 @@ class SzentirasExtensionTests: XCTestCase {
    }
    
    func test_Bundle_decode() {
-      struct TTranslation: Decodable, Identifiable, Hashable {
+      struct Translation: Decodable, Identifiable, Hashable {
          var abbrev: String = "RUF"
          var name: String = "Magyar Bibliatársulat újfordítású Bibliája (2014)"
          var short: String = "Új fordítás"
@@ -37,12 +50,12 @@ class SzentirasExtensionTests: XCTestCase {
       
       do {
          let url = try XCTUnwrap(
-            bundle.url(forResource: "translations", withExtension: "json")
+            bundle.url(forResource: "translations_", withExtension: "json")
          )
          let data = try XCTUnwrap(
             try Data(contentsOf: url)
          )
-         let translations = try JSONDecoder().decode([TTranslation].self, from: data)
+         let translations = try JSONDecoder().decode([Translation].self, from: data)
          XCTAssertFalse(translations.isEmpty)
          XCTAssertEqual("RUF", translations.reversed()[0].abbrev)
       } catch {}
@@ -78,7 +91,7 @@ class SzentirasExtensionTests: XCTestCase {
       
       do {
          let url = try XCTUnwrap(
-            bundle.url(forResource: "translations", withExtension: "json")
+            bundle.url(forResource: "translations_", withExtension: "json")
          )
          let data = try XCTUnwrap(
             try Data(contentsOf: url)
@@ -109,5 +122,15 @@ class SzentirasExtensionTests: XCTestCase {
          }
          
       } catch {}
+   }
+   
+   func test_UserDefaults() {
+      UserDefaults.setSavedData(savedDefault, key: saveKey)
+      
+      let resultedSavedData = UserDefaults.getSavedData(key: saveKey)
+      
+      XCTAssertEqual("KG", resultedSavedData.translation)
+      XCTAssertEqual(102, resultedSavedData.book)
+      XCTAssertEqual(2, resultedSavedData.chapter)
    }
 }

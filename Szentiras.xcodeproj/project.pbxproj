@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8C4F95AF25A9C38400720290 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C75FC8125A1F6E300802334 /* String+Extension.swift */; };
-		8C4F95B525A9F81A00720290 /* translations.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C4F95B225A9F24D00720290 /* translations.json */; };
+		8C4F95B525A9F81A00720290 /* translations_.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C4F95B225A9F24D00720290 /* translations_.json */; };
 		8C4F95BB25A9F9E100720290 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BAB88258D095E00E4EDD3 /* Bundle+Extension.swift */; };
 		8C4F95C325AB3E3900720290 /* SzentirasNetworkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4F95C225AB3E3900720290 /* SzentirasNetworkTest.swift */; };
 		8C75FBD8259C8AFC00802334 /* ChapterSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C75FBD7259C8AFC00802334 /* ChapterSheet.swift */; };
@@ -60,7 +60,7 @@
 
 /* Begin PBXFileReference section */
 		8C1E880625A367BE007819BD /* Todo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Todo.md; sourceTree = "<group>"; };
-		8C4F95B225A9F24D00720290 /* translations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = translations.json; sourceTree = "<group>"; };
+		8C4F95B225A9F24D00720290 /* translations_.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = translations_.json; sourceTree = "<group>"; };
 		8C4F95C225AB3E3900720290 /* SzentirasNetworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SzentirasNetworkTest.swift; sourceTree = "<group>"; };
 		8C75FBD7259C8AFC00802334 /* ChapterSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterSheet.swift; sourceTree = "<group>"; };
 		8C75FBDB259C938900802334 /* Toolbars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbars.swift; sourceTree = "<group>"; };
@@ -121,6 +121,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C3AC43825B483C10080DD79 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		8C75FBD3259C7F3C00802334 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +161,7 @@
 		8C8BAB52258D044700E4EDD3 /* Szentiras */ = {
 			isa = PBXGroup;
 			children = (
+				8C3AC43825B483C10080DD79 /* Protocols */,
 				8CB096F32597852E00E27EAF /* Network */,
 				8C8BAB84258D08BA00E4EDD3 /* Extensions */,
 				8C8BAB72258D076900E4EDD3 /* Models */,
@@ -232,10 +240,10 @@
 		8CA6A66325A9C35100FEBBD2 /* SzentirasTests */ = {
 			isa = PBXGroup;
 			children = (
-				8C4F95B225A9F24D00720290 /* translations.json */,
+				8C4F95B225A9F24D00720290 /* translations_.json */,
+				8C4F95C225AB3E3900720290 /* SzentirasNetworkTest.swift */,
 				8CA6A66425A9C35100FEBBD2 /* SzentirasExtensionTests.swift */,
 				8CA6A66625A9C35100FEBBD2 /* Info.plist */,
-				8C4F95C225AB3E3900720290 /* SzentirasNetworkTest.swift */,
 			);
 			path = SzentirasTests;
 			sourceTree = "<group>";
@@ -354,7 +362,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C4F95B525A9F81A00720290 /* translations.json in Resources */,
+				8C4F95B525A9F81A00720290 /* translations_.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
