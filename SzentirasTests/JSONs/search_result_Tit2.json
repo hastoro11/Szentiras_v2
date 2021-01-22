@@ -1,0 +1,135 @@
+{
+    "keres": {
+        "feladat": "idezet",
+        "hivatkozas": "Tit 2",
+        "forma": "json"
+    },
+    "valasz": {
+        "versek": [
+            {
+                "szoveg": "Te azonban azt hirdesd, ami egyezik az egészséges tanítással,",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700200100,
+                    "szep": "Tit 2,1"
+                }
+            },
+            {
+                "szoveg": "hogy az idős emberek legyenek mértékletesek, tisztességesek és józanok, a hitben, a szeretetben és az állhatatosságban egészségesek;",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700200200,
+                    "szep": "Tit 2,2"
+                }
+            },
+            {
+                "szoveg": "ugyanígy az idős asszonyok is szentekhez illően viselkedjenek; senkit se rágalmazzanak, ne legyenek mértéktelen borivás rabjai, tanítsanak a jóra;",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700200300,
+                    "szep": "Tit 2,3"
+                }
+            },
+            {
+                "szoveg": "neveljék józanságra a fiatal asszonyokat, hogy ezek is szeressék a férjüket és gyermekeiket,",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700200400,
+                    "szep": "Tit 2,4"
+                }
+            },
+            {
+                "szoveg": "és józanok, tiszta életűek, háziasak, jók, férjük iránt engedelmesek legyenek, nehogy miattuk érje gyalázat Isten igéjét.<br>",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700200500,
+                    "szep": "Tit 2,5"
+                }
+            },
+            {
+                "szoveg": "Az ifjakat ugyanígy intsd, hogy legyenek józanok mindenben;",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700200600,
+                    "szep": "Tit 2,6"
+                }
+            },
+            {
+                "szoveg": "te magad légy példaképük a jó cselekedetekben, mutass nekik a tanításban romlatlanságot és komolyságot,",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700200700,
+                    "szep": "Tit 2,7"
+                }
+            },
+            {
+                "szoveg": "beszéded legyen feddhetetlen és egészséges, hogy megszégyenüljön az ellenfeled, mivel semmi rosszat sem tud mondani rólunk.<br>",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700200800,
+                    "szep": "Tit 2,8"
+                }
+            },
+            {
+                "szoveg": "A szolgákat intsd, hogy engedelmeskedjenek uraiknak, legyenek készségesek mindenben, ne feleseljenek,",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700200900,
+                    "szep": "Tit 2,9"
+                }
+            },
+            {
+                "szoveg": "ne lopjanak, hanem tanúsítsanak igazi, teljes megbízhatóságot, hogy a mi üdvözítő Istenünk tanításának díszére váljanak mindenben.",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700201000,
+                    "szep": "Tit 2,10"
+                }
+            },
+            {
+                "szoveg": "Mert megjelent Isten üdvözítő kegyelme minden embernek,",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700201100,
+                    "szep": "Tit 2,11"
+                }
+            },
+            {
+                "szoveg": "és arra nevel minket, hogy megtagadva a hitetlenséget és a világi kívánságokat, józanul, igazságosan és kegyesen éljünk e világban,",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700201200,
+                    "szep": "Tit 2,12"
+                }
+            },
+            {
+                "szoveg": "mivel várjuk a mi boldog reménységünket, a mi nagy Istenünk és üdvözítőnk, Jézus Krisztus dicsőségének megjelenését,",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700201300,
+                    "szep": "Tit 2,13"
+                }
+            },
+            {
+                "szoveg": "aki önmagát adta értünk, hogy megváltson minket minden gonoszságtól, és megtisztítson minket a maga népévé, amely jó cselekedetre törekszik.",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700201400,
+                    "szep": "Tit 2,14"
+                }
+            },
+            {
+                "szoveg": "Ezt hirdesd! Ints és feddj teljes határozottsággal: senki meg ne vessen téged!",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700201500,
+                    "szep": "Tit 2,15"
+                }
+            }
+        ],
+        "forditas": {
+            "nev": "Magyar Bibliatársulat újfordítású Bibliája (2014)",
+            "rov": "RUF"
+        }
+    }
+}

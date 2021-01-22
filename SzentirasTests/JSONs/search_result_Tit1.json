@@ -1,0 +1,148 @@
+{
+    "keres": {
+        "feladat": "idezet",
+        "hivatkozas": "Tit 1",
+        "forma": "json"
+    },
+    "valasz": {
+        "versek": [
+            {
+                "szoveg": "Pál, Isten szolgája, Jézus Krisztusnak pedig apostola Isten választottaiért, hogy higgyenek, és megismerjék az igazságot az igazi kegyesség szerint",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700100100,
+                    "szep": "Tit 1,1"
+                }
+            },
+            {
+                "szoveg": "az örök élet reménységére, amelyet Isten, aki nem hazudik, örök idők előtt megígért,",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700100200,
+                    "szep": "Tit 1,2"
+                }
+            },
+            {
+                "szoveg": "igéjét pedig kijelentette a maga idejében az evangélium hirdetésével, amelyre megbízást kaptam a mi üdvözítő Istenünk rendeléséből.",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700100300,
+                    "szep": "Tit 1,3"
+                }
+            },
+            {
+                "szoveg": "Titusznak, a közös hitben való igaz fiamnak: Kegyelem és békesség Istentől, a mi Atyánktól és Krisztus Jézustól, a mi Üdvözítőnktől.",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700100400,
+                    "szep": "Tit 1,4"
+                }
+            },
+            {
+                "szoveg": "Azért hagytalak Krétán, hogy rendbe hozd az elintézetlenül maradt ügyeket, és presbitereket állíts szolgálatba városonként, ahogyan meghagytam neked:",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700100500,
+                    "szep": "Tit 1,5"
+                }
+            },
+            {
+                "szoveg": "ha van olyan, aki feddhetetlen, egyfeleségű férfi, akinek gyermekei hívők, nem vádolhatók kicsapongással, és nem engedetlenek.",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700100600,
+                    "szep": "Tit 1,6"
+                }
+            },
+            {
+                "szoveg": "A püspök ugyanis mint Isten sáfára legyen feddhetetlen, nem önkényeskedő, nem indulatos, nem részeges, nem kötekedő és nem haszonleső,",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700100700,
+                    "szep": "Tit 1,7"
+                }
+            },
+            {
+                "szoveg": "hanem vendégszerető, a jóra hajlandó, józan, igazságos, kegyes, önmegtartóztató,",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700100800,
+                    "szep": "Tit 1,8"
+                }
+            },
+            {
+                "szoveg": "aki ragaszkodik a tanítással megegyező igaz beszédhez, hogy az egészséges tanítással tudjon bátorítani, és meg tudja győzni az ellenszegülőket.",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700100900,
+                    "szep": "Tit 1,9"
+                }
+            },
+            {
+                "szoveg": "Mert sokan engedetlenek, fecsegők és ámítók, különösen a körülmetéltek között.",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700101000,
+                    "szep": "Tit 1,10"
+                }
+            },
+            {
+                "szoveg": "Ezeket el kell hallgattatni, mert egész családokat feldúlnak azzal, hogy aljas nyereség kedvéért azt tanítják, amit nem volna szabad.",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700101100,
+                    "szep": "Tit 1,11"
+                }
+            },
+            {
+                "szoveg": "Valaki közülük, saját prófétájuk mondta: „A krétaiak megrögzött hazudozók, gonosz vadállatok, lusta, falánk népség.”",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700101200,
+                    "szep": "Tit 1,12"
+                }
+            },
+            {
+                "szoveg": "Ez a vélemény igaz. Éppen ezért fedd őket szigorúan, hogy egészséges legyen a hitük,",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700101300,
+                    "szep": "Tit 1,13"
+                }
+            },
+            {
+                "szoveg": "ne foglalkozzanak zsidó mondákkal és az igazságtól elfordult emberek parancsolataival.",
+                "jegyzetek": [
+                    {
+                        "position": null,
+                        "text": "mondákkal: Vö. az 1Tim 1,4 jegyzetével"
+                    }
+                ],
+                "hely": {
+                    "gepi": 21700101400,
+                    "szep": "Tit 1,14"
+                }
+            },
+            {
+                "szoveg": "Minden tiszta a tisztának, de a tisztátalanoknak és a hitetleneknek semmi sem tiszta, sőt szennyes mind az elméjük, mind a lelkiismeretük.",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700101500,
+                    "szep": "Tit 1,15"
+                }
+            },
+            {
+                "szoveg": "Azt vallják, hogy ismerik Istent, de cselekedeteikkel tagadják, mert utálatosak, engedetlenek és minden jó cselekedetre alkalmatlanok.",
+                "jegyzetek": [],
+                "hely": {
+                    "gepi": 21700101600,
+                    "szep": "Tit 1,16"
+                }
+            }
+        ],
+        "forditas": {
+            "nev": "Magyar Bibliatársulat újfordítású Bibliája (2014)",
+            "rov": "RUF"
+        }
+    }
+}

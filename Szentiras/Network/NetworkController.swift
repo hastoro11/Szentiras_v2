@@ -9,8 +9,8 @@ import Foundation
 import Combine
 import TimelaneCombine
 
-class NetworkController: ObservableObject {
-   
+class NetworkController: ObservableObject, NetworkProtocol {
+
    static var instance = NetworkController()
    private init() {}
    

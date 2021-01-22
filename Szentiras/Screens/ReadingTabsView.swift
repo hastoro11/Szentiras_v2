@@ -117,7 +117,7 @@ struct ReadingTabsView: View {
 // Preview
 //--------------------------------
 struct ReadingTabsView_Previews: PreviewProvider {
-   static var ctrl = BibleController(savedDefault: SavedDefault())
+   static var ctrl = BibleController(savedDefault: SavedDefault(), networkController: NetworkController.instance)
    static var previews: some View {
       ReadingTabsView()
          .preferredColorScheme(.dark)

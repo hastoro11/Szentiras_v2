@@ -12,7 +12,7 @@ struct SzentirasApp: App {
    @StateObject var bibleController: BibleController
    init() {
       let savedDefault = UserDefaults.getSavedData()
-      let biblectrl = BibleController(savedDefault: savedDefault)
+      let biblectrl = BibleController(savedDefault: savedDefault, networkController: NetworkController.instance)
       _bibleController = StateObject(wrappedValue: biblectrl)
    }
     var body: some Scene {

@@ -21,6 +21,12 @@
 		8C75FC7F25A1B3BE00802334 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C75FC7E25A1B3BE00802334 /* CircleButton.swift */; };
 		8C75FC8225A1F6E400802334 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C75FC8125A1F6E300802334 /* String+Extension.swift */; };
 		8C75FC8625A2071E00802334 /* ReadingTabsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C75FC8525A2071E00802334 /* ReadingTabsViewModel.swift */; };
+		8C7F13BA25B8104A0052E0C7 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7F13B925B8104A0052E0C7 /* NetworkProtocol.swift */; };
+		8C7F13BE25B811050052E0C7 /* MockNetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7F13BD25B811050052E0C7 /* MockNetworkController.swift */; };
+		8C7F13C225B8118B0052E0C7 /* search_result_Tit1.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C7F13C125B8118B0052E0C7 /* search_result_Tit1.json */; };
+		8C7F13C625B815360052E0C7 /* BibleControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7F13C525B815360052E0C7 /* BibleControllerTest.swift */; };
+		8C7F13CC25B817C20052E0C7 /* search_result_Tit2.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C7F13CB25B817C20052E0C7 /* search_result_Tit2.json */; };
+		8C7F13D025B817CE0052E0C7 /* search_result_Tit3.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C7F13CF25B817CE0052E0C7 /* search_result_Tit3.json */; };
 		8C8BAB54258D044700E4EDD3 /* SzentirasApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BAB53258D044700E4EDD3 /* SzentirasApp.swift */; };
 		8C8BAB56258D044700E4EDD3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BAB55258D044700E4EDD3 /* ContentView.swift */; };
 		8C8BAB58258D044800E4EDD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C8BAB57258D044800E4EDD3 /* Assets.xcassets */; };
@@ -72,6 +78,12 @@
 		8C75FC7E25A1B3BE00802334 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		8C75FC8125A1F6E300802334 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		8C75FC8525A2071E00802334 /* ReadingTabsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingTabsViewModel.swift; sourceTree = "<group>"; };
+		8C7F13B925B8104A0052E0C7 /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
+		8C7F13BD25B811050052E0C7 /* MockNetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkController.swift; sourceTree = "<group>"; };
+		8C7F13C125B8118B0052E0C7 /* search_result_Tit1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = search_result_Tit1.json; sourceTree = "<group>"; };
+		8C7F13C525B815360052E0C7 /* BibleControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleControllerTest.swift; sourceTree = "<group>"; };
+		8C7F13CB25B817C20052E0C7 /* search_result_Tit2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = search_result_Tit2.json; sourceTree = "<group>"; };
+		8C7F13CF25B817CE0052E0C7 /* search_result_Tit3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = search_result_Tit3.json; sourceTree = "<group>"; };
 		8C8BAB50258D044700E4EDD3 /* Szentiras.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Szentiras.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C8BAB53258D044700E4EDD3 /* SzentirasApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SzentirasApp.swift; sourceTree = "<group>"; };
 		8C8BAB55258D044700E4EDD3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -124,6 +136,7 @@
 		8C3AC43825B483C10080DD79 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				8C7F13B925B8104A0052E0C7 /* NetworkProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -138,6 +151,17 @@
 				8C75FC7E25A1B3BE00802334 /* CircleButton.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		8C7F13D325B818630052E0C7 /* JSONs */ = {
+			isa = PBXGroup;
+			children = (
+				8C7F13C125B8118B0052E0C7 /* search_result_Tit1.json */,
+				8C7F13CB25B817C20052E0C7 /* search_result_Tit2.json */,
+				8C7F13CF25B817CE0052E0C7 /* search_result_Tit3.json */,
+				8C4F95B225A9F24D00720290 /* translations_.json */,
+			);
+			path = JSONs;
 			sourceTree = "<group>";
 		};
 		8C8BAB47258D044700E4EDD3 = {
@@ -240,10 +264,12 @@
 		8CA6A66325A9C35100FEBBD2 /* SzentirasTests */ = {
 			isa = PBXGroup;
 			children = (
-				8C4F95B225A9F24D00720290 /* translations_.json */,
+				8C7F13D325B818630052E0C7 /* JSONs */,
 				8C4F95C225AB3E3900720290 /* SzentirasNetworkTest.swift */,
 				8CA6A66425A9C35100FEBBD2 /* SzentirasExtensionTests.swift */,
 				8CA6A66625A9C35100FEBBD2 /* Info.plist */,
+				8C7F13BD25B811050052E0C7 /* MockNetworkController.swift */,
+				8C7F13C525B815360052E0C7 /* BibleControllerTest.swift */,
 			);
 			path = SzentirasTests;
 			sourceTree = "<group>";
@@ -362,6 +388,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C7F13CC25B817C20052E0C7 /* search_result_Tit2.json in Resources */,
+				8C7F13C225B8118B0052E0C7 /* search_result_Tit1.json in Resources */,
+				8C7F13D025B817CE0052E0C7 /* search_result_Tit3.json in Resources */,
 				8C4F95B525A9F81A00720290 /* translations_.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,6 +431,7 @@
 				8C8BABA3258F719600E4EDD3 /* Color+Extension.swift in Sources */,
 				8C8BAB56258D044700E4EDD3 /* ContentView.swift in Sources */,
 				8C8BAB54258D044700E4EDD3 /* SzentirasApp.swift in Sources */,
+				8C7F13BA25B8104A0052E0C7 /* NetworkProtocol.swift in Sources */,
 				8C8BAB9C258DE6BA00E4EDD3 /* BooksView.swift in Sources */,
 				8C75FBD8259C8AFC00802334 /* ChapterSheet.swift in Sources */,
 				8C8BAB89258D095E00E4EDD3 /* Bundle+Extension.swift in Sources */,
@@ -422,7 +452,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C7F13C625B815360052E0C7 /* BibleControllerTest.swift in Sources */,
 				8C4F95AF25A9C38400720290 /* String+Extension.swift in Sources */,
+				8C7F13BE25B811050052E0C7 /* MockNetworkController.swift in Sources */,
 				8CA6A66525A9C35100FEBBD2 /* SzentirasExtensionTests.swift in Sources */,
 				8C4F95C325AB3E3900720290 /* SzentirasNetworkTest.swift in Sources */,
 				8C4F95BB25A9F9E100720290 /* Bundle+Extension.swift in Sources */,

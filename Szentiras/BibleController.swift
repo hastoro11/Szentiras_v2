@@ -23,16 +23,19 @@ class BibleController: ObservableObject {
    var cancellables: Set<AnyCancellable> = []
    var savedDefault: SavedDefault
    
+   var networkController: NetworkProtocol
+   
    //--------------------------------
    // Init
    //--------------------------------
-   init(savedDefault: SavedDefault) {
+   init(savedDefault: SavedDefault, networkController: NetworkProtocol) {
       self.savedDefault = savedDefault
       self.translation = Translation.get(abbrev: savedDefault.translation)
       let allBooks = Book.all(translation: savedDefault.translation)
       self.books = allBooks
       self.activeBook = allBooks.first(where: {$0.number == savedDefault.book}) ?? allBooks[0]
-      self.activeChapter = savedDefault.chapter      
+      self.activeChapter = savedDefault.chapter
+      self.networkController = networkController
       onTranslationChange()
       onBookChange()
    }
@@ -139,6 +142,6 @@ class BibleController: ObservableObject {
    // Preview
    //--------------------------------
    static func preview(_ savedDefault: SavedDefault) -> BibleController {
-      BibleController(savedDefault: savedDefault)
+      BibleController(savedDefault: savedDefault, networkController: NetworkController.instance)
    }
 }
