@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ContentView: View {
    @EnvironmentObject var bibleController: BibleController
@@ -23,6 +24,12 @@ struct ContentView: View {
             .tabItem {
                Image(systemName: "book")
                Text("Olvasás")
+            }
+         BookmarksView()
+            .tag(2)
+            .tabItem {
+               Image(systemName: "bookmark")
+               Text("Könyvjelzők")
             }
       }
    }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C2B140A25BAB6A10040DFE9 /* BookmarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2B140925BAB6A10040DFE9 /* BookmarksView.swift */; };
+		8C2B140E25BABC560040DFE9 /* BookmarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2B140D25BABC560040DFE9 /* BookmarkModel.swift */; };
 		8C4F95AF25A9C38400720290 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C75FC8125A1F6E300802334 /* String+Extension.swift */; };
 		8C4F95B525A9F81A00720290 /* translations_.json in Resources */ = {isa = PBXBuildFile; fileRef = 8C4F95B225A9F24D00720290 /* translations_.json */; };
 		8C4F95BB25A9F9E100720290 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8BAB88258D095E00E4EDD3 /* Bundle+Extension.swift */; };
@@ -52,6 +54,8 @@
 		8CB096F92597874800E27EAF /* BibleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB096F82597874800E27EAF /* BibleError.swift */; };
 		8CB096FD2598718D00E27EAF /* TimelaneCombine in Frameworks */ = {isa = PBXBuildFile; productRef = 8CB096FC2598718D00E27EAF /* TimelaneCombine */; };
 		8CB097002598AA1B00E27EAF /* VersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB096FF2598AA1B00E27EAF /* VersModel.swift */; };
+		8CE1F30425BAB063007B8D13 /* BookmarkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE1F30325BAB063007B8D13 /* BookmarkController.swift */; };
+		8CE1F30925BAB103007B8D13 /* Bookmark.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8CE1F30725BAB103007B8D13 /* Bookmark.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +70,8 @@
 
 /* Begin PBXFileReference section */
 		8C1E880625A367BE007819BD /* Todo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Todo.md; sourceTree = "<group>"; };
+		8C2B140925BAB6A10040DFE9 /* BookmarksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksView.swift; sourceTree = "<group>"; };
+		8C2B140D25BABC560040DFE9 /* BookmarkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkModel.swift; sourceTree = "<group>"; };
 		8C4F95B225A9F24D00720290 /* translations_.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = translations_.json; sourceTree = "<group>"; };
 		8C4F95C225AB3E3900720290 /* SzentirasNetworkTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SzentirasNetworkTest.swift; sourceTree = "<group>"; };
 		8C75FBD7259C8AFC00802334 /* ChapterSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterSheet.swift; sourceTree = "<group>"; };
@@ -112,6 +118,8 @@
 		8CB096F42597854200E27EAF /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		8CB096F82597874800E27EAF /* BibleError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleError.swift; sourceTree = "<group>"; };
 		8CB096FF2598AA1B00E27EAF /* VersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersModel.swift; sourceTree = "<group>"; };
+		8CE1F30325BAB063007B8D13 /* BookmarkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkController.swift; sourceTree = "<group>"; };
+		8CE1F30825BAB103007B8D13 /* Bookmark.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bookmark.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +159,23 @@
 				8C75FC7E25A1B3BE00802334 /* CircleButton.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		8C7E83DE25BB273200F0210B /* ReadingsTab */ = {
+			isa = PBXGroup;
+			children = (
+				8C75FBDE259CBF2A00802334 /* ReadingTabsView.swift */,
+				8C75FC8525A2071E00802334 /* ReadingTabsViewModel.swift */,
+			);
+			path = ReadingsTab;
+			sourceTree = "<group>";
+		};
+		8C7E83DF25BB274A00F0210B /* BookmarksTab */ = {
+			isa = PBXGroup;
+			children = (
+				8C2B140925BAB6A10040DFE9 /* BookmarksView.swift */,
+			);
+			path = BookmarksTab;
 			sourceTree = "<group>";
 		};
 		8C7F13D325B818630052E0C7 /* JSONs */ = {
@@ -194,6 +219,8 @@
 				8C8BAB53258D044700E4EDD3 /* SzentirasApp.swift */,
 				8C8BAB55258D044700E4EDD3 /* ContentView.swift */,
 				8C8BAB8B258D0BF800E4EDD3 /* BibleController.swift */,
+				8CE1F30325BAB063007B8D13 /* BookmarkController.swift */,
+				8CE1F30725BAB103007B8D13 /* Bookmark.xcdatamodeld */,
 				8C8BAB57258D044800E4EDD3 /* Assets.xcassets */,
 				8C8BAB5C258D044800E4EDD3 /* Info.plist */,
 				8C1E880625A367BE007819BD /* Todo.md */,
@@ -234,6 +261,7 @@
 				8CB096FF2598AA1B00E27EAF /* VersModel.swift */,
 				8C8BAB8E258D10C300E4EDD3 /* translations.json */,
 				8C75FBF0259E172100802334 /* searchResult_mock.json */,
+				8C2B140D25BABC560040DFE9 /* BookmarkModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -255,8 +283,8 @@
 			children = (
 				8C75FBD3259C7F3C00802334 /* Views */,
 				8C8BAB9B258DE6BA00E4EDD3 /* BooksView.swift */,
-				8C75FBDE259CBF2A00802334 /* ReadingTabsView.swift */,
-				8C75FC8525A2071E00802334 /* ReadingTabsViewModel.swift */,
+				8C7E83DE25BB273200F0210B /* ReadingsTab */,
+				8C7E83DF25BB274A00F0210B /* BookmarksTab */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -426,14 +454,17 @@
 				8C75FC7C25A1B21C00802334 /* Header.swift in Sources */,
 				8C75FC8225A1F6E400802334 /* String+Extension.swift in Sources */,
 				8CB096F52597854200E27EAF /* NetworkController.swift in Sources */,
+				8CE1F30925BAB103007B8D13 /* Bookmark.xcdatamodeld in Sources */,
 				8C8BAB86258D08EE00E4EDD3 /* BookModel.swift in Sources */,
 				8C75FC8625A2071E00802334 /* ReadingTabsViewModel.swift in Sources */,
 				8C8BABA3258F719600E4EDD3 /* Color+Extension.swift in Sources */,
 				8C8BAB56258D044700E4EDD3 /* ContentView.swift in Sources */,
 				8C8BAB54258D044700E4EDD3 /* SzentirasApp.swift in Sources */,
+				8C2B140E25BABC560040DFE9 /* BookmarkModel.swift in Sources */,
 				8C7F13BA25B8104A0052E0C7 /* NetworkProtocol.swift in Sources */,
 				8C8BAB9C258DE6BA00E4EDD3 /* BooksView.swift in Sources */,
 				8C75FBD8259C8AFC00802334 /* ChapterSheet.swift in Sources */,
+				8CE1F30425BAB063007B8D13 /* BookmarkController.swift in Sources */,
 				8C8BAB89258D095E00E4EDD3 /* Bundle+Extension.swift in Sources */,
 				8CB097002598AA1B00E27EAF /* VersModel.swift in Sources */,
 				8C8BAB8C258D0BF800E4EDD3 /* BibleController.swift in Sources */,
@@ -444,6 +475,7 @@
 				8C75FC7925A08E4600802334 /* Font+Extension.swift in Sources */,
 				8C75FBEE259E168200802334 /* ChapterTextView.swift in Sources */,
 				8C75FBDC259C938900802334 /* Toolbars.swift in Sources */,
+				8C2B140A25BAB6A10040DFE9 /* BookmarksView.swift in Sources */,
 				8C75FBDF259CBF2A00802334 /* ReadingTabsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -722,6 +754,19 @@
 			productName = TimelaneCombine;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		8CE1F30725BAB103007B8D13 /* Bookmark.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8CE1F30825BAB103007B8D13 /* Bookmark.xcdatamodel */,
+			);
+			currentVersion = 8CE1F30825BAB103007B8D13 /* Bookmark.xcdatamodel */;
+			path = Bookmark.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8C8BAB48258D044700E4EDD3 /* Project object */;
 }
