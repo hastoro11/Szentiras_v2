@@ -12,9 +12,11 @@ struct ReadingTabsView: View {
    @State var showTranslations: Bool = false
    @State var showChapters: Bool = false
    @State var selectedChapter: Int = 1
-   @State var showSettingsView: Bool = false
+   @State var showSettingsView: Bool = false   
+   @State var showBookmarkingView: Bool = false
    
    @StateObject var model: ReadingTabsViewModel = ReadingTabsViewModel()
+   @EnvironmentObject var bookmarkController: BookmarkController
    //--------------------------------
    // Body
    //--------------------------------
@@ -39,6 +41,7 @@ struct ReadingTabsView: View {
                }
             }
          }
+         
          if showSettingsView {
             Color.primary
                .edgesIgnoringSafeArea(.top)
@@ -47,6 +50,16 @@ struct ReadingTabsView: View {
                   showSettingsView.toggle()
                }
             settingsView
+         }
+         
+         if showBookmarkingView {
+            Color.primary
+               .edgesIgnoringSafeArea(.top)
+               .opacity(0.15)
+               .onTapGesture {
+                  showBookmarkingView.toggle()
+               }
+            bookmarkingView
          }
       }
       .actionSheet(isPresented: $showTranslations, content: {
@@ -95,6 +108,44 @@ struct ReadingTabsView: View {
    }
    
    //--------------------------------
+   // BookmarkingView
+   //--------------------------------
+   var bookmarkingView: some View {
+      VStack {
+         Rectangle()
+            .frame(height: 0.5)
+         VStack(spacing: 10) {
+            Text("Igevers megjelölése")
+               .font(.medium(16))
+               .frame(maxWidth: .infinity, alignment: .leading)
+            Divider()
+            HStack(spacing: 10) {
+               ForEach(["Blue", "Green", "Red", "Yellow"], id: \.self) { color in
+                  Circle()
+                     .fill(Color(color)).frame(width: 34, height: 34)
+                     .onTapGesture {
+                        bookmarkController.addBookmark(color: color, translation: controller.translation.abbrev)
+                        showBookmarkingView.toggle()
+                     }
+               }
+               Image(systemName: "xmark.circle")
+                  .font(.system(size: 34, weight: .thin))
+                  .onTapGesture {
+                     bookmarkController.deleteBookmark()
+                     showBookmarkingView.toggle()
+                  }
+               Spacer()
+            }
+            
+         }
+         .padding(.horizontal)
+         .padding(.top, 10)
+      }
+      .padding(.bottom, 25)
+      .background(Color.Theme.light.shadow(radius: 12))
+   }
+   
+   //--------------------------------
    // Tabview
    //--------------------------------
    var tabview: some View {
@@ -103,13 +154,43 @@ struct ReadingTabsView: View {
             ChapterTextView(
                verses: $controller.versesInBook[index-1],
                book: controller.activeBook,
-               chapter: controller.activeChapter
+               chapter: controller.activeChapter,
+               showBookmarkingView: $showBookmarkingView
             )
             .tag(index)
             .environmentObject(model)
          }
       }
       .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))      
+   }
+}
+
+struct BookmarkingView: View {
+   var body: some View {
+      VStack {
+         Rectangle()
+            .frame(height: 0.5)
+         VStack(spacing: 10) {
+            Text("Igevers megjelölése")
+               .font(.medium(16))
+               .frame(maxWidth: .infinity, alignment: .leading)
+            Divider()
+            HStack(spacing: 10) {
+               ForEach(["Blue", "Green", "Red", "Yellow"], id: \.self) { color in
+                  Circle()
+                     .fill(Color(color)).frame(width: 34, height: 34)
+               }
+               Image(systemName: "xmark.circle")
+                  .font(.system(size: 34, weight: .thin))
+               Spacer()
+            }
+            
+         }
+         .padding(.horizontal)
+         .padding(.top, 25)
+      }
+      .padding(.bottom, 25)
+      .background(Color.Theme.light.shadow(radius: 12))
    }
 }
 
@@ -120,7 +201,8 @@ struct ReadingTabsView_Previews: PreviewProvider {
    static var ctrl = BibleController(savedDefault: SavedDefault(), networkController: NetworkController.instance)
    static var previews: some View {
       ReadingTabsView()
-         .preferredColorScheme(.dark)
          .environmentObject(ctrl)
+      BookmarkingView()
+         .previewLayout(.sizeThatFits)
    }
 }

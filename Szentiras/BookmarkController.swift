@@ -17,6 +17,8 @@ class BookmarkController: ObservableObject {
       "Blue": [],
       "Green": []
    ]
+   @Published var selectedVers: Vers?
+   
    //--------------------------------
    // Init
    //--------------------------------
@@ -41,10 +43,13 @@ class BookmarkController: ObservableObject {
       if inMemory {
          try? createSampleData()
       }
-      fetchBooks()
+      fetchBookmarks()
    }
    
-   func fetchBooks() {
+   //--------------------------------
+   // Fetch bookmarks
+   //--------------------------------
+   func fetchBookmarks() {
       let context = container.viewContext
       let request = NSFetchRequest<Bookmark>(entityName: "Bookmark")
       let bookmarks = (try? context.fetch(request)) ?? []
@@ -59,6 +64,59 @@ class BookmarkController: ObservableObject {
          result[bookmark.color]!.append(bookmark)
       }
       sortedBookmarks = result
+   }
+   
+   //--------------------------------
+   // Find if vers bookmarked
+   //--------------------------------
+   func getBookmarkColor(gepi: String) -> Color {
+      if let found = checkIfVersIsMarked(gepi: gepi) {
+         return Color(found.color)
+      }
+      
+      return Color.clear
+   }
+   
+   private func checkIfVersIsMarked(gepi: String) -> Bookmark? {
+      let context = container.viewContext
+      let request = NSFetchRequest<Bookmark>(entityName: "Bookmark")
+      request.predicate = NSPredicate(format: "gepi_ = %@", gepi)
+      let bookmarks = (try? context.fetch(request)) ?? []
+      return bookmarks.first
+   }
+   
+   //--------------------------------
+   // Add bookmark
+   //--------------------------------
+   func addBookmark(color: String, translation: String) {
+      guard let vers = selectedVers  else { return }
+      let context = container.viewContext
+      if let foundBookmark = checkIfVersIsMarked(gepi: String(vers.hely.gepi)) {
+         foundBookmark.translation = translation
+         foundBookmark.color = color
+      } else {
+         let bookmark = Bookmark(context: context)
+         bookmark.color = color
+         bookmark.gepi = String(vers.hely.gepi)
+         bookmark.szep = vers.hely.szep
+         bookmark.szoveg = vers.szoveg
+         bookmark.translation = translation
+         bookmark.order = 0
+      }
+      try? context.save()
+      fetchBookmarks()
+   }
+   
+   //--------------------------------
+   // Delete bookmark
+   //--------------------------------
+   func deleteBookmark() {
+      guard let vers = selectedVers else { return }
+      let context = container.viewContext
+      if let found = checkIfVersIsMarked(gepi: String(vers.hely.gepi)) {
+         context.delete(found)
+         fetchBookmarks()
+      }
    }
       
    //--------------------------------

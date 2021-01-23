@@ -9,16 +9,18 @@ import SwiftUI
 
 struct ChapterTextView: View {
    @EnvironmentObject var model: ReadingTabsViewModel
+   @EnvironmentObject var bookmarkController: BookmarkController
    @Binding var verses: [Vers]
    @State var hideNavigationBar: Bool = false
    var book: Book
    var chapter: Int
+   @Binding var showBookmarkingView: Bool
    //--------------------------------
    // Body
    //--------------------------------
    var body: some View {
       ScrollView(.vertical, showsIndicators: false) {
-         bookHeader
+         bookHeader         
          if model.isTextContinous {
             continuousView
          } else {
@@ -26,7 +28,7 @@ struct ChapterTextView: View {
          }
       }
       .padding(.horizontal)
-      .navigationBarHidden(hideNavigationBar)
+      .navigationBarHidden(hideNavigationBar)      
    }
    
    //--------------------------------
@@ -60,8 +62,11 @@ struct ChapterTextView: View {
                      Text(vers.index).font(.medium(model.fontSize)) +
                         Text(" " + vers.szoveg.strippedHTMLElements)
                         .font(.light(model.fontSize))
+                        
                   }
                   .lineSpacing(6)
+                  .frame(maxWidth: .infinity, alignment: .leading)
+                  .background(bookmarkController.getBookmarkColor(gepi: String(vers.hely.gepi)).opacity(0.4))
                } else {
                   Text(vers.szoveg.strippedHTMLElements)
                      .font(.light(model.fontSize))
@@ -71,10 +76,8 @@ struct ChapterTextView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .onTapGesture {
-               hideNavigationBar.toggle()
-            }
-            .onLongPressGesture {
-               print("long")
+               showBookmarkingView.toggle()
+               bookmarkController.selectedVers = vers
             }
          }
       }
@@ -114,7 +117,11 @@ struct ChapterTextView: View {
 //--------------------------------
 struct ChapterTextView_Previews: PreviewProvider {
    static var previews: some View {
-      ChapterTextView(verses: .constant(Vers.mockData), book: Book.defaultBook(for: Translation.init()), chapter: 1)
+      ChapterTextView(
+         verses: .constant(Vers.mockData),
+         book: Book.defaultBook(for: Translation.init()),
+         chapter: 1,
+         showBookmarkingView: .constant(false))
          .environmentObject(ReadingTabsViewModel())
    }
 }

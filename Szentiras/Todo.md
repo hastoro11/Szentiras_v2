@@ -2,7 +2,11 @@
 
   * Error handling for network
   * Bookmarks
-  * Settings with policy
-  * Saving current data to UserDefaults
+      *  ~~Saving/Deleting from ReadingsView~~
+      *  Editing list
+  * Settings 
+    * Settings with policy
+    * Saving current data to UserDefaults
   * ~~Dark mode~~
-  
+  * Animations
+    * SettingsView, BookmarksView transitions 
