@@ -10,8 +10,9 @@ import CoreData
 
 struct BookmarksView: View {
     @Environment(\EnvironmentValues.managedObjectContext) var context
+    @Environment(\EnvironmentValues.editMode) var editMode
     @EnvironmentObject var controller: BookmarkController
-    
+//    @Binding var editMode: EditMode
     var bookmarks: FetchRequest<Bookmark>
     
     init() {
@@ -21,16 +22,23 @@ struct BookmarksView: View {
     }
     
     var sortedBookmarks: [String: [Bookmark]] {
-        print(controller.sortedBookmarks)
-        return controller.sortedBookmarks
+        controller.sortedBookmarks
     }
     
     var body: some View {
         VStack {
-            Text("Könyvjelzők")
-                .font(.medium(16))
-                .fixedSize()
-                .frame(height: 44)
+            ZStack {
+                Text("Könyvjelzők")
+                    .font(.medium(16))
+                    .fixedSize()
+                    .frame(height: 44)
+                    
+                HStack {
+                    Spacer()
+                    editButton
+                }
+                .padding(.horizontal)
+            }
             
             List {
                 ForEach(Array(sortedBookmarks.keys.sorted()), id: \.self) { color in
@@ -42,6 +50,9 @@ struct BookmarksView: View {
                             .onDelete(perform: { indexSet in
                                 print("on delete")
                             })
+                            .onMove(perform: { indices, newOffset in
+                                print("on move")
+                            })
                         }
                     }
                     
@@ -51,10 +62,23 @@ struct BookmarksView: View {
         }
     }
     
+    var editButton: some View {
+        Button(action: {
+            withAnimation {
+                editMode?.wrappedValue = editMode?.wrappedValue == .active ? .inactive : .active
+            }
+        }, label: {
+            Image(
+                systemName: editMode?.wrappedValue == .inactive ? "arrow.up.arrow.down.circle.fill" : "checkmark.circle.fill")
+                .font(.system(size: 34, weight: .light, design: .default))
+                .foregroundColor(editMode?.wrappedValue == .active ? Color.Theme.red : Color.Theme.blue)
+            
+        })
+    }
+    
     func header(_ color: String) -> some View {
         Rectangle()
             .fill(Color(color))
-//            .frame(height: 10)
             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
     }
     

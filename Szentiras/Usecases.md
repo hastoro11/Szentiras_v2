@@ -46,7 +46,7 @@
 ## Bookmark View‼
 - Show Text if there's no bookmark `‼️TODO‼️`
 - Sections for different color categories
-- Deleting, ordering (within color categories)
+- Deleting, ordering (within color categories) `‼️TODO‼️`
 
 ## Settings View
 - Policy button with url `‼️TODO‼️`
