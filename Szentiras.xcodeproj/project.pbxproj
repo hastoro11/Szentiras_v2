@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		215D92C625DFF2F900CF4DCC /* Usecases.md in Resources */ = {isa = PBXBuildFile; fileRef = 215D92C525DFF2F900CF4DCC /* Usecases.md */; };
 		8C2B140A25BAB6A10040DFE9 /* BookmarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2B140925BAB6A10040DFE9 /* BookmarksView.swift */; };
 		8C2B140E25BABC560040DFE9 /* BookmarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2B140D25BABC560040DFE9 /* BookmarkModel.swift */; };
 		8C4F95AF25A9C38400720290 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C75FC8125A1F6E300802334 /* String+Extension.swift */; };
@@ -69,6 +70,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		215D92C525DFF2F900CF4DCC /* Usecases.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Usecases.md; sourceTree = "<group>"; };
 		8C1E880625A367BE007819BD /* Todo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Todo.md; sourceTree = "<group>"; };
 		8C2B140925BAB6A10040DFE9 /* BookmarksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksView.swift; sourceTree = "<group>"; };
 		8C2B140D25BABC560040DFE9 /* BookmarkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkModel.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				8CE1F30725BAB103007B8D13 /* Bookmark.xcdatamodeld */,
 				8C8BAB57258D044800E4EDD3 /* Assets.xcassets */,
 				8C8BAB5C258D044800E4EDD3 /* Info.plist */,
+				215D92C525DFF2F900CF4DCC /* Usecases.md */,
 				8C1E880625A367BE007819BD /* Todo.md */,
 				8C8BAB59258D044800E4EDD3 /* Preview Content */,
 			);
@@ -405,6 +408,7 @@
 				8C8BAB70258D056B00E4EDD3 /* FiraSans-Regular.ttf in Resources */,
 				8C8BAB6F258D056B00E4EDD3 /* FiraSans-Medium.ttf in Resources */,
 				8C8BAB6E258D056B00E4EDD3 /* FiraSans-Light.ttf in Resources */,
+				215D92C625DFF2F900CF4DCC /* Usecases.md in Resources */,
 				8C8BAB7F258D082E00E4EDD3 /* books_RUF.json in Resources */,
 				8C8BAB58258D044800E4EDD3 /* Assets.xcassets in Resources */,
 				8C8BAB7C258D07F200E4EDD3 /* books_SZIT.json in Resources */,
