@@ -153,21 +153,28 @@ class BookmarkController: ObservableObject {
       bookmark4.szep = "Bír 3,1"
       bookmark4.translation = "RUF"
       bookmark4.color = "Red"
-      bookmark4.order_ = 4
+      bookmark4.order_ = 1
       let bookmark5 = Bookmark(context: context)
       bookmark5.szoveg = "Izráel fiai azt tették, amit rossznak lát az ÚR. Elfeledkeztek Istenükről, az ÚRról, és a Baalokat meg az Asérákat tisztelték."
       bookmark5.gepi = "10700300700"
       bookmark5.szep = "Bír 3,7"
       bookmark5.translation = "KG"
       bookmark5.color = "Red"
-      bookmark5.order_ = 5
+      bookmark5.order_ = 2
       let bookmark6 = Bookmark(context: context)
       bookmark6.szoveg = "Hozzájuk pedig így szólt: Szabad-e szombaton jót tenni, vagy rosszat tenni, életet menteni vagy kioltani? De azok hallgattak."
       bookmark6.gepi = "20200300400"
       bookmark6.szep = "Mk 3,4"
       bookmark6.translation = "RUF"
       bookmark6.color = "Blue"
-      bookmark6.order_ = 6
+      bookmark6.order_ = 1
+    let bookmark7 = Bookmark(context: context)
+    bookmark7.szoveg = "Hozzájuk pedig így szólt: Szabad-e szombaton jót tenni, vagy rosszat tenni, életet menteni vagy kioltani? De azok hallgattak."
+    bookmark7.gepi = "20200300400"
+    bookmark7.szep = "Mk 3,4"
+    bookmark7.translation = "RUF"
+    bookmark7.color = "Blue"
+    bookmark7.order_ = 2
       try context.save()
    }
    
