@@ -16,7 +16,7 @@ struct SzentirasApp: App {
       let savedDefault = UserDefaults.getSavedData()
       let biblectrl = BibleController(savedDefault: savedDefault, networkController: NetworkController.instance)
       _bibleController = StateObject(wrappedValue: biblectrl)
-      _bookmarkController = StateObject(wrappedValue: BookmarkController(inMemory: true))
+      _bookmarkController = StateObject(wrappedValue: BookmarkController(inMemory: false))
    }
    
    var body: some Scene {

@@ -21,10 +21,6 @@ struct BookmarksView: View {
             sortDescriptors: [NSSortDescriptor(keyPath: \Bookmark.order_, ascending: true)])
     }
     
-    var sortedBookmarks: [String: [Bookmark]] {
-        controller.sortedBookmarks
-    }
-    
     var body: some View {
         VStack {
             ZStack {
@@ -41,17 +37,17 @@ struct BookmarksView: View {
             }
             
             List {
-                ForEach(Array(sortedBookmarks.keys.sorted()), id: \.self) { color in
-                    if !sortedBookmarks[color]!.isEmpty {
+                ForEach(Array(controller.sortedBookmarks.keys.sorted()), id: \.self) { color in
+                    if !controller.sortedBookmarks[color]!.isEmpty {
                         Section(header: header(color)) {
-                            ForEach(sortedBookmarks[color]!.sorted()) { bookmark in
+                            ForEach(controller.sortedBookmarks[color]!.sorted()) { bookmark in
                                 row(bookmark)
                             }
                             .onDelete(perform: { indexSet in
-                                print("on delete")
+                                controller.deleteBookmark(color: color, indexSet: indexSet)
                             })
                             .onMove(perform: { indices, newOffset in
-                                print("on move")
+                                controller.moveBookmark(color: color, from: indices, to: newOffset)
                             })
                         }
                     }
