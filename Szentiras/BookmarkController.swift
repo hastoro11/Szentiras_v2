@@ -84,7 +84,7 @@ class BookmarkController: ObservableObject {
         return Color.clear
     }
     
-    private func checkIfVersIsMarked(gepi: String) -> Bookmark? {
+    func checkIfVersIsMarked(gepi: String) -> Bookmark? {
         let context = container.viewContext
         let request = NSFetchRequest<Bookmark>(entityName: "Bookmark")
         request.predicate = NSPredicate(format: "gepi_ = %@", gepi)
@@ -151,6 +151,7 @@ class BookmarkController: ObservableObject {
             try? container.viewContext.save()
         })
         bookmarks.forEach({print("DEBUG: ", $0.order, $0.szep)})
+        fetchBookmarks()
     }
     
     //--------------------------------

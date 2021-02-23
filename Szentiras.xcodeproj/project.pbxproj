@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		215D92C625DFF2F900CF4DCC /* Usecases.md in Resources */ = {isa = PBXBuildFile; fileRef = 215D92C525DFF2F900CF4DCC /* Usecases.md */; };
+		21F2E12225E40AB7006C1ABD /* BookmarkControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F2E12025E40AB7006C1ABD /* BookmarkControllerTest.swift */; };
 		8C2B140A25BAB6A10040DFE9 /* BookmarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2B140925BAB6A10040DFE9 /* BookmarksView.swift */; };
 		8C2B140E25BABC560040DFE9 /* BookmarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2B140D25BABC560040DFE9 /* BookmarkModel.swift */; };
 		8C4F95AF25A9C38400720290 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C75FC8125A1F6E300802334 /* String+Extension.swift */; };
@@ -71,6 +72,7 @@
 
 /* Begin PBXFileReference section */
 		215D92C525DFF2F900CF4DCC /* Usecases.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Usecases.md; sourceTree = "<group>"; };
+		21F2E12025E40AB7006C1ABD /* BookmarkControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkControllerTest.swift; sourceTree = "<group>"; };
 		8C1E880625A367BE007819BD /* Todo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Todo.md; sourceTree = "<group>"; };
 		8C2B140925BAB6A10040DFE9 /* BookmarksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksView.swift; sourceTree = "<group>"; };
 		8C2B140D25BABC560040DFE9 /* BookmarkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkModel.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 				8CA6A66625A9C35100FEBBD2 /* Info.plist */,
 				8C7F13BD25B811050052E0C7 /* MockNetworkController.swift */,
 				8C7F13C525B815360052E0C7 /* BibleControllerTest.swift */,
+				21F2E12025E40AB7006C1ABD /* BookmarkControllerTest.swift */,
 			);
 			path = SzentirasTests;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 				8C7F13C625B815360052E0C7 /* BibleControllerTest.swift in Sources */,
 				8C4F95AF25A9C38400720290 /* String+Extension.swift in Sources */,
 				8C7F13BE25B811050052E0C7 /* MockNetworkController.swift in Sources */,
+				21F2E12225E40AB7006C1ABD /* BookmarkControllerTest.swift in Sources */,
 				8CA6A66525A9C35100FEBBD2 /* SzentirasExtensionTests.swift in Sources */,
 				8C4F95C325AB3E3900720290 /* SzentirasNetworkTest.swift in Sources */,
 				8C4F95BB25A9F9E100720290 /* Bundle+Extension.swift in Sources */,
