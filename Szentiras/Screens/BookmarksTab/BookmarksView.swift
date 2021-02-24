@@ -12,9 +12,20 @@ struct BookmarksView: View {
     @Environment(\EnvironmentValues.managedObjectContext) var context
     @Environment(\EnvironmentValues.editMode) var editMode
     @EnvironmentObject var controller: BookmarkController
-//    @Binding var editMode: EditMode
+
     var bookmarks: FetchRequest<Bookmark>
-    
+    var emptyDictonary: Bool {
+        if let reds = controller.sortedBookmarks["Red"],
+           let yellows = controller.sortedBookmarks["Yellow"],
+           let blues = controller.sortedBookmarks["Blue"],
+           let greens = controller.sortedBookmarks["Green"] {
+            return reds.isEmpty &&
+                yellows.isEmpty &&
+                greens.isEmpty &&
+                blues.isEmpty
+        }
+       return false
+    }
     init() {
         bookmarks = FetchRequest(
             entity: Bookmark.entity(),
@@ -31,30 +42,39 @@ struct BookmarksView: View {
                     
                 HStack {
                     Spacer()
-                    editButton
+                    if !emptyDictonary {
+                        editButton
+                    }
                 }
                 .padding(.horizontal)
             }
-            
-            List {
-                ForEach(Array(controller.sortedBookmarks.keys.sorted()), id: \.self) { color in
-                    if !controller.sortedBookmarks[color]!.isEmpty {
-                        Section(header: header(color)) {
-                            ForEach(controller.sortedBookmarks[color]!.sorted()) { bookmark in
-                                row(bookmark)
+            if emptyDictonary {
+                Spacer()
+                Text("Még nincsenek könyvjelzők")
+                    .font(.light(18))
+                Spacer()
+                Spacer()
+            } else {
+                List {
+                    ForEach(Array(controller.sortedBookmarks.keys.sorted()), id: \.self) { color in
+                        if !controller.sortedBookmarks[color]!.isEmpty {
+                            Section(header: header(color)) {
+                                ForEach(controller.sortedBookmarks[color]!.sorted()) { bookmark in
+                                    row(bookmark)
+                                }
+                                .onDelete(perform: { indexSet in
+                                    controller.deleteBookmark(color: color, indexSet: indexSet)
+                                })
+                                .onMove(perform: { indices, newOffset in
+                                    controller.moveBookmark(color: color, from: indices, to: newOffset)
+                                })
                             }
-                            .onDelete(perform: { indexSet in
-                                controller.deleteBookmark(color: color, indexSet: indexSet)
-                            })
-                            .onMove(perform: { indices, newOffset in
-                                controller.moveBookmark(color: color, from: indices, to: newOffset)
-                            })
                         }
+                        
                     }
-                    
                 }
+                .listStyle(PlainListStyle())
             }
-            .listStyle(PlainListStyle())
         }
     }
     
@@ -65,10 +85,11 @@ struct BookmarksView: View {
             }
         }, label: {
             Image(
-                systemName: editMode?.wrappedValue == .inactive ? "arrow.up.arrow.down.circle.fill" : "checkmark.circle.fill")
-                .font(.system(size: 34, weight: .light, design: .default))
-                .foregroundColor(editMode?.wrappedValue == .active ? Color.Theme.red : Color.Theme.blue)
-            
+                systemName: editMode?.wrappedValue == .inactive ? "arrow.up.arrow.down" : "checkmark")
+                .font(.medium(18))
+                .foregroundColor(.white)
+                .frame(width: 44, height: 44)
+                .background(Circle().fill(editMode?.wrappedValue == .active ? Color.Theme.red : Color.Theme.blue))
         })
     }
     

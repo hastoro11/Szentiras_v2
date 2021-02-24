@@ -32,6 +32,12 @@ struct ContentView: View {
                     Image(systemName: "bookmark")
                     Text("Könyvjelzők")
                 }
+            SettingsView()
+                .tag(3)
+                .tabItem {
+                    Image(systemName: "gearshape")
+                    Text("Beállítások")
+                }
         }
     }
 }

@@ -2,7 +2,6 @@
 - Active translation, book, chapter from UserDefaults
 - Fetch actove book from network
 
-
 ## Books View
 - Show bookbuttons
 - Change bookbuttons on translationchange
@@ -38,16 +37,17 @@
 		- Indicates if last or first chapter
 
 ## Bookmarking
-- On tapping on vers: brings up bookmarkview `‼️TODO‼️: animation!`
 - On select color: toggles bookmarking
 - On select xmark: deletes bookmarking
 - Saves bookmark regardless of translation: if selected, it's marked in all translations
 
 ## Bookmark View‼
-- Show Text if there's no bookmark `‼️TODO‼️`
+- Show Text if there's no bookmark
 - Sections for different color categories
-- Deleting, ordering (within color categories) `‼️TODO‼️`
+- Deleting, ordering (within color categories) 
 
 ## Settings View
-- Policy button with url `‼️TODO‼️`
+- Policy button with url 
 
+## Others
+- Cashe for books `‼️TODO‼️`

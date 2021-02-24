@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2111F98625E6320500BF4193 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2111F98525E6320500BF4193 /* SettingsView.swift */; };
 		215D92C625DFF2F900CF4DCC /* Usecases.md in Resources */ = {isa = PBXBuildFile; fileRef = 215D92C525DFF2F900CF4DCC /* Usecases.md */; };
 		21F2E12225E40AB7006C1ABD /* BookmarkControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F2E12025E40AB7006C1ABD /* BookmarkControllerTest.swift */; };
 		8C2B140A25BAB6A10040DFE9 /* BookmarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2B140925BAB6A10040DFE9 /* BookmarksView.swift */; };
@@ -71,6 +72,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2111F98525E6320500BF4193 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		215D92C525DFF2F900CF4DCC /* Usecases.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Usecases.md; sourceTree = "<group>"; };
 		21F2E12025E40AB7006C1ABD /* BookmarkControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkControllerTest.swift; sourceTree = "<group>"; };
 		8C1E880625A367BE007819BD /* Todo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Todo.md; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				8C8BAB9B258DE6BA00E4EDD3 /* BooksView.swift */,
 				8C7E83DE25BB273200F0210B /* ReadingsTab */,
 				8C7E83DF25BB274A00F0210B /* BookmarksTab */,
+				2111F98525E6320500BF4193 /* SettingsView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				8C8BAB92258D12D400E4EDD3 /* TranslationModel.swift in Sources */,
 				8C8BAB97258D213200E4EDD3 /* UserDefaults+Extension.swift in Sources */,
 				8C75FC7F25A1B3BE00802334 /* CircleButton.swift in Sources */,
+				2111F98625E6320500BF4193 /* SettingsView.swift in Sources */,
 				8C75FC7925A08E4600802334 /* Font+Extension.swift in Sources */,
 				8C75FBEE259E168200802334 /* ChapterTextView.swift in Sources */,
 				8C75FBDC259C938900802334 /* Toolbars.swift in Sources */,
