@@ -16,7 +16,7 @@
 ## Reading View
 - In pagetabview the complete book
 - Changes chapter on swiping left-right
-- On long press on vers: brings up bookmarkview `‼️TODO‼️: animation!`
+- On long press on vers: brings up bookmarkview 
 
 ### Header
 - Left
@@ -29,7 +29,7 @@
 		- on tapping brigns up translation actionsheet
 			- if active book is catholic: allows only catholic translations
 	- Settings button - only in reading mode
-		- brings up settings view: fontsize, versindexes, continouos reading `‼️TODO‼️: animation!`
+		- brings up settings view: fontsize, versindexes, continouos reading 
 
 - Middle
 	- Active translation
@@ -41,10 +41,11 @@
 - On select xmark: deletes bookmarking
 - Saves bookmark regardless of translation: if selected, it's marked in all translations
 
-## Bookmark View‼
+## Bookmark View
 - Show Text if there's no bookmark
 - Sections for different color categories
-- Deleting, ordering (within color categories) 
+- Deleting, ordering (within color categories)
+- On long press brings up context menu with jumping to context `‼️TODO‼️`
 
 ## Settings View
 - Policy button with url 

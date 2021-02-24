@@ -75,7 +75,7 @@ struct ChapterTextView: View {
                }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .onTapGesture {
+            .onLongPressGesture {
                showBookmarkingView.toggle()
                bookmarkController.selectedVers = vers
             }

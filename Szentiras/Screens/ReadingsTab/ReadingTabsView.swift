@@ -49,7 +49,12 @@ struct ReadingTabsView: View {
                .onTapGesture {
                   showSettingsView.toggle()
                }
+                .animation(.easeInOut)
+                .zIndex(5)
             settingsView
+                .animation(.spring())
+                .transition(.move(edge: .bottom))
+                .zIndex(10)
          }
          
          if showBookmarkingView {
@@ -59,7 +64,12 @@ struct ReadingTabsView: View {
                .onTapGesture {
                   showBookmarkingView.toggle()
                }
+                .animation(.easeInOut)
+                .zIndex(5)
             bookmarkingView
+                .animation(.spring())
+                .transition(.move(edge: .bottom))
+                .zIndex(10)
          }
       }
       .actionSheet(isPresented: $showTranslations, content: {
