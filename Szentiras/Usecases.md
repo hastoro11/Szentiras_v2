@@ -51,4 +51,4 @@
 - Policy button with url 
 
 ## Others
-- Cashe for books `‼️TODO‼️`
+- Cashe for books

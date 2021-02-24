@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2111F98625E6320500BF4193 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2111F98525E6320500BF4193 /* SettingsView.swift */; };
+		2111F98B25E63DA500BF4193 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2111F98A25E63DA500BF4193 /* CacheManager.swift */; };
 		215D92C625DFF2F900CF4DCC /* Usecases.md in Resources */ = {isa = PBXBuildFile; fileRef = 215D92C525DFF2F900CF4DCC /* Usecases.md */; };
 		21F2E12225E40AB7006C1ABD /* BookmarkControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F2E12025E40AB7006C1ABD /* BookmarkControllerTest.swift */; };
 		8C2B140A25BAB6A10040DFE9 /* BookmarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2B140925BAB6A10040DFE9 /* BookmarksView.swift */; };
@@ -73,6 +74,7 @@
 
 /* Begin PBXFileReference section */
 		2111F98525E6320500BF4193 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		2111F98A25E63DA500BF4193 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		215D92C525DFF2F900CF4DCC /* Usecases.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Usecases.md; sourceTree = "<group>"; };
 		21F2E12025E40AB7006C1ABD /* BookmarkControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkControllerTest.swift; sourceTree = "<group>"; };
 		8C1E880625A367BE007819BD /* Todo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Todo.md; sourceTree = "<group>"; };
@@ -147,6 +149,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2111F98925E63D9700BF4193 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				2111F98A25E63DA500BF4193 /* CacheManager.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
 		8C3AC43825B483C10080DD79 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +226,7 @@
 		8C8BAB52258D044700E4EDD3 /* Szentiras */ = {
 			isa = PBXGroup;
 			children = (
+				2111F98925E63D9700BF4193 /* Cache */,
 				8C3AC43825B483C10080DD79 /* Protocols */,
 				8CB096F32597852E00E27EAF /* Network */,
 				8C8BAB84258D08BA00E4EDD3 /* Extensions */,
@@ -481,6 +492,7 @@
 				8CB096F92597874800E27EAF /* BibleError.swift in Sources */,
 				8C8BAB92258D12D400E4EDD3 /* TranslationModel.swift in Sources */,
 				8C8BAB97258D213200E4EDD3 /* UserDefaults+Extension.swift in Sources */,
+				2111F98B25E63DA500BF4193 /* CacheManager.swift in Sources */,
 				8C75FC7F25A1B3BE00802334 /* CircleButton.swift in Sources */,
 				2111F98625E6320500BF4193 /* SettingsView.swift in Sources */,
 				8C75FC7925A08E4600802334 /* Font+Extension.swift in Sources */,

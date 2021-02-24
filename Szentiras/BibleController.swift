@@ -55,7 +55,14 @@ class BibleController: ObservableObject {
         // Fetches books
         $translation
             .sink(receiveValue: { [self] transl in
-                fetchBook(translation: transl, book: activeBook)
+                let cacheKey = "\(transl.abbrev)/\(activeBook.number)"
+                if let verses = CacheManager.instance.results[cacheKey] {
+//                    print("DEBUBG: entered cache")
+                    versesInBook = verses
+                } else {
+//                    print("DEBUG: fetching from network")
+                    fetchBook(translation: transl, book: activeBook)
+                }
             })
             .store(in: &cancellables)
     }
@@ -64,7 +71,15 @@ class BibleController: ObservableObject {
         // Fetches book
         $activeBook
             .sink(receiveValue: {[self] book in
-                fetchBook(translation: translation, book: book)
+                let cacheKey = "\(translation.abbrev)/\(book.number)"
+                if let verses = CacheManager.instance.results[cacheKey] {
+//                    print("DEBUG: entered cache")
+                    versesInBook = verses
+                } else {
+//                    print("DEBUG: fetching from network")
+                    fetchBook(translation: translation, book: book)
+                }
+//                fetchBook(translation: translation, book: book)
             })
             .store(in: &cancellables)
     }
@@ -85,7 +100,9 @@ class BibleController: ObservableObject {
                 }
                 isLoading = false
             }, receiveValue: {[self] results in
+                let cacheKey = "\(translation.abbrev)/\(book.number)"
                 versesInBook = results.sorted().map({$0.valasz.verses})
+                CacheManager.instance.results[cacheKey] = versesInBook
             })
             .store(in: &cancellables)
     }
