@@ -21,7 +21,7 @@ struct Header: View {
         HStack {
             Group {
                 CircleButton(
-                    text: controller.activeBook.abbrev,
+                    text: String(controller.activeBook.abbrev.prefix(4)),
                     backgroundColor: Color.Theme.dark,
                     textColor: Color.Theme.light,
                     action: {
