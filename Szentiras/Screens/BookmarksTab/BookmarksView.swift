@@ -108,7 +108,7 @@ struct BookmarksView: View {
                 Text(bookmark.translation)
                     .font(.regular(12))
             }
-            Text(bookmark.szoveg)
+            Text(bookmark.szoveg.strippedHTMLElements)
                 .font(.light(16))
                 .padding(.bottom, 5)
         }

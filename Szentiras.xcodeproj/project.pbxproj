@@ -157,6 +157,22 @@
 			path = Cache;
 			sourceTree = "<group>";
 		};
+		212254CA25E939800083B3B1 /* BooksViewTab */ = {
+			isa = PBXGroup;
+			children = (
+				8C8BAB9B258DE6BA00E4EDD3 /* BooksView.swift */,
+			);
+			path = BooksViewTab;
+			sourceTree = "<group>";
+		};
+		212254CD25E9398E0083B3B1 /* SettingsViewTab */ = {
+			isa = PBXGroup;
+			children = (
+				2111F98525E6320500BF4193 /* SettingsView.swift */,
+			);
+			path = SettingsViewTab;
+			sourceTree = "<group>";
+		};
 		8C3AC43825B483C10080DD79 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,10 +316,10 @@
 			isa = PBXGroup;
 			children = (
 				8C75FBD3259C7F3C00802334 /* Views */,
-				8C8BAB9B258DE6BA00E4EDD3 /* BooksView.swift */,
+				212254CA25E939800083B3B1 /* BooksViewTab */,
 				8C7E83DE25BB273200F0210B /* ReadingsTab */,
 				8C7E83DF25BB274A00F0210B /* BookmarksTab */,
-				2111F98525E6320500BF4193 /* SettingsView.swift */,
+				212254CD25E9398E0083B3B1 /* SettingsViewTab */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -650,6 +666,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Szentiras/Preview Content\"";
 				DEVELOPMENT_TEAM = 8YE8M3UNR3;
 				ENABLE_PREVIEWS = YES;
@@ -672,6 +689,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Szentiras/Preview Content\"";
 				DEVELOPMENT_TEAM = 8YE8M3UNR3;
 				ENABLE_PREVIEWS = YES;
