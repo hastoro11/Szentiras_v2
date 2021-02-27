@@ -79,7 +79,6 @@ class BibleController: ObservableObject {
 //                    print("DEBUG: fetching from network")
                     fetchBook(translation: translation, book: book)
                 }
-//                fetchBook(translation: translation, book: book)
             })
             .store(in: &cancellables)
     }
@@ -95,6 +94,7 @@ class BibleController: ObservableObject {
                 switch completion {
                     case .failure(let error):
                         self.error = error
+                        self.versesInBook = []                        
                     case .finished:
                         break
                 }
@@ -102,7 +102,9 @@ class BibleController: ObservableObject {
             }, receiveValue: {[self] results in
                 let cacheKey = "\(translation.abbrev)/\(book.number)"
                 versesInBook = results.sorted().map({$0.valasz.verses})
-                CacheManager.instance.results[cacheKey] = versesInBook
+                if !versesInBook.isEmpty {
+                    CacheManager.instance.results[cacheKey] = versesInBook
+                }
             })
             .store(in: &cancellables)
     }

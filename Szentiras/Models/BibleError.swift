@@ -14,7 +14,7 @@ enum BibleError: Error, CustomStringConvertible, Equatable {
    
    case badServerResponse, badURL, cannotFindHost, cannotLoadFromNetwork, cannotParseResponse,
         internationalRoamingOff, networkConnectionLost, notConnectedToInternet, unsupportedURL,
-        dataCorrupted, keyNotFound(CodingKey), valueNotFound(Any), typeMismatch(Any), unknown
+        dataCorrupted, keyNotFound(CodingKey), valueNotFound(Any), typeMismatch(Any), timeout, unknown
    
    var description: String {
       switch self {
@@ -44,6 +44,8 @@ enum BibleError: Error, CustomStringConvertible, Equatable {
          return "Az érték nem létezik: \(value)"
       case .typeMismatch(let value):
          return "Eltérő típusok: \(value)"
+        case .timeout:
+            return "A szerver nem elérhető, vagy nincs hálózati kapcsolódás"
       case .unknown:
          return "Ismeretlen hiba"
       }

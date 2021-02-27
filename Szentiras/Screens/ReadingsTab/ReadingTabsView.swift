@@ -43,6 +43,14 @@ struct ReadingTabsView: View {
                         if controller.versesInBook.count != 0 {
                             tabview
                                 .id(controller.versesInBook.count)
+                        } else {
+                            Spacer()
+                            Text("A szervert nem lehet elérni, lehetséges, hogy nincs internetcsatlakozás?\nVálassz ki újból egy könyvet a frissítéshez.")
+                                .multilineTextAlignment(.center)
+                                .font(.light(18))
+                                .padding()
+                            Spacer()
+                            Spacer()
                         }
                     }
                 }
@@ -87,7 +95,7 @@ struct ReadingTabsView: View {
         }) {
             ChapterSheet(showChapters: $showChapters, selectedChapter: $selectedChapter)
                 .environmentObject(controller)
-        }
+        }        
     }
     
     //--------------------------------
