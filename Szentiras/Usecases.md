@@ -52,5 +52,5 @@
 
 ## Others
 - Cashe for books
-- Network detect `‼️TODO‼️`
-- Timing in network connections `‼️TODO‼️`
+- Network detect 
+- Timing in network connections
