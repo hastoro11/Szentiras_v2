@@ -134,9 +134,13 @@ struct ReadingTabsView: View {
             Rectangle()
                 .frame(height: 0.5)
             VStack(spacing: 10) {
-                Text("Igevers megjelölése")
-                    .font(.medium(16))
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                HStack {
+                    Text("Igevers megjelölése")
+                    Spacer()
+                    Text(bookmarkController.selectedVers?.hely.szep ?? "")
+                }
+                .font(.medium(16))
+                .frame(maxWidth: .infinity, alignment: .leading)
                 Divider()
                 HStack(spacing: 10) {
                     ForEach(["Blue", "Green", "Red", "Yellow"], id: \.self) { color in
