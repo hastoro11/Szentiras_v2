@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 class BibleController: ObservableObject {   
-    @Published var selectedTab: Int = 0
+    @Published var selectedTab: Int = 1
     
     @Published var books: [Book] = []
     @Published var translation: Translation
@@ -86,6 +86,9 @@ class BibleController: ObservableObject {
     //--------------------------------
     // Fetch book
     //--------------------------------
+    func fetchBook() {
+        self.fetchBook(translation: translation, book: activeBook)
+    }
     private func fetchBook(translation: Translation, book: Book) {
         isLoading = true
         NetworkController.instance.fetchBook(translation: translation, book: book)
