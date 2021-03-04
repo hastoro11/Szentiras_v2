@@ -47,9 +47,10 @@ struct Header: View {
                 })
                 .accentColor(controller.isFirst ? Color.gray : Color.Theme.dark)
                 Spacer()
-                Text(controller.translation.short)
+                Text(controller.translation.abbrev)
                     .font(.medium(16))
                     .fixedSize()
+//                    .minimumScaleFactor(0.5)
                     .onTapGesture {
                         showTranslations.toggle()
                     }

@@ -12,6 +12,7 @@ struct BookmarksView: View {
     @Environment(\EnvironmentValues.managedObjectContext) var context
     @Environment(\EnvironmentValues.editMode) var editMode
     @EnvironmentObject var controller: BookmarkController
+    @EnvironmentObject var bibleController: BibleController
 
     var bookmarks: FetchRequest<Bookmark>
     var emptyDictonary: Bool {
@@ -61,6 +62,15 @@ struct BookmarksView: View {
                             Section(header: header(color)) {
                                 ForEach(controller.sortedBookmarks[color]!.sorted()) { bookmark in
                                     row(bookmark)
+                                        .contextMenu(ContextMenu(menuItems: {
+                                            Button(action: {
+                                                bibleController.jumpToVers(bookmark: bookmark)
+                                            }, label: {
+                                                Label(
+                                                    title: { Text("Ugrás a fejezethez") },
+                                                    icon: { Image(systemName: "arrow.uturn.forward") })
+                                            })
+                                        }))
                                 }
                                 .onDelete(perform: { indexSet in
                                     controller.deleteBookmark(color: color, indexSet: indexSet)
@@ -68,6 +78,7 @@ struct BookmarksView: View {
                                 .onMove(perform: { indices, newOffset in
                                     controller.moveBookmark(color: color, from: indices, to: newOffset)
                                 })
+                                
                             }
                         }
                         
@@ -123,6 +134,7 @@ struct BookmarksView_Previews: PreviewProvider {
                 .environmentObject(bookmarkController)
                 .environment(\.managedObjectContext, bookmarkController.container.viewContext)
                 .navigationBarHidden(true)
+                .environmentObject(BibleController(savedDefault: SavedDefault(), networkController: NetworkController.instance))
         }
         
     }

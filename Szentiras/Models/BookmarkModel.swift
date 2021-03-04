@@ -49,3 +49,16 @@ extension Bookmark: Comparable {
       }
    }
 }
+
+extension Bookmark {
+    func book(translation: Translation) -> Book? {
+        let books = Book.all(translation: translation.abbrev)
+        let bookGepi = String(self.gepi.prefix(3))
+        return books.first(where: {String($0.number) == bookGepi})
+    }
+    
+    func chapter() -> Int? {
+        let gepi = self.gepi.dropFirst(3)
+        return Int(gepi.prefix(3))
+    }
+}

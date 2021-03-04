@@ -57,10 +57,10 @@ class BibleController: ObservableObject {
             .sink(receiveValue: { [self] transl in
                 let cacheKey = "\(transl.abbrev)/\(activeBook.number)"
                 if let verses = CacheManager.instance.results[cacheKey] {
-//                    print("DEBUBG: entered cache")
+                    // Fecthing from cache
                     versesInBook = verses
                 } else {
-//                    print("DEBUG: fetching from network")
+                    // Fetching from network
                     fetchBook(translation: transl, book: activeBook)
                 }
             })
@@ -73,10 +73,10 @@ class BibleController: ObservableObject {
             .sink(receiveValue: {[self] book in
                 let cacheKey = "\(translation.abbrev)/\(book.number)"
                 if let verses = CacheManager.instance.results[cacheKey] {
-//                    print("DEBUG: entered cache")
+                    // Fetching from cache
                     versesInBook = verses
                 } else {
-//                    print("DEBUG: fetching from network")
+                    // Fetching from network
                     fetchBook(translation: translation, book: book)
                 }
             })
@@ -107,9 +107,20 @@ class BibleController: ObservableObject {
                 versesInBook = results.sorted().map({$0.valasz.verses})
                 if !versesInBook.isEmpty {
                     CacheManager.instance.results[cacheKey] = versesInBook
-                }
+                }                
             })
             .store(in: &cancellables)
+    }
+    
+    //--------------------------------
+    // Jump to bookmark
+    //--------------------------------
+    func jumpToVers(bookmark: Bookmark) {
+        guard let book = bookmark.book(translation: self.translation), let chapter = bookmark.chapter() else { return }
+        self.activeBook = book
+        self.activeChapter = chapter
+        self.selectedTab = 1
+
     }
     
     //--------------------------------

@@ -60,7 +60,7 @@ struct ReadingTabsView: View {
                     }
                     .animation(.easeInOut)
                     .zIndex(5)
-                settingsView
+                TextSettingsView(model: model)
                     .animation(.spring())
                     .transition(.move(edge: .bottom))
                     .zIndex(10)
@@ -75,7 +75,7 @@ struct ReadingTabsView: View {
                     }
                     .animation(.easeInOut)
                     .zIndex(5)
-                bookmarkingView
+                BookmarkingView(showBookmarkingView: $showBookmarkingView)
                     .animation(.spring())
                     .transition(.move(edge: .bottom))
                     .zIndex(10)
@@ -90,82 +90,6 @@ struct ReadingTabsView: View {
             ChapterSheet(showChapters: $showChapters, selectedChapter: $selectedChapter)
                 .environmentObject(controller)
         }        
-    }
-    
-    //--------------------------------
-    // SettingsView
-    //--------------------------------
-    var settingsView: some View {
-        VStack {
-            Rectangle()
-                .frame(height: 0.5)
-            VStack(spacing: 20) {
-                HStack {
-                    Text("Betűméret")
-                        .font(.medium(16))
-                    Slider(value: $model.fontSize, in: 14...22, step: 2)
-                }
-                HStack {
-                    Text("Versszámozás")
-                        .font(.medium(16))
-                    Spacer()
-                    Toggle("", isOn: $model.showIndex)
-                }
-                HStack {
-                    Text("Folyamatos olvasás")
-                        .font(.medium(16))
-                    Spacer()
-                    Toggle("", isOn: $model.isTextContinous)
-                }
-            }
-            .padding(.horizontal)
-            .padding(.top, 25)
-        }
-        .padding(.bottom, 25)
-        .background(Color.Theme.light.shadow(radius: 12))
-        
-    }
-    
-    //--------------------------------
-    // BookmarkingView
-    //--------------------------------
-    var bookmarkingView: some View {
-        VStack {
-            Rectangle()
-                .frame(height: 0.5)
-            VStack(spacing: 10) {
-                HStack {
-                    Text("Igevers megjelölése")
-                    Spacer()
-                    Text(bookmarkController.selectedVers?.hely.szep ?? "")
-                }
-                .font(.medium(16))
-                .frame(maxWidth: .infinity, alignment: .leading)
-                Divider()
-                HStack(spacing: 10) {
-                    ForEach(["Blue", "Green", "Red", "Yellow"], id: \.self) { color in
-                        Circle()
-                            .fill(Color(color)).frame(width: 34, height: 34)
-                            .onTapGesture {
-                                bookmarkController.addBookmark(color: color, translation: controller.translation.abbrev)
-                                showBookmarkingView.toggle()
-                            }
-                    }
-                    Image(systemName: "xmark.circle")
-                        .font(.system(size: 34, weight: .thin))
-                        .onTapGesture {
-                            bookmarkController.deleteBookmark()
-                            showBookmarkingView.toggle()
-                        }
-                    Spacer()
-                }
-                
-            }
-            .padding(.horizontal)
-            .padding(.top, 10)
-        }
-        .padding(.bottom, 25)
-        .background(Color.Theme.light.shadow(radius: 12))
     }
     
     //--------------------------------
@@ -190,68 +114,6 @@ struct ReadingTabsView: View {
 }
 
 //--------------------------------
-// BookmarkingView
-//--------------------------------
-struct BookmarkingView: View {
-    var body: some View {
-        VStack {
-            Rectangle()
-                .frame(height: 0.5)
-            VStack(spacing: 10) {
-                Text("Igevers megjelölése")
-                    .font(.medium(16))
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Divider()
-                HStack(spacing: 10) {
-                    ForEach(["Blue", "Green", "Red", "Yellow"], id: \.self) { color in
-                        Circle()
-                            .fill(Color(color)).frame(width: 34, height: 34)
-                    }
-                    Image(systemName: "xmark.circle")
-                        .font(.system(size: 34, weight: .thin))
-                    Spacer()
-                }
-                
-            }
-            .padding(.horizontal)
-            .padding(.top, 25)
-        }
-        .padding(.bottom, 25)
-        .background(Color.Theme.light.shadow(radius: 12))
-    }
-}
-
-struct ErrorMessageView: View {
-    var action: () -> Void
-    var body: some View {
-        VStack {
-            Spacer()
-            Image(systemName: "exclamationmark.icloud.fill")
-                .font(.system(size: 48))
-                .foregroundColor(.gray)
-            Text("A szervert nem lehet elérni, lehetséges, hogy nincs internetcsatlakozás?")
-                .multilineTextAlignment(.center)
-                .font(.light(18))
-                .padding()
-            Button(action: action, label: {
-                Label(
-                    title: { Text("Frissítés").font(.regular(18)) },
-                    icon: { Image(systemName: "arrow.triangle.2.circlepath") })
-                    .font(.regular(18))
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 50)
-                    .background(Color.Theme.blue)
-                    .cornerRadius(8)
-                    .padding()
-            })
-            Spacer()
-            Spacer()
-        }
-    }
-}
-
-//--------------------------------
 // Preview
 //--------------------------------
 struct ReadingTabsView_Previews: PreviewProvider {
@@ -259,9 +121,5 @@ struct ReadingTabsView_Previews: PreviewProvider {
     static var previews: some View {
         ReadingTabsView()
             .environmentObject(ctrl)
-        BookmarkingView()
-            .previewLayout(.sizeThatFits)
-        ErrorMessageView(action: {})
-            .previewLayout(.sizeThatFits)
     }
 }

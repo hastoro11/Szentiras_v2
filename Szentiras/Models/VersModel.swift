@@ -62,7 +62,7 @@ struct Forditas: Codable {
 //--------------------------------
 struct Vers: Codable, Identifiable {
    var id: Int { hely.gepi }
-    let szoveg: String
+    let szoveg: String?
     let hely: Hely
 }
 

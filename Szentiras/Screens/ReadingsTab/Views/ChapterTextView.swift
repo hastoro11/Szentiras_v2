@@ -10,24 +10,35 @@ import SwiftUI
 struct ChapterTextView: View {
     @EnvironmentObject var model: ReadingTabsViewModel
     @EnvironmentObject var bookmarkController: BookmarkController
+    @EnvironmentObject var bibleController: BibleController
     @Binding var verses: [Vers]
     @Binding var hideNavigationBar: Bool
     var book: Book
     var chapter: Int
     @Binding var showBookmarkingView: Bool
+    
     //--------------------------------
     // Body
     //--------------------------------
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            bookHeader
-            if model.isTextContinous {
-                continuousView
-            } else {
-                versesView
+        ScrollViewReader { proxy in
+            ScrollView(.vertical, showsIndicators: false) {
+                bookHeader
+                Group {
+                    if model.isTextContinous {
+                        continuousView
+                    } else {
+                        versesView
+                    }
+                }                
             }
+            
         }
         .padding(.horizontal)
+        
+    }
+    
+    func scrollTo() {
         
     }
     
@@ -60,25 +71,29 @@ struct ChapterTextView: View {
                     if model.showIndex {
                         Group {
                             Text(vers.index).font(.medium(model.fontSize)) +
-                                Text(" " + vers.szoveg.strippedHTMLElements)
+                                Text(" " + (vers.szoveg ?? "").strippedHTMLElements)
                                 .font(.light(model.fontSize))
                             
                         }
                         .lineSpacing(6)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .background(bookmarkController.getBookmarkColor(gepi: String(vers.hely.gepi)).opacity(0.4))
+                        
+                        
                     } else {
-                        Text(vers.szoveg.strippedHTMLElements)
+                        Text((vers.szoveg ?? "").strippedHTMLElements)
                             .font(.light(model.fontSize))
                             .lineSpacing(6)
                             .padding(.bottom, 1)
                     }
                 }
+                .tag(String(vers.hely.gepi))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .gesture(TapGesture().onEnded({
                     hideNavigationBar.toggle()
                 }))
                 .onLongPressGesture {
+                    print(vers.hely.gepi)
                     showBookmarkingView.toggle()
                     bookmarkController.selectedVers = vers
                 }
@@ -92,13 +107,13 @@ struct ChapterTextView: View {
     //--------------------------------
     var continuousView: some View {
         let continuousVerses = verses.reduce("", {result, vers -> String in
-            return result + " " + vers.szoveg.strippedHTMLElements
+            return result + " " + (vers.szoveg ?? "").strippedHTMLElements
         })
         var indexedVerses = Text("")
         for vers in verses {
             // swiftlint:disable shorthand_operator
             indexedVerses = indexedVerses + Text("\(vers.index) ").font(.medium(model.fontSize))
-            indexedVerses = indexedVerses + Text("\(vers.szoveg.strippedHTMLElements) ").font(.light(model.fontSize))
+            indexedVerses = indexedVerses + Text("\((vers.szoveg ?? "").strippedHTMLElements) ").font(.light(model.fontSize))
         }
         return LazyVStack {
             if model.showIndex {
@@ -127,5 +142,7 @@ struct ChapterTextView_Previews: PreviewProvider {
             chapter: 1,
             showBookmarkingView: .constant(false))
             .environmentObject(ReadingTabsViewModel())
+            .environmentObject(BookmarkController(inMemory: true))
+            .environmentObject(BibleController(savedDefault: SavedDefault(), networkController: NetworkController.instance))
     }
 }

@@ -41,6 +41,7 @@ class BookmarkController: ObservableObject {
             context.automaticallyMergesChangesFromParent = true
         }
         if inMemory {
+            selectedVers = Vers(szoveg: "This is the example text", hely: Hely(gepi: 123, szep: "Mk 99,1"))
             try? createSampleData()
         }
         fetchBookmarks()
@@ -56,10 +57,6 @@ class BookmarkController: ObservableObject {
         sortedBookmarks["Red"] = fetchBookmarks(by: "Red")
         sortedBookmarks["Blue"] = fetchBookmarks(by: "Blue")
         
-        sortedBookmarks["Yellow"]!.forEach({print("DEBUG: fetched YELLOW bookmarks", $0.order, $0.szep)})
-        sortedBookmarks["Green"]!.forEach({print("DEBUG: fetched GREEN bookmarks", $0.order, $0.szep)})
-        sortedBookmarks["Red"]!.forEach({print("DEBUG: fetched RED bookmarks", $0.order, $0.szep)})
-        sortedBookmarks["Blue"]!.forEach({print("DEBUG: fetched BLUE bookmarks", $0.order, $0.szep)})
     }
     
     func fetchBookmarks(by color: String) -> [Bookmark] {
@@ -108,7 +105,7 @@ class BookmarkController: ObservableObject {
             bookmark.color = color
             bookmark.gepi = String(vers.hely.gepi)
             bookmark.szep = vers.hely.szep
-            bookmark.szoveg = vers.szoveg
+            bookmark.szoveg = vers.szoveg ?? ""
             bookmark.translation = translation
         }
         try? context.save()
@@ -132,10 +129,10 @@ class BookmarkController: ObservableObject {
     func deleteBookmark(color: String, indexSet: IndexSet) {
         guard let index = indexSet.first else { return }
         guard let bookmark = sortedBookmarks[color]?[index] else { return }
-        print("DEBUG: found bookmark on index \(index), order \(bookmark.order)")
+
         let context = container.viewContext
         context.delete(bookmark)
-//        sortedBookmarks[color]?.remove(at: index)
+
         try? context.save()
         recalculateIndices(color: color)
     }
@@ -150,7 +147,7 @@ class BookmarkController: ObservableObject {
             bm.order = index
             try? container.viewContext.save()
         })
-        bookmarks.forEach({print("DEBUG: ", $0.order, $0.szep)})
+
         fetchBookmarks()
     }
     
@@ -179,6 +176,7 @@ class BookmarkController: ObservableObject {
     
     // swiftlint:disable line_length
     func createSampleData() throws {
+        
         let context = container.viewContext
         let bookmark1 = Bookmark(context: context)
         bookmark1.szoveg = "az örök élet reménységére, amelyet Isten, aki nem hazudik, örök idők előtt megígért,"
@@ -223,9 +221,9 @@ class BookmarkController: ObservableObject {
         bookmark6.color = "Blue"
         bookmark6.order_ = 0
         let bookmark7 = Bookmark(context: context)
-        bookmark7.szoveg = "Hozzájuk pedig így szólt: Szabad-e szombaton jót tenni, vagy rosszat tenni, életet menteni vagy kioltani? De azok hallgattak."
-        bookmark7.gepi = "20200300400"
-        bookmark7.szep = "Mk 3,4"
+        bookmark7.szoveg = "Ezután ismét a zsinagógába ment. Volt ott egy sorvadt kezű ember."
+        bookmark7.gepi = "20200300100"
+        bookmark7.szep = "Mk 3,1"
         bookmark7.translation = "RUF"
         bookmark7.color = "Blue"
         bookmark7.order_ = 1

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2111F98625E6320500BF4193 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2111F98525E6320500BF4193 /* SettingsView.swift */; };
 		2111F98B25E63DA500BF4193 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2111F98A25E63DA500BF4193 /* CacheManager.swift */; };
+		2121D8A025EE237600F35FF9 /* TextSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2121D89F25EE237600F35FF9 /* TextSettingsView.swift */; };
+		2150419B25EE20D1003105CB /* BookmarkingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2150419A25EE20D1003105CB /* BookmarkingView.swift */; };
+		2150419F25EE2211003105CB /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2150419E25EE2211003105CB /* ErrorMessageView.swift */; };
 		215D92C625DFF2F900CF4DCC /* Usecases.md in Resources */ = {isa = PBXBuildFile; fileRef = 215D92C525DFF2F900CF4DCC /* Usecases.md */; };
 		21F2E12225E40AB7006C1ABD /* BookmarkControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F2E12025E40AB7006C1ABD /* BookmarkControllerTest.swift */; };
 		8C2B140A25BAB6A10040DFE9 /* BookmarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2B140925BAB6A10040DFE9 /* BookmarksView.swift */; };
@@ -75,6 +78,9 @@
 /* Begin PBXFileReference section */
 		2111F98525E6320500BF4193 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2111F98A25E63DA500BF4193 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		2121D89F25EE237600F35FF9 /* TextSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSettingsView.swift; sourceTree = "<group>"; };
+		2150419A25EE20D1003105CB /* BookmarkingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkingView.swift; sourceTree = "<group>"; };
+		2150419E25EE2211003105CB /* ErrorMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageView.swift; sourceTree = "<group>"; };
 		215D92C525DFF2F900CF4DCC /* Usecases.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Usecases.md; sourceTree = "<group>"; };
 		21F2E12025E40AB7006C1ABD /* BookmarkControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkControllerTest.swift; sourceTree = "<group>"; };
 		8C1E880625A367BE007819BD /* Todo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Todo.md; sourceTree = "<group>"; };
@@ -173,6 +179,35 @@
 			path = SettingsViewTab;
 			sourceTree = "<group>";
 		};
+		2150419925EE20C3003105CB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8C75FBED259E168200802334 /* ChapterTextView.swift */,
+				2150419A25EE20D1003105CB /* BookmarkingView.swift */,
+				2150419E25EE2211003105CB /* ErrorMessageView.swift */,
+				2121D89F25EE237600F35FF9 /* TextSettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		21D71B2D25F1236C00E14B3E /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				8C8BAB53258D044700E4EDD3 /* SzentirasApp.swift */,
+				8C8BAB55258D044700E4EDD3 /* ContentView.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		21D71B3025F1237500E14B3E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8C8BAB8B258D0BF800E4EDD3 /* BibleController.swift */,
+				8CE1F30325BAB063007B8D13 /* BookmarkController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		8C3AC43825B483C10080DD79 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,21 +216,21 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		8C75FBD3259C7F3C00802334 /* Views */ = {
+		8C75FBD3259C7F3C00802334 /* Common Views */ = {
 			isa = PBXGroup;
 			children = (
 				8C75FBD7259C8AFC00802334 /* ChapterSheet.swift */,
 				8C75FBDB259C938900802334 /* Toolbars.swift */,
-				8C75FBED259E168200802334 /* ChapterTextView.swift */,
 				8C75FC7B25A1B21B00802334 /* Header.swift */,
 				8C75FC7E25A1B3BE00802334 /* CircleButton.swift */,
 			);
-			path = Views;
+			path = "Common Views";
 			sourceTree = "<group>";
 		};
 		8C7E83DE25BB273200F0210B /* ReadingsTab */ = {
 			isa = PBXGroup;
 			children = (
+				2150419925EE20C3003105CB /* Views */,
 				8C75FBDE259CBF2A00802334 /* ReadingTabsView.swift */,
 				8C75FC8525A2071E00802334 /* ReadingTabsViewModel.swift */,
 			);
@@ -249,10 +284,8 @@
 				8C8BAB72258D076900E4EDD3 /* Models */,
 				8C8BAB67258D056200E4EDD3 /* Fonts */,
 				8C8BAB9A258DE69700E4EDD3 /* Screens */,
-				8C8BAB53258D044700E4EDD3 /* SzentirasApp.swift */,
-				8C8BAB55258D044700E4EDD3 /* ContentView.swift */,
-				8C8BAB8B258D0BF800E4EDD3 /* BibleController.swift */,
-				8CE1F30325BAB063007B8D13 /* BookmarkController.swift */,
+				21D71B3025F1237500E14B3E /* Controllers */,
+				21D71B2D25F1236C00E14B3E /* Navigation */,
 				8CE1F30725BAB103007B8D13 /* Bookmark.xcdatamodeld */,
 				8C8BAB57258D044800E4EDD3 /* Assets.xcassets */,
 				8C8BAB5C258D044800E4EDD3 /* Info.plist */,
@@ -315,7 +348,7 @@
 		8C8BAB9A258DE69700E4EDD3 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				8C75FBD3259C7F3C00802334 /* Views */,
+				8C75FBD3259C7F3C00802334 /* Common Views */,
 				212254CA25E939800083B3B1 /* BooksViewTab */,
 				8C7E83DE25BB273200F0210B /* ReadingsTab */,
 				8C7E83DF25BB274A00F0210B /* BookmarksTab */,
@@ -496,6 +529,7 @@
 				8C75FC8625A2071E00802334 /* ReadingTabsViewModel.swift in Sources */,
 				8C8BABA3258F719600E4EDD3 /* Color+Extension.swift in Sources */,
 				8C8BAB56258D044700E4EDD3 /* ContentView.swift in Sources */,
+				2121D8A025EE237600F35FF9 /* TextSettingsView.swift in Sources */,
 				8C8BAB54258D044700E4EDD3 /* SzentirasApp.swift in Sources */,
 				8C2B140E25BABC560040DFE9 /* BookmarkModel.swift in Sources */,
 				8C7F13BA25B8104A0052E0C7 /* NetworkProtocol.swift in Sources */,
@@ -509,11 +543,13 @@
 				8C8BAB92258D12D400E4EDD3 /* TranslationModel.swift in Sources */,
 				8C8BAB97258D213200E4EDD3 /* UserDefaults+Extension.swift in Sources */,
 				2111F98B25E63DA500BF4193 /* CacheManager.swift in Sources */,
+				2150419F25EE2211003105CB /* ErrorMessageView.swift in Sources */,
 				8C75FC7F25A1B3BE00802334 /* CircleButton.swift in Sources */,
 				2111F98625E6320500BF4193 /* SettingsView.swift in Sources */,
 				8C75FC7925A08E4600802334 /* Font+Extension.swift in Sources */,
 				8C75FBEE259E168200802334 /* ChapterTextView.swift in Sources */,
 				8C75FBDC259C938900802334 /* Toolbars.swift in Sources */,
+				2150419B25EE20D1003105CB /* BookmarkingView.swift in Sources */,
 				8C2B140A25BAB6A10040DFE9 /* BookmarksView.swift in Sources */,
 				8C75FBDF259CBF2A00802334 /* ReadingTabsView.swift in Sources */,
 			);

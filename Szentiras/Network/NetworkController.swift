@@ -25,7 +25,7 @@ class NetworkController: ObservableObject, NetworkProtocol {
             return Fail(error: BibleError.badURL).eraseToAnyPublisher()
         }
         return URLSession.shared.dataTaskPublisher(for: url)
-            .retry(3)
+            .retry(5)
             .tryMap({data, response -> Data in
                 if data.isEmpty {
                     throw BibleError.dataCorrupted
@@ -41,7 +41,7 @@ class NetworkController: ObservableObject, NetworkProtocol {
                     throw BibleError.badURL
                 }
                 return result
-            })
+            })            
             .mapError({error -> BibleError in
                 switch error {
                     case URLError.badServerResponse:

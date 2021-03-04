@@ -45,7 +45,7 @@
 - Show Text if there's no bookmark
 - Sections for different color categories
 - Deleting, ordering (within color categories)
-- On long press brings up context menu with jumping to context `‼️TODO‼️`
+- On long press brings up context menu with jumping to context
 
 ## Settings View
 - Policy button with url 
