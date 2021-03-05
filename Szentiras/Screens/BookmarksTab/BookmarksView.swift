@@ -134,7 +134,9 @@ struct BookmarksView_Previews: PreviewProvider {
                 .environmentObject(bookmarkController)
                 .environment(\.managedObjectContext, bookmarkController.container.viewContext)
                 .navigationBarHidden(true)
-                .environmentObject(BibleController(savedDefault: SavedDefault(), networkController: NetworkController.instance))
+                .environmentObject(BibleController(
+                                    savedDefault: SavedDefault(),
+                                    networkController: NetworkController.instance))
         }
         
     }

@@ -19,7 +19,9 @@ struct SettingsView: View {
             // http://sornyei.hu/szentiras/
             Button(action: {
                 if UIApplication.shared.canOpenURL(URL(string: "http://sornyei.hu/szentiras")!) {
-                    UIApplication.shared.open(URL(string: "http://sornyei.hu/szentiras")!, options: [:], completionHandler: nil)
+                    UIApplication.shared.open(URL(
+                                                string: "http://sornyei.hu/szentiras")!,
+                                              options: [:], completionHandler: nil)
                 }
             }, label: {
                 Text("Adatvédelmi szabályzat")

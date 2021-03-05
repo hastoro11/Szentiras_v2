@@ -143,8 +143,8 @@ class BookmarkController: ObservableObject {
     func moveBookmark(color: String, from source: IndexSet, to destination: Int) {
         guard var bookmarks = sortedBookmarks[color] else { return }
         bookmarks.move(fromOffsets: source, toOffset: destination)
-        bookmarks.enumerated().forEach({index, bm in
-            bm.order = index
+        bookmarks.enumerated().forEach({index, bmrk in
+            bmrk.order = index
             try? container.viewContext.save()
         })
 
@@ -163,8 +163,8 @@ class BookmarkController: ObservableObject {
         fetchRequest.sortDescriptors = [descriptor]
         
         let fetchedBookmarks = (try? context.fetch(fetchRequest)) ?? []
-        for (i, bm) in fetchedBookmarks.enumerated() {
-            bm.order = i
+        for (index, bookmark) in fetchedBookmarks.enumerated() {
+            bookmark.order = index
         }
         try? context.save()
         fetchBookmarks()

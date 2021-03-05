@@ -21,25 +21,17 @@ struct ChapterTextView: View {
     // Body
     //--------------------------------
     var body: some View {
-        ScrollViewReader { proxy in
-            ScrollView(.vertical, showsIndicators: false) {
-                bookHeader
-                Group {
-                    if model.isTextContinous {
-                        continuousView
-                    } else {
-                        versesView
-                    }
-                }                
+        ScrollView(.vertical, showsIndicators: false) {
+            bookHeader
+            Group {
+                if model.isTextContinous {
+                    continuousView
+                } else {
+                    versesView
+                }
             }
-            
         }
         .padding(.horizontal)
-        
-    }
-    
-    func scrollTo() {
-        
     }
     
     //--------------------------------
@@ -78,8 +70,7 @@ struct ChapterTextView: View {
                         .lineSpacing(6)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .background(bookmarkController.getBookmarkColor(gepi: String(vers.hely.gepi)).opacity(0.4))
-                        
-                        
+                                            
                     } else {
                         Text((vers.szoveg ?? "").strippedHTMLElements)
                             .font(.light(model.fontSize))
@@ -113,7 +104,8 @@ struct ChapterTextView: View {
         for vers in verses {
             // swiftlint:disable shorthand_operator
             indexedVerses = indexedVerses + Text("\(vers.index) ").font(.medium(model.fontSize))
-            indexedVerses = indexedVerses + Text("\((vers.szoveg ?? "").strippedHTMLElements) ").font(.light(model.fontSize))
+            indexedVerses = indexedVerses +
+                Text("\((vers.szoveg ?? "").strippedHTMLElements) ").font(.light(model.fontSize))
         }
         return LazyVStack {
             if model.showIndex {
@@ -143,6 +135,8 @@ struct ChapterTextView_Previews: PreviewProvider {
             showBookmarkingView: .constant(false))
             .environmentObject(ReadingTabsViewModel())
             .environmentObject(BookmarkController(inMemory: true))
-            .environmentObject(BibleController(savedDefault: SavedDefault(), networkController: NetworkController.instance))
+            .environmentObject(BibleController(
+                                savedDefault: SavedDefault(),
+                                networkController: NetworkController.instance))
     }
 }

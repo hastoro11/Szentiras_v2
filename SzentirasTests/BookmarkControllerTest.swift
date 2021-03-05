@@ -23,8 +23,8 @@ class BookmarkControllerTest: XCTestCase {
         let request: NSFetchRequest<Bookmark> = NSFetchRequest(entityName: "Bookmark")
         let bookmarks = try context.fetch(request)
         
-        for bm in bookmarks {
-            print(bm.order, bm.szep)
+        for bkmrk in bookmarks {
+            print(bkmrk.order, bkmrk.szep)
         }
         XCTAssertEqual(bookmarks.count, 7)
         XCTAssertEqual(bookmarkController.sortedBookmarks.count, 4)
@@ -94,16 +94,16 @@ class BookmarkControllerTest: XCTestCase {
         var yellows = bookmarkController.sortedBookmarks["Yellow"]!
         XCTAssertEqual(yellows.count, 3)
         
-        for (i, bm) in yellows.enumerated() {
-            XCTAssertEqual(i, bm.order)
+        for (index, bookmark) in yellows.enumerated() {
+            XCTAssertEqual(index, bookmark.order)
         }
         
         bookmarkController.deleteBookmark(color: "Yellow", indexSet: indexSet)
         yellows = bookmarkController.sortedBookmarks["Yellow"]!
         XCTAssertEqual(yellows.count, 2)
         XCTAssertEqual(yellows[1].order, 1)
-        for (i, bm) in yellows.enumerated() {
-            XCTAssertEqual(i, bm.order)
+        for (index, bookmark) in yellows.enumerated() {
+            XCTAssertEqual(index, bookmark.order)
         }
     }
     
@@ -130,7 +130,7 @@ class BookmarkControllerTest: XCTestCase {
         let vers = Vers(szoveg: "", hely: Hely(gepi: 123, szep: ""))
         bookmarkController.selectedVers = vers
         bookmarkController.addBookmark(color: "Yellow", translation: "RUF")
-        var yellows = bookmarkController.sortedBookmarks["Yellow"]!
+        let yellows = bookmarkController.sortedBookmarks["Yellow"]!
         XCTAssertEqual(yellows.count, 4)
         
         XCTAssertNotNil(bookmarkController.checkIfVersIsMarked(gepi: yellows[0].gepi))

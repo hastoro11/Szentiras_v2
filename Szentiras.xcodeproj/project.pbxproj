@@ -386,10 +386,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8C8BAB5F258D044800E4EDD3 /* Build configuration list for PBXNativeTarget "Szentiras" */;
 			buildPhases = (
-				8C8BABA5258FA47F00E4EDD3 /* SwiftLint */,
 				8C8BAB4C258D044700E4EDD3 /* Sources */,
 				8C8BAB4D258D044700E4EDD3 /* Frameworks */,
 				8C8BAB4E258D044700E4EDD3 /* Resources */,
+				214F845625F213D400DF5B22 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -496,7 +496,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8C8BABA5258FA47F00E4EDD3 /* SwiftLint */ = {
+		214F845625F213D400DF5B22 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -505,14 +505,13 @@
 			);
 			inputPaths = (
 			);
-			name = SwiftLint;
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -29,7 +29,9 @@ struct BookmarkingView: View {
                         Circle()
                             .fill(Color(color)).frame(width: 34, height: 34)
                             .onTapGesture {
-                                bookmarkController.addBookmark(color: color, translation: bibleController.translation.abbrev)
+                                bookmarkController.addBookmark(
+                                    color: color,
+                                    translation: bibleController.translation.abbrev)
                                 showBookmarkingView.toggle()
                             }
                     }
