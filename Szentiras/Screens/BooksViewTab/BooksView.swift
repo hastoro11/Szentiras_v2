@@ -12,7 +12,6 @@ struct BooksView: View {
     @EnvironmentObject var controller: BibleController
     @State var showTranslations: Bool = false
     @State var showChapters: Bool = false
-    @State var selectedChapter: Int = 1
     
     //--------------------------------
     // Body
@@ -28,10 +27,8 @@ struct BooksView: View {
             Spacer()
         }
         .navigationBarTitleDisplayMode(.inline)
-        .sheet(isPresented: $showChapters, onDismiss: {
-            controller.chapterViewOnDismiss(selectedChapter: selectedChapter)
-        }) {
-            ChapterSheet(showChapters: $showChapters, selectedChapter: $selectedChapter)
+        .sheet(isPresented: $showChapters) {
+            ChapterSheet(showChapters: $showChapters)
                 .environmentObject(controller)
         }
     }

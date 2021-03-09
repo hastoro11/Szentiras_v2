@@ -11,7 +11,6 @@ struct ReadingTabsView: View {
     @EnvironmentObject var controller: BibleController
     @State var showTranslations: Bool = false
     @State var showChapters: Bool = false
-    @State var selectedChapter: Int = 1
     @State var showSettingsView: Bool = false
     @State var showBookmarkingView: Bool = false
     @State var hidenavigationBar: Bool = false
@@ -81,10 +80,8 @@ struct ReadingTabsView: View {
                     .zIndex(10)
             }
         }
-        .sheet(isPresented: $showChapters, onDismiss: {
-            controller.chapterViewOnDismiss(selectedChapter: selectedChapter)
-        }) {
-            ChapterSheet(showChapters: $showChapters, selectedChapter: $selectedChapter)
+        .sheet(isPresented: $showChapters) {
+            ChapterSheet(showChapters: $showChapters)
                 .environmentObject(controller)
         }        
     }
@@ -94,6 +91,7 @@ struct ReadingTabsView: View {
     //--------------------------------
     var tabview: some View {
         TabView(selection: $controller.activeChapter) {
+//            Text("Active chapter: \(controller.activeChapter)")
             ForEach(1...controller.versesInBook.count, id: \.self) { index in
                 ChapterTextView(
                     verses: $controller.versesInBook[index-1],

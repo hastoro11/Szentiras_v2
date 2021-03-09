@@ -25,7 +25,7 @@ class NetworkController: ObservableObject, NetworkProtocol {
             return Fail(error: BibleError.badURL).eraseToAnyPublisher()
         }
         return URLSession.shared.dataTaskPublisher(for: url)
-            .retry(5)
+//            .retry(5)
             .tryMap({data, response -> Data in
                 if data.isEmpty {
                     throw BibleError.dataCorrupted
@@ -41,7 +41,7 @@ class NetworkController: ObservableObject, NetworkProtocol {
                     throw BibleError.badURL
                 }
                 return result
-            })            
+            })
             .mapError({error -> BibleError in
                 switch error {
                     case URLError.badServerResponse:
@@ -74,16 +74,17 @@ class NetworkController: ObservableObject, NetworkProtocol {
                         return  error as? BibleError ?? .unknown
                 }
             })
-            .timeout(10, scheduler: DispatchQueue.global(), options: nil, customError: { BibleError.timeout })
+//            .timeout(10, scheduler: DispatchQueue.global(), options: nil, customError: { BibleError.timeout })
             .eraseToAnyPublisher()
     }
     
     func fetchBook(translation: Translation, book: Book) -> AnyPublisher<[SearchResult], BibleError> {
-        
+//        assemble(translation: translation, book: book)
         var publishers: [AnyPublisher<SearchResult, BibleError>] = []
         for chapter in 1...book.numberOfChapters {
             publishers.append(self.fetchChapter(translation: translation, book: book, chapter: chapter))
         }
+//        print("DEBUG: publishers count for book \(book.abbrev)", publishers.count)
         
         return Publishers.MergeMany(publishers)
             .subscribe(on: DispatchQueue.global(qos: .userInitiated))

@@ -103,8 +103,9 @@ class BibleController: ObservableObject {
                 }
                 isLoading = false
             }, receiveValue: {[self] results in
+//                print("DEBUG: result count for book \(book.abbrev):", results.count)
                 let cacheKey = "\(translation.abbrev)/\(book.number)"
-                versesInBook = results.sorted().map({$0.valasz.verses})
+                versesInBook = results.sorted().map({$0.valasz.verses})                
                 if !versesInBook.isEmpty {
                     CacheManager.instance.results[cacheKey] = versesInBook
                 }                
@@ -121,13 +122,6 @@ class BibleController: ObservableObject {
         self.activeChapter = chapter
         self.selectedTab = 1
 
-    }
-    
-    //--------------------------------
-    // Helpers
-    //--------------------------------
-    func chapterViewOnDismiss(selectedChapter: Int) {
-        activeChapter = selectedChapter
     }
     
     //--------------------------------
