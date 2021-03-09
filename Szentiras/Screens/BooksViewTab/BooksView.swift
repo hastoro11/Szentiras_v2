@@ -28,9 +28,6 @@ struct BooksView: View {
             Spacer()
         }
         .navigationBarTitleDisplayMode(.inline)
-        .actionSheet(isPresented: $showTranslations, content: {
-            ActionSheet(title: Text("Válassz egy fordítást"), buttons: controller.translationButtons)
-        })
         .sheet(isPresented: $showChapters, onDismiss: {
             controller.chapterViewOnDismiss(selectedChapter: selectedChapter)
         }) {

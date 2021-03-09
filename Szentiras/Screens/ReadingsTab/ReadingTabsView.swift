@@ -81,9 +81,6 @@ struct ReadingTabsView: View {
                     .zIndex(10)
             }
         }
-        .actionSheet(isPresented: $showTranslations, content: {
-            ActionSheet(title: Text("Válassz egy fordítást"), buttons: controller.translationButtons)
-        })
         .sheet(isPresented: $showChapters, onDismiss: {
             controller.chapterViewOnDismiss(selectedChapter: selectedChapter)
         }) {

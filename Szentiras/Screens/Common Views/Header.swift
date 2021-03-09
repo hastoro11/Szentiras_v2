@@ -81,6 +81,9 @@ struct Header: View {
                     action: {
                         showTranslations.toggle()
                     })
+                    .actionSheet(isPresented: $showTranslations, content: {
+                        ActionSheet(title: Text("Válassz egy fordítást"), buttons: controller.translationButtons)
+                    })
             }
         }
         .frame(maxWidth: .infinity)
