@@ -8,12 +8,21 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @AppStorage("isDarkMode") var isDarkMode: Bool = false
     var body: some View {
         VStack {
             Text("Beállítások")
                 .font(.medium(16))
                 .fixedSize()
                 .frame(height: 44)
+            
+            List {
+                
+                Toggle("Sötét nézet", isOn: $isDarkMode)
+                    .font(.regular(18))
+                    .padding()
+            }
+            .listStyle(GroupedListStyle())
             Spacer()
             
             // http://sornyei.hu/szentiras/

@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct SzentirasApp: App {
+    @AppStorage("isDarkMode") var isDarkMode: Bool = false
     @StateObject var bibleController: BibleController
     @StateObject var bookmarkController: BookmarkController
     
@@ -25,6 +26,7 @@ struct SzentirasApp: App {
                 .environment(\.managedObjectContext, bookmarkController.container.viewContext)
                 .environmentObject(bookmarkController)
                 .environmentObject(bibleController)
+                .preferredColorScheme(isDarkMode ? .dark : .light)
         }
     }
 }
