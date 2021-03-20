@@ -72,6 +72,12 @@ extension Vers {
    }
 }
 
+extension Vers: Equatable {
+    static func == (lhs: Vers, rhs: Vers) -> Bool {
+        lhs.id == rhs.id
+    }
+}
+
 extension Vers {
    static var mockData: [Vers] {
       let url = Bundle.main.url(forResource: "searchResult_mock", withExtension: "json")!

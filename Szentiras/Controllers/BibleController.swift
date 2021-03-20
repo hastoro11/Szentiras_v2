@@ -41,7 +41,7 @@ class BibleController: ObservableObject {
     }
     
     //--------------------------------
-    // Combine listeners
+    // MARK: - Combine listeners
     //--------------------------------
     private func onTranslationChange() {
         // Changes list of books
@@ -55,14 +55,7 @@ class BibleController: ObservableObject {
         // Fetches books
         $translation
             .sink(receiveValue: { [self] transl in
-                let cacheKey = "\(transl.abbrev)/\(activeBook.number)"
-                if let verses = CacheManager.instance.results[cacheKey] {
-                    // Fecthing from cache
-                    versesInBook = verses
-                } else {
-                    // Fetching from network
-                    fetchBook(translation: transl, book: activeBook)
-                }
+                fetchBook(translation: transl, book: activeBook)
             })
             .store(in: &cancellables)
     }
@@ -71,50 +64,49 @@ class BibleController: ObservableObject {
         // Fetches book
         $activeBook
             .sink(receiveValue: {[self] book in
-                let cacheKey = "\(translation.abbrev)/\(book.number)"
-                if let verses = CacheManager.instance.results[cacheKey] {
-                    // Fetching from cache
-                    versesInBook = verses
-                } else {
-                    // Fetching from network
-                    fetchBook(translation: translation, book: book)
-                }
+                fetchBook(translation: translation, book: book)
             })
             .store(in: &cancellables)
     }
     
     //--------------------------------
-    // Fetch book
+    // MARK: - Fetch book
     //--------------------------------
     func fetchBook() {
         self.fetchBook(translation: translation, book: activeBook)
     }
+    
     private func fetchBook(translation: Translation, book: Book) {
+        let cacheKey = "\(translation.abbrev)/\(book.number)"
         isLoading = true
-        NetworkController.instance.fetchBook(translation: translation, book: book)
-            .receive(on: RunLoop.main)
-            .sink(receiveCompletion: {[self] completion in
-                switch completion {
-                    case .failure(let error):
-                        self.error = error
-                        self.versesInBook = []                        
-                    case .finished:
-                        break
-                }
+        if CacheManager.instance.isBookSaved(key: cacheKey) {
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) { [unowned self] in
+                versesInBook = CacheManager.instance.getVerses(key: cacheKey)
                 isLoading = false
-            }, receiveValue: {[self] results in
-//                print("DEBUG: result count for book \(book.abbrev):", results.count)
-                let cacheKey = "\(translation.abbrev)/\(book.number)"
-                versesInBook = results.sorted().map({$0.valasz.verses})                
-                if !versesInBook.isEmpty {
-                    CacheManager.instance.results[cacheKey] = versesInBook
-                }                
-            })
-            .store(in: &cancellables)
+            }
+        } else {
+            NetworkController.instance.fetchBook(translation: translation, book: book)
+                .receive(on: RunLoop.main)
+                .sink(receiveCompletion: {[self] completion in
+                    switch completion {
+                        case .failure(let error):
+                            self.error = error
+                            self.versesInBook = []
+                        case .finished:
+                            break
+                    }
+                    isLoading = false
+                }, receiveValue: {[self] results in
+                    let foundVersesInBook = results.sorted().map({$0.valasz.verses})
+                    versesInBook = foundVersesInBook
+                    CacheManager.instance.addBook(key: cacheKey, verses: foundVersesInBook)
+                })
+                .store(in: &cancellables)
+        }
     }
     
     //--------------------------------
-    // Jump to bookmark
+    // MARK: - Jump to bookmark
     //--------------------------------
     func jumpToVers(bookmark: Bookmark) {
         guard let book = bookmark.book(translation: self.translation), let chapter = bookmark.chapter() else { return }
@@ -125,7 +117,7 @@ class BibleController: ObservableObject {
     }
     
     //--------------------------------
-    // Translation sheet helpers
+    // MARK: - Translation sheet helpers
     //--------------------------------
     var translationButtons: [ActionSheet.Button] {
         var translations = Translation.all()
@@ -146,7 +138,7 @@ class BibleController: ObservableObject {
     }
     
     //--------------------------------
-    // Paging
+    // MARK: - Paging
     //--------------------------------
     enum PagingDirection {
         case previous, next
@@ -169,7 +161,7 @@ class BibleController: ObservableObject {
     }
     
     //--------------------------------
-    // Preview
+    // MARK: - Preview
     //--------------------------------
     static func preview(_ savedDefault: SavedDefault) -> BibleController {
         BibleController(savedDefault: savedDefault, networkController: NetworkController.instance)

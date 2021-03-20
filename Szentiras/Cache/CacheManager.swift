@@ -11,5 +11,17 @@ class CacheManager {
     static var instance: CacheManager = CacheManager()
     private init() {}
     
-    var results: [String: [[Vers]]] = [:]
+    private(set) var results: [String: [[Vers]]] = [:]
+    
+    func addBook(key: String, verses: [[Vers]]) {
+        results[key] = verses
+    }
+    
+    func isBookSaved(key: String) -> Bool {
+        results.keys.contains(key)
+    }
+    
+    func getVerses(key: String) -> [[Vers]] {
+        results[key] ?? [[]]
+    }    
 }

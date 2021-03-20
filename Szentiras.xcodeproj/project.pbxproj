@@ -13,6 +13,7 @@
 		2150419B25EE20D1003105CB /* BookmarkingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2150419A25EE20D1003105CB /* BookmarkingView.swift */; };
 		2150419F25EE2211003105CB /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2150419E25EE2211003105CB /* ErrorMessageView.swift */; };
 		215D92C625DFF2F900CF4DCC /* Usecases.md in Resources */ = {isa = PBXBuildFile; fileRef = 215D92C525DFF2F900CF4DCC /* Usecases.md */; };
+		21938AB92605FFA50001B84B /* CacheManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21938AB82605FFA50001B84B /* CacheManagerTest.swift */; };
 		21F2E12225E40AB7006C1ABD /* BookmarkControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F2E12025E40AB7006C1ABD /* BookmarkControllerTest.swift */; };
 		8C2B140A25BAB6A10040DFE9 /* BookmarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2B140925BAB6A10040DFE9 /* BookmarksView.swift */; };
 		8C2B140E25BABC560040DFE9 /* BookmarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2B140D25BABC560040DFE9 /* BookmarkModel.swift */; };
@@ -82,6 +83,7 @@
 		2150419A25EE20D1003105CB /* BookmarkingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkingView.swift; sourceTree = "<group>"; };
 		2150419E25EE2211003105CB /* ErrorMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageView.swift; sourceTree = "<group>"; };
 		215D92C525DFF2F900CF4DCC /* Usecases.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Usecases.md; sourceTree = "<group>"; };
+		21938AB82605FFA50001B84B /* CacheManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManagerTest.swift; sourceTree = "<group>"; };
 		21F2E12025E40AB7006C1ABD /* BookmarkControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkControllerTest.swift; sourceTree = "<group>"; };
 		8C1E880625A367BE007819BD /* Todo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Todo.md; sourceTree = "<group>"; };
 		8C2B140925BAB6A10040DFE9 /* BookmarksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksView.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 				8C7F13BD25B811050052E0C7 /* MockNetworkController.swift */,
 				8C7F13C525B815360052E0C7 /* BibleControllerTest.swift */,
 				21F2E12025E40AB7006C1ABD /* BookmarkControllerTest.swift */,
+				21938AB82605FFA50001B84B /* CacheManagerTest.swift */,
 			);
 			path = SzentirasTests;
 			sourceTree = "<group>";
@@ -558,6 +561,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21938AB92605FFA50001B84B /* CacheManagerTest.swift in Sources */,
 				8C7F13C625B815360052E0C7 /* BibleControllerTest.swift in Sources */,
 				8C4F95AF25A9C38400720290 /* String+Extension.swift in Sources */,
 				8C7F13BE25B811050052E0C7 /* MockNetworkController.swift in Sources */,
@@ -701,7 +705,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Szentiras/Preview Content\"";
 				DEVELOPMENT_TEAM = 8YE8M3UNR3;
 				ENABLE_PREVIEWS = YES;
@@ -711,7 +715,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sornyei.BibleReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -725,7 +729,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Szentiras/Preview Content\"";
 				DEVELOPMENT_TEAM = 8YE8M3UNR3;
 				ENABLE_PREVIEWS = YES;
@@ -735,7 +739,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sornyei.BibleReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
